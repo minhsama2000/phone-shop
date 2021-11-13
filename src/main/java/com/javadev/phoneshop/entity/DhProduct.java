@@ -35,16 +35,6 @@ public class DhProduct extends BaseEntity implements java.io.Serializable {
 	@JsonProperty(value = "priceSale")
 	private Long priceSale;
 
-	@Column(name = "available", nullable = false)
-	@JsonProperty(value = "available")
-	@JsonAlias(value = "productAvailable")
-	private Long available;
-
-	@Column(name = "weight", nullable = false)
-	@JsonProperty(value = "weight")
-	@JsonAlias(value = "productWeight")
-	private Float weight;
-
 	@Column(name = "seo", length = 1000, nullable = false)
 	private String seo;
 	
@@ -78,22 +68,20 @@ public class DhProduct extends BaseEntity implements java.io.Serializable {
 				&& Objects.equals(shortDescription, dhProduct.shortDescription)
 				&& Objects.equals(price, dhProduct.price) && Objects.equals(priceSale, dhProduct.priceSale)
 				&& Objects.equals(seo, dhProduct.seo) && Objects.equals(category, dhProduct.category)
-				&& Objects.equals(orderProducts, dhProduct.orderProducts)
-				&& Objects.equals(available, dhProduct.available)
-				&& Objects.equals(weight, dhProduct.weight);
+				&& Objects.equals(orderProducts, dhProduct.orderProducts);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(super.hashCode(), name, detailDescription, shortDescription, price, priceSale, seo,
-				category, orderProducts,available,weight);
+				category, orderProducts);
 	}
 
 	@Override
 	public String toString() {
 		return "DhProduct [name=" + name + ", detailDescription=" + detailDescription + ", shortDescription="
-				+ shortDescription + ", price=" + price + ", priceSale=" + priceSale + ", available=" + available
-				+ ", weight=" + weight + ", seo=" + seo + ", category=" + category + ", orderProducts=" + orderProducts
+				+ shortDescription + ", price=" + price + ", priceSale=" + priceSale
+				+ ", seo=" + seo + ", category=" + category + ", orderProducts=" + orderProducts
 				+ ", getId()=" + getId() + "]";
 	}
 
