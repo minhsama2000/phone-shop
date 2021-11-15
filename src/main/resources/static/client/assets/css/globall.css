@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+  color: inherit;
+  font-size: 15px;
+  font-size: inherit;
+}
+.space-betwent {
+    justify-content: space-between;
+}
+.p_t_d_5{
+    padding: 5px 0;
+}
+.bg_oragen {
+    background-color: #f15a23;
+}
+img {
+    width: 100%;
+}
+
+.mb-20 {
+    margin-bottom: 20px !important;
+}
+.mb-10 {
+    margin-bottom: 10px;
+}
+.border-b {
+    border-bottom: 1px solid #ddd;
+}
+.border-l {
+    border-left: 1px solid #ccc;
+}
+.w-100 {
+    width: 100%;
+}

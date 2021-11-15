@@ -1,0 +1,206 @@
+table {
+    border-spacing: 0;
+}
+th, td {
+    padding: 0.5em;
+    text-align: left;
+    border-bottom: 1px solid #ececec;
+    line-height: 1.3;
+    font-size: .9em;
+}
+dl dt, dl dd {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.cart-table-title {
+    padding:10px;
+    text-transform: capitalize;
+}
+
+
+.cart_form {
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 20px #ddd;
+    min-height: 300px;
+}
+
+.haddle_Cart_Form {
+    padding:20px;
+
+}
+.haddle_Cart_Form .cart-table table th {
+    border-width: 3px;
+}
+.cart-table table {
+    width: 100%;
+
+}
+.cart-table table thead {
+    font-size: 18px;
+    color:rgb(41, 40, 40);
+    font-weight: 600;
+}
+.cart-table .product-name a {
+    display: block;
+    text-decoration: none;
+    font-size: 15px;
+    color:rgb(50, 140, 225);
+    margin-bottom: 10px;
+    
+
+}
+.product-price span {
+    font-weight: bold;
+    color: #111;
+    font-size: 15px;
+
+}
+
+
+.cart-table .product-quantity {
+    width: 150px;
+}
+.quantity-Block  {
+}
+.quantity-Block input {
+    padding:5px 0px;
+
+}
+.quantity-Block input[type="button"] {
+    padding:5px 10px;
+}
+.cart-table .product-quantity input[type="number"] {
+  width: 40px;
+  padding-left: 10px;
+}
+.cart-table .product-subtotal span{
+ color:#111;
+ font-weight: bold;
+ font-size: 15px;
+}
+.cart-table-body {
+   margin: 10px;
+
+}
+.cart-table-body .product-remove {
+    width: 50px;
+}
+.cart-table-body .product-remove 
+.remove_cart_product {
+    color: #aaa;
+   font-size: 15px;
+}
+.cart-table-body .product-remove 
+.remove_cart_product:hover {
+    color:#000;
+}
+.product-thumbnail {
+    width:100px;
+} 
+
+
+.variation {
+    width: 100%;
+    display: flex;
+    /* justify-content: ; */
+    color:#666;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+.variation-capacity-tile {
+
+}
+
+.variation-capacity-value {
+
+}
+
+.variation-color {
+
+}
+
+.variation-color-value {
+
+}
+/* =======================css cho cập nhập giỏ hàng */
+
+.actions.clear {
+    /* display: flex; */
+    padding-top: 20px;
+    border: none;
+    display: float;
+}
+.actions.clear .continue-shopping {
+    display: block;
+    width: 240px;
+    float: left;
+}
+
+.actions.clear .continue-shopping a {
+    /* display:inline-block; */
+    padding: 10px 20px ;
+    border: 2px solid rgb(237, 175, 21);
+    border-radius: 5px;
+    color:rgb(237, 175, 21);
+    text-decoration: none;
+    font-weight: 600;
+    display: block;
+    margin-right: 20px;
+}
+.actions.clear .continue-shopping a:hover {
+    background-color: rgb(237, 175, 21);
+    color:#fff;
+}
+.modify_cart {
+    border: none;
+    padding-top: 20px;
+}
+.button.primary {
+    height: 40px;
+    width: 200px;
+    border-radius: 5px;
+    background-color: rgb(235, 205, 34);
+    border: 1px solid #ccc;
+    font-weight:500;
+    color:#fff;
+    font-size:15px;
+    opacity: 0.8;
+}
+.button.primary:hover {
+    background-color: rgb(216, 203, 14);
+}
+
+/* css cho cart-sidebar */
+.cart-sidebar {
+    padding:20px;
+}
+.cart-sidebar  table {
+    font-size: 18px;
+    
+}
+.cart-sidebar  table .product-name {
+    border-bottom: 3px solid #cccc;
+}
+
+.cart_totals table{
+    width: 100%;
+
+}
+.cart-checkout a {
+    display: block;
+    padding:10px 0;
+    background-color: rgb(0, 0, 255);
+    color:#fff;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    font-weight: 600;
+}
+.cart-checkout a:hover {
+    background-color: rgb(9, 9, 169);
+}
