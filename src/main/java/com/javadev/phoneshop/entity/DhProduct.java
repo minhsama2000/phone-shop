@@ -5,6 +5,8 @@ import java.util.*;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.*;
+import com.javadev.phoneshop.entity.productProperty.Promotion;
+
 import lombok.*;
 
 @Entity
@@ -16,20 +18,25 @@ import lombok.*;
 public class DhProduct extends BaseEntity implements java.io.Serializable {
 
 	@Column(name = "name", length = 1000, nullable = false)
-	@JsonProperty(value = "name")
-	@JsonAlias(value = "productName")
 	private String name;
 
 	@Column(name = "detail_description", columnDefinition = "LONGTEXT", nullable = false)
-	@JsonProperty(value = "detailDescription")
 	private String detailDescription;
-
-	@Column(name = "short_description", length = 1000, nullable = false)
-	@JsonProperty(value = "shortDescription")
-	private String shortDescription;
 
 	@Column(name = "price", nullable = false)
 	private Long price;
+	
+	@Column(name = "available", nullable = false)
+	private Long available;
+	
+	@Column(name = "color", nullable = true)
+	private int color;
+	
+	@Column(name = "avatar", nullable = false)
+	private String avatar;
+	
+	@Column(name = "storage", nullable = true)
+	private int storage;
 
 	@Column(name = "seo", length = 1000, nullable = false)
 	private String seo;
@@ -40,6 +47,9 @@ public class DhProduct extends BaseEntity implements java.io.Serializable {
 
 	@OneToMany(mappedBy = "dhProduct", cascade = CascadeType.ALL)
 	private List<DhOrderProduct> orderProducts = new ArrayList<>();
+
+	@OneToMany(mappedBy = "dhProduct", cascade = CascadeType.ALL)
+	private List<Promotion> promotions = new ArrayList<Promotion>();
 
 	public void addOrderProduct(DhOrderProduct orderProduct) {
 		this.orderProducts.add(orderProduct);
@@ -61,7 +71,6 @@ public class DhProduct extends BaseEntity implements java.io.Serializable {
 			return false;
 		DhProduct dhProduct = (DhProduct) o;
 		return Objects.equals(name, dhProduct.name) && Objects.equals(detailDescription, dhProduct.detailDescription)
-				&& Objects.equals(shortDescription, dhProduct.shortDescription)
 				&& Objects.equals(price, dhProduct.price) && Objects.equals(seo, dhProduct.seo)
 				&& Objects.equals(category, dhProduct.category)
 				&& Objects.equals(orderProducts, dhProduct.orderProducts);
@@ -69,15 +78,13 @@ public class DhProduct extends BaseEntity implements java.io.Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), name, detailDescription, shortDescription, price, seo,
-				category, orderProducts);
+		return Objects.hash(super.hashCode(), name, detailDescription, price, seo, category, orderProducts);
 	}
 
 	@Override
 	public String toString() {
-		return "DhProduct [name=" + name + ", detailDescription=" + detailDescription + ", shortDescription="
-				+ shortDescription + ", price=" + price + ", seo=" + seo + ", category="
-				+ category + ", orderProducts=" + orderProducts + ", getId()=" + getId() + "]";
+		return "DhProduct [name=" + name + ", detailDescription=" + detailDescription + ", price=" + price + ", seo="
+				+ seo + ", category=" + category + ", orderProducts=" + orderProducts + ", getId()=" + getId() + "]";
 	}
 
 }

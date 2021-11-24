@@ -8,9 +8,9 @@ var product= function(ten,gia,hinhAnh,mau,id){
     }
 }
 
-var product1 =new product("iphone5",7000000,"/images/iP11-5-510x510-1.jpg","den",1)
+var product1 =new product("iphone5",7000000,"./assets/images/iP11-5-510x510-1.jpg","den",1)
 console.log(product1);
-// var iphone5 =new product("iphone5",7000000,"/images/iP11-5-510x510-1.jpg","den",1);
+// var iphone5 =new product("iphone5",7000000,"./assets/images/iP11-5-510x510-1.jpg","den",1);
 
 // console.log(iphone5)
 var listCart=[];

@@ -13,9 +13,9 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="/assets/owl.theme.default.min.css">
- <link rel="stylesheet" href="/css/product_detail.css">
- <link rel="stylesheet" href="/css/check_out.css">
- <link rel="stylesheet" href="/css/cart_list.css">
+<link rel="stylesheet" href="/css/product_detail.css">
+<link rel="stylesheet" href="/css/check_out.css">
+<link rel="stylesheet" href="/css/cart_list.css">
 <title>Phone shop</title>
 </head>
 <body>
@@ -35,12 +35,7 @@
 								<div class="row">
 									<div class="col col-litle l-5">
 										<div class="header-detail-form">
-											<form class="form-seach row" action="" method="post">
-												<input type="search" placeholder="nhập sản phẩm cần tìm">
-												<button type="submit">
-													<i class="fas fa-search"></i>
-												</button>
-											</form>
+
 											<div class="form-service">
 												<ul class=" row no-gutters form-service-list">
 													<li class="col l-3 form-service-item">
@@ -94,8 +89,8 @@
 														thiệu</a></li>
 												<li class="col l-4 menu-top-item"><a href="">
 														khuyến mại </a></li>
-												<li class="col l-4 menu-top-item"><a href="">liên
-														hệ</a></li>
+												<li class="col l-4 menu-top-item"><a
+													href="./contact.html">liên hệ</a></li>
 											</ul>
 											<ul class="row menu-top-socical">
 												<a href="https://www.facebook.com/ngocquy.bui.1042"
@@ -112,6 +107,97 @@
 													<i class="far fa-clock"></i>8h00-17h00
 												</p>
 											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row header-Form-seach">
+						<div class="col l-6 l-o-3">
+							<form class="form-seach row" action="" method="post">
+								<input type="search" placeholder="nhập sản phẩm cần tìm">
+								<button type="submit" formaction="./search.html">
+									<i class="fas fa-search"></i>
+								</button>
+							</form>
+						</div>
+						<div class="col col-litle l-3">
+							<div class="header-Cart-login">
+								<div class="row">
+
+									<div class="col col-litle l-10 header-login">
+										<div class="row ">
+											<div class=" col-litle l-6 form-Login">
+												<a href="./login.html" class="login-icon"> <i
+													class="fas fa-user"></i> <span> đăng nhập </span>
+												</a>
+											</div>
+											<!-- form login -->
+
+											<div class=" col-litle l-6 form-Login">
+												<a href="./regester.html" class="login-icon"> <i
+													class="fas fa-sign-out-alt"></i> <span> Đăng ký </span>
+												</a>
+
+											</div>
+										</div>
+										<!-- form logout -->
+
+									</div>
+									<div class="col col-litle l-2 header-Cart">
+										<a href="./cart_list.html"> <i
+											class="fas fa-shopping-cart"></i>
+										</a>
+										<div class="header-Cart-list">
+											<ul class="cart-list-item">
+												<li class="cart-item">
+													<div class="row ">
+														<div class="col col-litle l-2 cart-item-img">
+															<img src="./assets/images/iP11-5-510x510-1.jpg" alt=""
+																srcset="">
+														</div>
+														<div class="col col-litle l-6 cart-item-name">
+															<span>iphone-7-32g-1 </span>
+														</div>
+														<div class="col col-litle l-3 cart-Quantiy">
+															<span> sl x 1</span>
+														</div>
+													</div>
+
+												</li>
+												<li class="cart-item">
+													<div class="row ">
+														<div class="col col-litle l-2 cart-item-img">
+															<img src="./assets/images/iP11-5-510x510-1.jpg" alt=""
+																srcset="">
+														</div>
+														<div class="col col-litle l-6 cart-item-name">
+															<span>iphone-7-32g-1</span>
+														</div>
+														<div class="col col-litle l-3 cart-Quantiy">
+															<span> sl x 1</span>
+														</div>
+													</div>
+
+												</li>
+												<li class="cart-item">
+													<div class="row ">
+														<div class="col col-litle l-2 cart-item-img">
+															<img src="./assets/images/iP11-5-510x510-1.jpg" alt=""
+																srcset="">
+														</div>
+														<div class="col col-litle l-6 cart-item-name">
+															<span>iphone-7-32g-1</span>
+														</div>
+														<div class="col col-litle l-3 cart-Quantiy">
+															<span> sl x 1</span>
+														</div>
+													</div>
+
+												</li>
+											</ul>
 
 										</div>
 									</div>
@@ -172,28 +258,12 @@
 									<li class="sub-menu-item"><a href="">iphone xsmax</a></li>
 									<li class="sub-menu-item"><a href="">iphone 11</a></li>
 								</ul></li>
-							<li class="nav-bar-item"><a href=""> <i
+							<li class="nav-bar-item"><a href="./news.html"> <i
 									class="fa fa-list-alt"></i> tin tức
-							</a>
-								<ul class="sub-menu">
-									<li class="sub-menu-item"><a href="">iphone 6</a></li>
-									<li class="sub-menu-item"><a href="">iphone 7</a></li>
-									<li class="sub-menu-item"><a href="">iphone 8</a></li>
-									<li class="sub-menu-item"><a href="">iphone 9</a></li>
-									<li class="sub-menu-item"><a href="">iphone xsmax</a></li>
-									<li class="sub-menu-item"><a href="">iphone 11</a></li>
-								</ul></li>
-							<li class="nav-bar-item"><a href=""> <i
+							</a></li>
+							<li class="nav-bar-item"><a href="./contact.html"> <i
 									class="fas fa-id-card"></i> liên hệ
-							</a>
-								<ul class="sub-menu">
-									<li class="sub-menu-item"><a href="">iphone 6</a></li>
-									<li class="sub-menu-item"><a href="">iphone 7</a></li>
-									<li class="sub-menu-item"><a href="">iphone 8</a></li>
-									<li class="sub-menu-item"><a href="">iphone 9</a></li>
-									<li class="sub-menu-item"><a href="">iphone xsmax</a></li>
-									<li class="sub-menu-item"><a href="">iphone 11</a></li>
-								</ul></li>
+							</a></li>
 						</ul>
 					</div>
 				</div>

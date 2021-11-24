@@ -1,0 +1,83 @@
+html {
+    font-size: 15px;
+}
+
+.wrapper-header .container {
+    margin-bottom: 0;
+}
+.wrapper-body {
+    padding-top: 5px;
+}
+
+.contact-img{
+    position: relative;
+    width: 100%;
+    height: 370px;
+    background: #fff url("../images/contact-img.jpg")  no-repeat center /cover;
+
+}
+.contact-img h1 {
+    color:#fff;
+    position: absolute;
+    top:10px;
+    left: 10px;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+/* css contact-infor */
+.contact-infor {
+    font-size: 15px;
+    line-height: 1.4rem;
+}
+
+.contact-title {
+    color: #007bff;
+    margin-bottom: 10px;
+
+}
+
+.contact-list {
+    list-style: none;
+}
+
+.contact-item {
+    margin-top: 20px;
+
+}
+.contact-item strong {
+    text-transform: capitalize;
+}
+.contact-item i {
+    color:#0a63c2;
+    font-size: 18px;
+    margin-right: 4px;
+}
+
+
+
+/* css form  */
+
+form.form {
+    background-image: none;
+    width: 360px;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+}
+label.form-label {
+    color:#333;
+}
+.form-group.invalid .form-message {
+  color:  #f33a58;
+}
+
+textarea[name='messeage'] {
+    padding:5px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+}
+
+.form-label,.form-message,.form-control {
+    font-size: 15px;
+}

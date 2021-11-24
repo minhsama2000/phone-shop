@@ -1,0 +1,71 @@
+.wrapper-body .container {
+    margin-top: 0px;
+    padding-top: 20px;
+}
+
+/* css for nav-bar */
+.product-show-nav .nav-bar {
+    background-color:rgb(241, 241, 241);
+}
+
+
+.news-list {
+    list-style: none;
+    border-top-left-radius: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+.new-item {
+    background-color: #fff;
+    max-height: 250px;
+    margin-bottom: 10px;
+
+}
+
+.new-img {
+    position: relative;
+    border-top:5px;
+    margin: 5px 0px 0px 5px;
+}
+.new-item .news-detail {
+    text-decoration: none;
+    color: inherit;
+}
+
+.new-item .news-detail .news-desc .news-header {
+    margin-bottom: 10px;
+    line-height: 1.4em;
+    font-weight: 600;
+
+}
+.new-item .news-detail .news-desc .news-header:hover {
+    color: red;
+}
+.new-img  span {
+   position: absolute;
+   top: 10px;
+   left: 15px;
+   display: block;
+   width: 50px;
+   height: 50px;
+   background-color: rgb(255, 218, 11);
+   border-radius: 50%;
+   color: #fff;
+   text-align: center;
+   padding-top:5px;
+}
+
+.news-desc {
+    align-self: center;
+}
+
+.news-desc .new-sub {
+    font-size: 15px;
+    line-height: 1.4em;
+
+}
+
+/* css side bar */
+.side-bar-item {
+    border-bottom: 1px solid #cccc;
+}

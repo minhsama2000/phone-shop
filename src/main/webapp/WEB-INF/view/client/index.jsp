@@ -40,7 +40,7 @@
 					<div class="row wrapper-content-show">
 						<div class="col col-litle l-3 ">
 							<div class="product-item">
-								<a href="./product_detail.html">
+								<a href="${server}/product-details">
 									<div class="product-item-img">
 										<img src="/images/iP11-6-510x510-1.jpg" alt=""
 											srcset="">
@@ -54,7 +54,7 @@
 						</div>
 						<div class="col col-litle l-3 ">
 							<div class="product-item">
-								<a href="./product_detail.html">
+								<a href="/product-details">
 									<div class="product-item-img">
 										<img src="/images/iP11-6-510x510-1.jpg" alt=""
 											srcset="">
@@ -68,7 +68,7 @@
 						</div>
 						<div class="col col-litle l-3 ">
 							<div class="product-item">
-								<a href="./product_detail.html">
+								<a href="/product-details">
 									<div class="product-item-img">
 										<img src="/images/iP11-6-510x510-1.jpg" alt=""
 											srcset="">
@@ -82,7 +82,7 @@
 						</div>
 						<div class="col col-litle l-3 ">
 							<div class="product-item">
-								<a href="./product_detail.html">
+								<a href="/product-details">
 									<div class="product-item-img">
 										<img src="/images/iP11-6-510x510-1.jpg" alt=""
 											srcset="">
@@ -156,7 +156,7 @@
 			<div class="row products-show-list">
 				<div class="col l-3 ">
 					<div class="product-item">
-						<a href="./product_detail.html">
+						<a href="/product-details">
 							<div class="product-item-img">
 								<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
 							</div>
@@ -169,7 +169,7 @@
 				</div>
 				<div class="col l-3 ">
 					<div class="product-item">
-						<a href="./product_detail.html">
+						<a href="/product-details">
 							<div class="product-item-img">
 								<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
 							</div>
@@ -182,7 +182,7 @@
 				</div>
 				<div class="col l-3 ">
 					<div class="product-item">
-						<a href="./product_detail.html">
+						<a href="/product-details">
 							<div class="product-item-img">
 								<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
 							</div>
@@ -195,7 +195,7 @@
 				</div>
 				<div class="col l-3 ">
 					<div class="product-item">
-						<a href="./product_detail.html">
+						<a href="/product-details">
 							<div class="product-item-img">
 								<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
 							</div>

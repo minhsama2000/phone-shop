@@ -1,0 +1,163 @@
+.wrapper-body {
+    margin-top: -10px;
+    padding-top: 10px;
+}
+.wrapper-body .container {
+    margin-top: 0;
+}
+
+.product-show-nav .nav-bar {
+    background-color: rgb(241, 241, 241);
+}
+.products-show-list {
+    margin: 0;
+}
+
+.product-item a {
+    box-shadow: none;
+    border-radius: 0;
+    border-right: 1px solid #f1f1f1;
+    border-top: 1px solid #f1f1f1;
+}
+.navbar-filter {
+    background-color: #fff;
+}
+.navbar-filter .list-filter {
+    padding:0px 50px;
+    list-style: none;
+    color:rgb(11, 165, 165);
+    justify-content: space-around;
+}
+.list-filter .filter-item {
+    position: relative;
+    text-align: center;
+}
+.filter-item div{
+    text-transform: capitalize;
+   padding: 10px 20px;
+   margin-bottom: 5px;
+}
+.list-filter .filter-item i {
+    padding-left: 5px;
+}
+.filter-price:hover {
+    cursor: pointer;
+}
+
+.filter-item:hover 
+  ul
+{
+    display: block;
+    opacity: 1;
+    /* top:36px; */
+}
+
+.filter-item:hover
+ul::before {
+    display: block;
+}
+
+.filter-item ul{
+    display:none;
+    position: absolute;
+    /* top:0px; */
+    width: 200px;
+    color: #333;
+    margin: 10px 0px 0px 0px;
+    padding:20px;
+    list-style: none;
+    border: 1px solid #aaa;
+    margin-top: 5px;
+    background-color: #ffff;
+    box-shadow: 0px 0px 2px  #aaa;
+    border-radius: 5px;
+    z-index:10 ;
+    min-height: 190px;
+    /* opacity: 0.5;
+    animation: truot 500ms linear;
+    overflow: visible; */
+}
+/* @keyframes truot{
+    from{
+        height:0px;
+        border: none;
+    }
+    to{
+       height: 190px;
+        border: 1px solid #aaa;
+    }
+} */
+
+.filter-item ul::before {
+    display: none;
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: -10px;
+    right: 154px;
+    border-bottom: 10px solid #aaa;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+.filter-item  ul li  {
+    border-bottom: 1px solid #ddd;
+    font-weight: 500;
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: start;
+}
+.filter-item  ul li:hover {
+    color:rgb(10, 214, 214);
+    cursor: pointer;
+}
+ .filter-item  ul li i {
+    display: none;
+}
+
+
+/* css for filter-choosed */
+
+.filter-choosed {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.filter-choosed a {
+    padding: 5px 30px 5px 5px;
+    background-color: #4a90e2;
+    text-decoration: none;
+    border-radius: 5px;
+    color:#fff;
+    outline: none;
+    overflow: hidden;
+    font-size: 13px;
+    position: relative;
+    display: none;
+}
+.filter-choosed a span::before {
+    content: "";
+    width: 26px;
+    height: 25px;
+    position: absolute;
+    top: 0px;
+    right: 1px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color:#206bc1;
+}
+.filter-choosed a i {
+ position: absolute;
+ width: 24px;
+ height: 24px;
+ top:5px;
+ right: 0;
+}
+
+/* css chung  */
+
+.d-inline {
+    display: inline;
+}
+.d-none {
+    display: none;
+}

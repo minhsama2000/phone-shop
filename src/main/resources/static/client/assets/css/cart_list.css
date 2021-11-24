@@ -65,7 +65,8 @@ dl dt, dl dd {
 }
 .quantity-Block input {
     padding:5px 0px;
-
+    width: 30px;
+    text-align: center;
 }
 .quantity-Block input[type="button"] {
     padding:5px 10px;

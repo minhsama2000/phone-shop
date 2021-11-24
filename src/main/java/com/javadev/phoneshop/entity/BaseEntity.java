@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.ToString;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,11 +34,11 @@ public abstract class BaseEntity {
 
 	@Column(name = "updated_date", nullable = true)
 	@JsonProperty(value = "updated_date")
-	private Long updatedDate;
+	private Date updatedDate;
 
 	@Column(name = "created_date", nullable = true)
 	@JsonProperty(value = "created_date")
-	private Long createdDate;
+	private Date createdDate;
 
 	@Transient
 	private Map<String, Object> map = new HashMap<>();
