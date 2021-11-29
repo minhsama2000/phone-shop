@@ -21,7 +21,7 @@ import lombok.*;
 @Getter
 public class DhUser extends BaseEntity implements java.io.Serializable {
 
-	@Column(name = "email", nullable = false, length = 50)
+	@Column(name = "email", nullable = false, length = 100)
 	private String email;
 
 	@Column(name = "password", nullable = false, length = 100)
@@ -31,17 +31,17 @@ public class DhUser extends BaseEntity implements java.io.Serializable {
 	@JsonProperty(value = "username")
 	private String username;
 
-	@Column(name = "avatar", nullable = true, length = 50)
+	@Column(name = "avatar", nullable = true, length = 1000)
 	@JsonProperty(value = "avatar")
 	private String avatar;
 
 	@Column(name = "name", nullable = false, length = 100)
 	private String name;
 	
-	@Column(name = "address", nullable = false, columnDefinition = "LONGTEXT")
+	@Column(name = "address", nullable = true, columnDefinition = "LONGTEXT")
 	private String address;
 	
-	@Column(name = "phone", nullable = false, length=15)
+	@Column(name = "phone", nullable = true, length=15)
 	private String phone;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -43,6 +43,7 @@ public class HomeController {
 		return "client/product-details";
 	}
 
+
 	@GetMapping("/search")
 	public String search(Model model, @RequestParam(required = false) Integer categoryId,
 			@RequestParam(required = false) String select, @RequestParam(defaultValue = "0") int page,

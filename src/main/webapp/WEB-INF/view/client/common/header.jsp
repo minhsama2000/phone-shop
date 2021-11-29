@@ -131,14 +131,14 @@
 									<div class="col col-litle l-10 header-login">
 										<div class="row ">
 											<div class=" col-litle l-6 form-Login">
-												<a href="./login.html" class="login-icon"> <i
+												<a href="/login" class="login-icon"> <i
 													class="fas fa-user"></i> <span> đăng nhập </span>
 												</a>
 											</div>
 											<!-- form login -->
 
 											<div class=" col-litle l-6 form-Login">
-												<a href="./regester.html" class="login-icon"> <i
+												<a href="/regester" class="login-icon"> <i
 													class="fas fa-sign-out-alt"></i> <span> Đăng ký </span>
 												</a>
 

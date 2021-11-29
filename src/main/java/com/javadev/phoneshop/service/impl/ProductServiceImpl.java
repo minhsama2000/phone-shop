@@ -43,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
 		} catch (Exception e) {
 			// TODO: handle exception
 			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", listDhProducts);
-			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
 		}
 	}
 	
@@ -58,7 +58,7 @@ public class ProductServiceImpl implements ProductService {
 		} catch (Exception e) {
 			// TODO: handle exception
 			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", listDhProducts);
-			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
 		}
 	}
 	
@@ -73,7 +73,7 @@ public class ProductServiceImpl implements ProductService {
 		} catch (Exception e) {
 			// TODO: handle exception
 			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", listDhProducts);
-			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
 		}
 	}
 	
@@ -88,7 +88,7 @@ public class ProductServiceImpl implements ProductService {
 		} catch (Exception e) {
 			// TODO: handle exception
 			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", listDhProducts);
-			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
 		}
 	}
 
@@ -103,7 +103,7 @@ public class ProductServiceImpl implements ProductService {
 		} catch (Exception e) {
 			// TODO: handle exception
 			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", dhProduct);
-			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
 		}
 	}
 	
@@ -118,7 +118,7 @@ public class ProductServiceImpl implements ProductService {
 		} catch (Exception e) {
 			// TODO: handle exception
 			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", null);
-			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
 		}
 	}
 
