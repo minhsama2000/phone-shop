@@ -1,5 +1,6 @@
 package com.javadev.phoneshop.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -69,6 +70,22 @@ public class CategoryServiceImpl implements CategoryService {
 				apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", category);
 				return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
 			}
+		} catch (Exception e) {
+			// TODO: handle exception
+
+		}
+		apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", null);
+		return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
+	}
+
+	@Override
+	public ResponseEntity<ApiResponse> getListChild(Integer id) {
+		List<DhCategory> categories = new ArrayList<DhCategory>();
+		ApiResponse apiResponse = null;
+		try {
+			categories = categoryRepository.getChildById(id);
+			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", categories);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
 		} catch (Exception e) {
 			// TODO: handle exception
 

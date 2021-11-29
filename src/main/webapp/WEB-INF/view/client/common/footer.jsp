@@ -83,6 +83,8 @@
 </div>
 </div>
 <script src="/js/main.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/view.js"></script>
 <script src="/js/jquery.min.js"></script>
 <script src="/owcarosel/owl.carousel.min.js"></script>
 <script>

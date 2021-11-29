@@ -289,6 +289,11 @@ ul.menu-top-socical a.menu-top-item:last-child:hover {
 .nav-bar ul.nav-bar-list li.nav-bar-item a i{
     margin-right: 5px;
 }
+
+.nav-bar-item{
+	cursor:pointer;
+}
+
 .nav-bar ul>li {
     position: relative;
 }

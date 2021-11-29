@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="/fonts/fontawesome-free-5.15.4-web/css/all.min.css">
 <link rel="stylesheet" href="/css/main.css">
@@ -16,6 +18,8 @@
 <link rel="stylesheet" href="/css/product_detail.css">
 <link rel="stylesheet" href="/css/check_out.css">
 <link rel="stylesheet" href="/css/cart_list.css">
+ <link rel="stylesheet" href="/css/search.css">
+ 
 <title>Phone shop</title>
 </head>
 <body>
@@ -26,7 +30,7 @@
 					<div class="row">
 						<div class="col l-3">
 							<div class="header-logo">
-								<a href="#"> <img src="/images/logo.png" alt="">
+								<a href="/home"> <img src="/images/logo.png" alt="">
 								</a>
 							</div>
 						</div>
@@ -40,8 +44,7 @@
 												<ul class=" row no-gutters form-service-list">
 													<li class="col l-3 form-service-item">
 														<div class="service-item-img">
-															<img
-																src="/images/sieu-thi-dien-thoai-chinh-hang.png"
+															<img src="/images/sieu-thi-dien-thoai-chinh-hang.png"
 																alt="">
 														</div>
 														<p class="service-item-desc">sản phẩm chính hãng</p>
@@ -49,8 +52,7 @@
 
 													<li class="col l-3 form-service-item">
 														<div class="service-item-img">
-															<img src="/images/vận-chuyển-toàn-quốc.png"
-																alt="">
+															<img src="/images/vận-chuyển-toàn-quốc.png" alt="">
 														</div>
 														<p class="service-item-desc">vận chuyển miễn phí</p>
 													</li>
@@ -62,8 +64,7 @@
 													</li>
 													<li class="col l-3 form-service-item">
 														<div class="service-item-img">
-															<img src="/images/linh-kien-chinh-hang.png"
-																alt="">
+															<img src="/images/linh-kien-chinh-hang.png" alt="">
 														</div>
 														<p class="service-item-desc">hỗ trợ trả góp</p>
 													</li>
@@ -116,9 +117,9 @@
 					</div>
 					<div class="row header-Form-seach">
 						<div class="col l-6 l-o-3">
-							<form class="form-seach row" action="" method="post">
-								<input type="search" placeholder="nhập sản phẩm cần tìm">
-								<button type="submit" formaction="./search.html">
+							<form class="form-seach row" action="/search" method="post">
+								<input type="search" name="searchText" placeholder="nhập sản phẩm cần tìm">
+								<button type="submit">
 									<i class="fas fa-search"></i>
 								</button>
 							</form>
@@ -211,52 +212,38 @@
 				<div class="container">
 					<div class="nav-bar">
 						<ul class=" row no-gutters nav-bar-list">
-							<li class="nav-bar-item"><a href=""> <i
+							<li class="nav-bar-item"><a href="/home"> <i
 									class="fas fa-home"></i> trang chủ
 							</a></li>
-							<li class="nav-bar-item"><a href=""> <i
+							<li class="nav-bar-item"><a href="/search?categoryId=14&select=parent"> <i
 									class="fas fa-mobile-alt"></i> điện thoại
 							</a>
-								<ul class="sub-menu">
-									<li class="sub-menu-item"><a href="">iphone 6</a></li>
-									<li class="sub-menu-item"><a href="">iphone 7</a></li>
-									<li class="sub-menu-item"><a href="">iphone 8</a></li>
-									<li class="sub-menu-item"><a href="">iphone 9</a></li>
-									<li class="sub-menu-item"><a href="">iphone xsmax</a></li>
-									<li class="sub-menu-item"><a href="">iphone 11</a></li>
+								<ul class="sub-menu" id="phone-menu">
+
 								</ul></li>
-							<li class="nav-bar-item"><a href=""> <i
+							<li class="nav-bar-item"><a href="/search?categoryId=15&select=parent"> <i
 									class="fas fa-tablet-alt"></i> ipad
 							</a>
-								<ul class="sub-menu">
-									<li class="sub-menu-item"><a href="">iphone 6</a></li>
-									<li class="sub-menu-item"><a href="">iphone 7</a></li>
-									<li class="sub-menu-item"><a href="">iphone 8</a></li>
-									<li class="sub-menu-item"><a href="">iphone 9</a></li>
-									<li class="sub-menu-item"><a href="">iphone xsmax</a></li>
-									<li class="sub-menu-item"><a href="">iphone 11</a></li>
+								<ul class="sub-menu" id="ipad-menu">
+
 								</ul></li>
-							<li class="nav-bar-item"><a href=""> phụ kiện <i
+							<li class="nav-bar-item"><a href="/search?categoryId=16&select=parent"> phụ kiện <i
 									class="fas fa-headphones-alt"></i>
 							</a>
-								<ul class="sub-menu">
-									<li class="sub-menu-item"><a href="">iphone 6</a></li>
-									<li class="sub-menu-item"><a href="">iphone 7</a></li>
-									<li class="sub-menu-item"><a href="">iphone 8</a></li>
-									<li class="sub-menu-item"><a href="">iphone 9</a></li>
-									<li class="sub-menu-item"><a href="">iphone xsmax</a></li>
-									<li class="sub-menu-item"><a href="">iphone 11</a></li>
+								<ul class="sub-menu" id="tool-menu">
+
+								</ul></li>
+							<li class="nav-bar-item"><a href="/search?categoryId=17&select=parent"> laptop <i
+									class="fas fa-laptop"></i>
+							</a>
+								<ul class="sub-menu" id="laptop-menu">
+
 								</ul></li>
 							<li class="nav-bar-item"><a href=""> <i
 									class="fa fa-shopping-bag"></i> khuyến mại
 							</a>
 								<ul class="sub-menu">
-									<li class="sub-menu-item"><a href="">iphone 6</a></li>
-									<li class="sub-menu-item"><a href="">iphone 7</a></li>
-									<li class="sub-menu-item"><a href="">iphone 8</a></li>
-									<li class="sub-menu-item"><a href="">iphone 9</a></li>
-									<li class="sub-menu-item"><a href="">iphone xsmax</a></li>
-									<li class="sub-menu-item"><a href="">iphone 11</a></li>
+
 								</ul></li>
 							<li class="nav-bar-item"><a href="./news.html"> <i
 									class="fa fa-list-alt"></i> tin tức

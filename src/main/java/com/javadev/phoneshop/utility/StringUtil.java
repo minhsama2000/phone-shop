@@ -4,7 +4,7 @@ import com.github.slugify.Slugify;
 
 public class StringUtil {
 	public static boolean isNullOrEmpty(String str) {
-		return str.isEmpty() || str.equals("");
+		return str == null || str.equals("");
 	}
 	public static String seo(String text) {
         return new Slugify().slugify(text);

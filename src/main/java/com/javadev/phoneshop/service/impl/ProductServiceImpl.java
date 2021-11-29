@@ -46,6 +46,51 @@ public class ProductServiceImpl implements ProductService {
 			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
 		}
 	}
+	
+	@Override
+	public ResponseEntity<ApiResponse> findLimitDesc(int limit) {
+		List<DhProduct> listDhProducts = null;
+		ApiResponse apiResponse = null;
+		try {
+			listDhProducts = productRepository.findByNew(limit);
+			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", listDhProducts);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+		} catch (Exception e) {
+			// TODO: handle exception
+			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", listDhProducts);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+		}
+	}
+	
+	@Override
+	public ResponseEntity<ApiResponse> findRandom(int limit) {
+		List<DhProduct> listDhProducts = null;
+		ApiResponse apiResponse = null;
+		try {
+			listDhProducts = productRepository.findByRandom(limit);
+			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", listDhProducts);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+		} catch (Exception e) {
+			// TODO: handle exception
+			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", listDhProducts);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+		}
+	}
+	
+	@Override
+	public ResponseEntity<ApiResponse> findAllById(Integer id, int limit) {
+		List<DhProduct> listDhProducts = null;
+		ApiResponse apiResponse = null;
+		try {
+			listDhProducts = productRepository.findAllById(id,limit);
+			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", listDhProducts);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+		} catch (Exception e) {
+			// TODO: handle exception
+			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", listDhProducts);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+		}
+	}
 
 	@Override
 	public ResponseEntity<ApiResponse> getOne(Integer id) {

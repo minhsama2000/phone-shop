@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/client/common/header.jsp"></jsp:include>
 
 
@@ -28,73 +29,15 @@
 					<div class="wrapper-nav">
 						<div class=" nav-bar">
 							<ul class=" row no-gutters nav-bar-list">
-								<li class="nav-bar-item"><a href=""> sản phẩm mới </a></li>
-								<li class="nav-bar-item"><a href=""> sản phẩm khuyến
-										mãi </a></li>
-								<li class="nav-bar-item"><a href=""> sản phẩm bán chạy
-								</a></li>
+								<li class="nav-bar-item"><a id="productNew"> sản phẩm
+										mới </a></li>
+								<li class="nav-bar-item"><a id="productSeller"> sản
+										phẩm bán chạy </a></li>
 
 							</ul>
 						</div>
 					</div>
-					<div class="row wrapper-content-show">
-						<div class="col col-litle l-3 ">
-							<div class="product-item">
-								<a href="${server}/product-details">
-									<div class="product-item-img">
-										<img src="/images/iP11-6-510x510-1.jpg" alt=""
-											srcset="">
-									</div>
-									<div class="product-item-desc">
-										<h3 class="product-item-title">iphone 7</h3>
-										<span class="product-item-price"> 18.600.0000đ </span>
-									</div>
-								</a>
-							</div>
-						</div>
-						<div class="col col-litle l-3 ">
-							<div class="product-item">
-								<a href="/product-details">
-									<div class="product-item-img">
-										<img src="/images/iP11-6-510x510-1.jpg" alt=""
-											srcset="">
-									</div>
-									<div class="product-item-desc">
-										<h3 class="product-item-title">iphone 7</h3>
-										<span class="product-item-price"> 18.600.0000đ </span>
-									</div>
-								</a>
-							</div>
-						</div>
-						<div class="col col-litle l-3 ">
-							<div class="product-item">
-								<a href="/product-details">
-									<div class="product-item-img">
-										<img src="/images/iP11-6-510x510-1.jpg" alt=""
-											srcset="">
-									</div>
-									<div class="product-item-desc">
-										<h3 class="product-item-title">iphone 7</h3>
-										<span class="product-item-price"> 18.600.0000đ </span>
-									</div>
-								</a>
-							</div>
-						</div>
-						<div class="col col-litle l-3 ">
-							<div class="product-item">
-								<a href="/product-details">
-									<div class="product-item-img">
-										<img src="/images/iP11-6-510x510-1.jpg" alt=""
-											srcset="">
-									</div>
-									<div class="product-item-desc">
-										<h3 class="product-item-title">iphone 7</h3>
-										<span class="product-item-price"> 18.600.0000đ </span>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
+					<div class="row wrapper-content-show" id="setProduct"></div>
 				</div>
 			</div>
 			<div class="col col-litle l-3 side-bar">
@@ -144,68 +87,46 @@
 		<div class="product-show">
 			<div class="product-show-nav">
 				<div class="nav-bar">
-					<span class="title-product"> iphone 8 </span>
+					<span class="title-product"> Điện thoại </span>
 					<ul class="row no-gutters nav-bar-list">
-						<li class="nav-bar-item"><a href=""> iphone 6 </a></li>
-						<li class="nav-bar-item"><a href=""> iphone 8 </a></li>
-						<li class="nav-bar-item"><a href=""> iphone x </a></li>
-						<li class="nav-bar-item"><a href=""> iphone 11 </a></li>
+						<c:forEach var="phone" items="${phones}">
+							<li class="nav-bar-item"><a
+								onclick="phoneProduct(${phone.id});"> ${phone.name}</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
-			<div class="row products-show-list">
-				<div class="col l-3 ">
-					<div class="product-item">
-						<a href="/product-details">
-							<div class="product-item-img">
-								<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
-							</div>
-							<div class="product-item-desc">
-								<h3 class="product-item-title">iphone 7</h3>
-								<span class="product-item-price"> 18.600.0000đ </span>
-							</div>
-						</a>
-					</div>
+			<div class="row products-show-list" id="phoneProduct"></div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="product-show">
+			<div class="product-show-nav">
+				<div class="nav-bar">
+					<span class="title-product"> Tablet </span>
+					<ul class="row no-gutters nav-bar-list">
+						<c:forEach var="tablet" items="${tablets}">
+							<li class="nav-bar-item"><a onclick="tabletProduct(${tablet.id})"> ${tablet.name} </a></li>
+						</c:forEach>
+					</ul>
 				</div>
-				<div class="col l-3 ">
-					<div class="product-item">
-						<a href="/product-details">
-							<div class="product-item-img">
-								<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
-							</div>
-							<div class="product-item-desc">
-								<h3 class="product-item-title">iphone 7</h3>
-								<span class="product-item-price"> 18.600.0000đ </span>
-							</div>
-						</a>
-					</div>
+			</div>
+			<div class="row products-show-list" id="tabletProduct"></div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="product-show">
+			<div class="product-show-nav">
+				<div class="nav-bar">
+					<span class="title-product"> Phụ kiện </span>
+					<ul class="row no-gutters nav-bar-list">
+						<c:forEach var="tool" items="${tools}">
+							<li class="nav-bar-item"><a onclick="toolProduct(${tool.id})"> ${tool.name} </a></li>
+						</c:forEach>
+					</ul>
 				</div>
-				<div class="col l-3 ">
-					<div class="product-item">
-						<a href="/product-details">
-							<div class="product-item-img">
-								<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
-							</div>
-							<div class="product-item-desc">
-								<h3 class="product-item-title">iphone 7</h3>
-								<span class="product-item-price"> 18.600.0000đ </span>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col l-3 ">
-					<div class="product-item">
-						<a href="/product-details">
-							<div class="product-item-img">
-								<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
-							</div>
-							<div class="product-item-desc">
-								<h3 class="product-item-title">iphone 7</h3>
-								<span class="product-item-price"> 18.600.0000đ </span>
-							</div>
-						</a>
-					</div>
-				</div>
+			</div>
+			<div class="row products-show-list" id="toolProduct">
 
 			</div>
 		</div>
@@ -214,140 +135,15 @@
 		<div class="product-show">
 			<div class="product-show-nav">
 				<div class="nav-bar">
-					<span class="title-product"> iphone 7 </span>
+					<span class="title-product"> Laptop </span>
 					<ul class="row no-gutters nav-bar-list">
-						<li class="nav-bar-item"><a href=""> iphone 6 </a></li>
-						<li class="nav-bar-item"><a href=""> iphone 8 </a></li>
-						<li class="nav-bar-item"><a href=""> iphone x </a></li>
-						<li class="nav-bar-item"><a href=""> iphone 11 </a></li>
+						<c:forEach var="laptop" items="${laptops}">
+							<li class="nav-bar-item"><a onclick="toolProduct(${laptop.id})"> ${laptop.name} </a></li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
-			<div class="row products-show-list">
-				<div class="col l-3 ">
-					<div class="product-item">
-						<a href="./product_detail.html">
-							<div class="product-item-img">
-								<img src="/images/iphone-7-32g-1.jpg" alt="" srcset="">
-							</div>
-							<div class="product-item-desc">
-								<h3 class="product-item-title">iphone 7</h3>
-								<span class="product-item-price"> 18.600.0000đ </span>
-							</div>
-						</a>
-					</div>
-				</div>
-
-
-				<div class="col l-3 ">
-					<div class="product-item">
-						<a href="./product_detail.html">
-							<div class="product-item-img">
-								<img src="/images/iphone-7-32g-1.jpg" alt="" srcset="">
-							</div>
-							<div class="product-item-desc">
-								<h3 class="product-item-title">iphone 7</h3>
-								<span class="product-item-price"> 18.600.0000đ </span>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col l-3 ">
-					<div class="product-item">
-						<a href="./product_detail.html">
-							<div class="product-item-img">
-								<img src="/images/iphone-7-32g-1.jpg" alt="" srcset="">
-							</div>
-							<div class="product-item-desc">
-								<h3 class="product-item-title">iphone 7</h3>
-								<span class="product-item-price"> 18.600.0000đ </span>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col l-3 ">
-					<div class="product-item">
-						<a href="./product_detail.html">
-							<div class="product-item-img">
-								<img src="/images/iphone-7-32g-1.jpg" alt="" srcset="">
-							</div>
-							<div class="product-item-desc">
-								<h3 class="product-item-title">iphone 7</h3>
-								<span class="product-item-price"> 18.600.0000đ </span>
-							</div>
-						</a>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="product-show">
-			<div class="product-show-nav">
-				<div class="nav-bar">
-					<span class="title-product"> iphone x </span>
-					<ul class="row no-gutters nav-bar-list">
-						<li class="nav-bar-item"><a href=""> iphone 6 </a></li>
-						<li class="nav-bar-item"><a href=""> iphone 8 </a></li>
-						<li class="nav-bar-item"><a href=""> iphone x </a></li>
-						<li class="nav-bar-item"><a href=""> iphone 11 </a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="row products-show-list">
-				<div class="col l-3 ">
-					<div class="product-item">
-						<a href="./product_detail.html">
-							<div class="product-item-img">
-								<img src="/images/iP11-5-510x510-1.jpg" alt="" srcset="">
-							</div>
-							<div class="product-item-desc">
-								<h3 class="product-item-title">iphone 7</h3>
-								<span class="product-item-price"> 18.600.0000đ </span>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col l-3 ">
-					<div class="product-item">
-						<a href="./product_detail.html">
-							<div class="product-item-img">
-								<img src="/images/iP11-5-510x510-1.jpg" alt="" srcset="">
-							</div>
-							<div class="product-item-desc">
-								<h3 class="product-item-title">iphone 7</h3>
-								<span class="product-item-price"> 18.600.0000đ </span>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col l-3 ">
-					<div class="product-item">
-						<a href="./product_detail.html">
-							<div class="product-item-img">
-								<img src="/images/iP11-5-510x510-1.jpg" alt="" srcset="">
-							</div>
-							<div class="product-item-desc">
-								<h3 class="product-item-title">iphone 7</h3>
-								<span class="product-item-price"> 18.600.0000đ </span>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col l-3 ">
-					<div class="product-item">
-						<a href="./product_detail.html">
-							<div class="product-item-img">
-								<img src="/images/iP11-5-510x510-1.jpg" alt="" srcset="">
-							</div>
-							<div class="product-item-desc">
-								<h3 class="product-item-title">iphone 7</h3>
-								<span class="product-item-price"> 18.600.0000đ </span>
-							</div>
-						</a>
-					</div>
-				</div>
+			<div class="row products-show-list" id="laptopProduct">
 
 			</div>
 		</div>

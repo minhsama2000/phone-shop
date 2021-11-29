@@ -7,8 +7,18 @@ import com.javadev.phoneshop.model.DhProductModel;
 
 public interface ProductService {
 	ResponseEntity<ApiResponse> findAll();
+
 	ResponseEntity<ApiResponse> saveOne(DhProductModel dhProductModel);
+
 	ResponseEntity<ApiResponse> update(DhProductModel dhProductModel);
+
 	ResponseEntity<ApiResponse> getOne(Integer id);
+
 	ResponseEntity<ApiResponse> delete(Integer id);
+
+	ResponseEntity<ApiResponse> findLimitDesc(int limit);
+
+	ResponseEntity<ApiResponse> findRandom(int limit);
+
+	ResponseEntity<ApiResponse> findAllById(Integer id, int limit);
 }

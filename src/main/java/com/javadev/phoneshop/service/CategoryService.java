@@ -10,4 +10,5 @@ public interface CategoryService {
 	ResponseEntity<ApiResponse> saveOne(DhCategory category);
 	ResponseEntity<ApiResponse> getOne(Integer id);
 	ResponseEntity<ApiResponse> delete(Integer id);
+	ResponseEntity<ApiResponse> getListChild(Integer id);
 }
