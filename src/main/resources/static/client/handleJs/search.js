@@ -2,9 +2,7 @@ var filteChoosed =document.querySelectorAll(".filter-item ul li")
 var filtePrice =document.querySelector("a[data-type='price'] span")
 var filteCapacity= document.querySelector("a[data-type='capacity'] span")
 
-console.log(filtePrice)
 Length = filteChoosed.length;
-console.log(Length)
 
 for (var i=0;i<Length;i++){
     filteChoosed[i].addEventListener("click",function(e ){

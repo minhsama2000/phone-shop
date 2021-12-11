@@ -48,11 +48,11 @@
 										<option value="256"></option>
 									</select>
 									<p>chọn dung lượng</p>
-									<ul class="capacity-lable">
-										<li deleteActive="false" value="128">128G</li>
-										<li deleteActve="false" value="256">256G</li>
-										<li deleteActve="false" value="256">56G</li>
-										<li deleteActve="false" value="256">6G</li>
+									<ul class="capacity-lable" id="chooseStorage">
+										<li deleteActive="false" class="storage" id="1" value="32">32G</li>
+										<li deleteActve="false" class="storage" id="2" value="64">64G</li>
+										<li deleteActve="false" class="storage" id="3" value="128">128G</li>
+										<li deleteActve="false" class="storage" id="4" value="256">256G</li>
 									</ul>
 								</div>
 								<div class="color-block">
@@ -64,14 +64,14 @@
 										<option value="vang"></option>
 									</select>
 									<p>chọn màu</p>
-									<ul>
-										<li deleteActive="flase" value="den"><i
+									<ul id="chooseColor">
+										<li deleteActive="flase" id="1" value="den"><i
 											class="fas fa-check"></i></li>
-										<li deleteActive="flase" value="do"><i
+										<li deleteActive="flase" id="2" value="do"><i
 											class="fas fa-check"></i></li>
-										<li deleteActive="flase" value="xanh"><i
+										<li deleteActive="flase" id="3" value="xanh"><i
 											class="fas fa-check"></i></li>
-										<li deleteActive="flase" value="vang"><i
+										<li deleteActive="flase" id="4" value="vang"><i
 											class="fas fa-check"></i></li>
 
 									</ul>
@@ -81,7 +81,7 @@
 										class="quantity-number"> <span class="quantity-add">+</span>
 								</div>
 								<div class="buttom-block">
-									<button name="addtocart" formaction="./cart_list.html">
+									<button name="addtocart" type="button" onClick="addToCart(${product.id},1)">
 										<h4>thêm vào giỏ hàng</h4>
 										<p>giao tận nơi, lắp đặt miễn phí</p>
 									</button>

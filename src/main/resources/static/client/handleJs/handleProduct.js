@@ -1,36 +1,44 @@
-var product= function(ten,gia,hinhAnh,mau,id){
-    this.ten=ten;
-    this.gia=gia;
-    this.hinhAnh=hinhAnh;
-    this.mau=mau;
-    if(id){
-    this.id=id;
-    }
+var color = 1;
+var storage = 1;
+
+$("#chooseColor li").click(function(){
+	for(var i = 0;i<$(".fa-check").length;i++){
+		document.getElementsByClassName("fa-check")[i].style.color = "#aaa";
+	}
+	$(this).find("i").css("color","white");
+	color = this.id;
+});
+
+$("#chooseStorage li").click(function(){
+	for(var i = 0;i<$("#chooseStorage li").length;i++){
+		document.getElementsByClassName("storage")[i].style.backgroundColor  = "white";
+	}
+	$(this).css("background-color","gray");
+	storage = this.id;
+});
+
+
+
+function addToCart(productId,quantity){
+	$.ajax({
+		url : "/api-security/v1/carts/cart",
+		type:"POST",
+		data : JSON.stringify({
+			productId : productId,
+			quantity : quantity,
+			color : color,
+			storage : storage
+		}),
+		dataType: 'json',
+	    contentType: "application/json; charset=utf-8",
+		success:function(responseData){
+			if(responseData.status == 200){
+				alert("success");
+			}		
+		},
+		error : function(jqXhr, textStatus, errorMessage) { // error
+			// callback			
+				window.location.href="/login"			
+		} 
+	});	
 }
-
-var product1 =new product("iphone5",7000000,"./assets/images/iP11-5-510x510-1.jpg","den",1)
-console.log(product1);
-// var iphone5 =new product("iphone5",7000000,"./assets/images/iP11-5-510x510-1.jpg","den",1);
-
-// console.log(iphone5)
-var listCart=[];
-
-var resApi=" http://localhost:3000/productListCart"
-
-fetch(resApi)
-.then(function(response){
-    return response.json();
-})
-.then(function(post){
-    console.log(post);
-  post.map(function(e){
-      console.log(e);
-        var newProduct= new product(e.ten,e.gia,e.hinhAnh,e.mau,e.id);
-        console.log(newProduct)
-        listCart.push(newProduct)
-        console.log(listCart)
-
-    })
-    return listCart
-})
-

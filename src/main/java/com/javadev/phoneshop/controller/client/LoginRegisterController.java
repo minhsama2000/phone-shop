@@ -13,9 +13,7 @@ import com.javadev.phoneshop.service.UserService;
 
 @Controller
 public class LoginRegisterController {
-	
-	@Autowired
-	private UserService userService;
+
 	
 	@GetMapping("/login")
 	public String login() {
@@ -27,8 +25,5 @@ public class LoginRegisterController {
 		return "client/register";
 	}
 	
-	@PostMapping("/signup")
-	public ResponseEntity<ApiResponse> signup(@RequestBody SignUpModel signUpModel) {
-		return userService.signup(signUpModel);
-	}
+
 }

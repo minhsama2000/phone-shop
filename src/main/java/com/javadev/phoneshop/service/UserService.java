@@ -12,4 +12,5 @@ public interface UserService {
 	Optional<DhUser> findByUserName(String userName);
 
 	ResponseEntity<ApiResponse> signup(SignUpModel signUpModel);
+	Optional<DhUser> findByEmail(String email);
 }

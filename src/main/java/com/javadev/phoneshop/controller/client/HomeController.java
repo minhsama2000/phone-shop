@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.javadev.phoneshop.dto.CartItemDto;
 import com.javadev.phoneshop.entity.DhProduct;
 import com.javadev.phoneshop.repository.CategoryRepository;
 import com.javadev.phoneshop.repository.ProductRepository;
@@ -36,13 +38,17 @@ public class HomeController {
 		model.addAttribute("laptops", categoryRepository.getChildById(17));
 		return "client/index";
 	}
-
+	
+	@GetMapping("/cart-list")
+	public String cartList(Model model) {
+		return "client/cart-list";
+	}
+	
 	@GetMapping("/product-details")
 	public String productDetails(Model model, @RequestParam Integer id) {
 		model.addAttribute("product", productRepository.findById(id).get());
 		return "client/product-details";
 	}
-
 
 	@GetMapping("/search")
 	public String search(Model model, @RequestParam(required = false) Integer categoryId,
@@ -103,5 +109,15 @@ public class HomeController {
 						: productRepository.findBySearchText(searchText).size() / size + 1);
 		model.addAttribute("searchText", searchText);
 		return "client/search";
+	}
+	
+	@GetMapping("/shop-cart")
+	public String shopCart() {
+		return "client/shop-cart";
+	}
+	
+	@GetMapping("/checkout")
+	public String checkout() {
+		return "client/checkout";
 	}
 }

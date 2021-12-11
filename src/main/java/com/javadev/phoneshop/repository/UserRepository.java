@@ -8,4 +8,5 @@ import com.javadev.phoneshop.entity.DhUser;
 
 public interface UserRepository extends JpaRepository<DhUser, Integer> {
 	 Optional<DhUser> findByUsername(String userName);
+	 Optional<DhUser> findByEmail(String email);
 }

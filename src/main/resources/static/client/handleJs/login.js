@@ -1,4 +1,74 @@
 
+if(localStorage.username != null){
+	$("#usernameLogin").val(localStorage.getItem("username"));
+}
+
+$("#btn-signup").click(function(event){
+	event.preventDefault();
+	var form = $('#registerForm')[0];
+	var data = new FormData(form);
+	if(validateFormRegister()){
+		$.ajax({
+			url : "/api/v1/users/user",
+			type:"POST",
+			data : data,
+			processData: false,
+		    contentType: false,
+		    cache: false,
+		    timeout: 1000000,
+			success : function(jsonResult){
+				if(jsonResult.status == 200){			
+					alert("Success");
+					localStorage.username = jsonResult.data.username;
+					window.location.href = "/login"
+				}else {
+					alert(jsonResult.message);
+				}
+			},
+			error : function(jqXhr, textStatus, errorMessage) { // error
+				// callback
+
+			} 
+		});
+	}
+});
+
+
+function validateFormRegister() {
+	let fullname = document.getElementById("fullname").value;
+	let email = document.forms["registerForm"]["email"].value;
+	let username = document.forms["registerForm"]["username"].value;
+	let name = document.forms["registerForm"]["name"].value;
+	let password = document.forms["registerForm"]["password"].value;
+	let confirm_password = document.forms["registerForm"]["password_confirmation"].value;
+
+	if (fullname == "") {
+		alert("Email must be filled out");
+		return false;
+	}
+	if (email == "") {
+		alert("Email must be filled out");
+		return false;
+	}
+	if (username == "") {
+		alert("username must be filled out");
+		return false;
+	}
+	if (name == "") {
+		alert("Name must be filled out");
+		return false;
+	}
+	if (password == "") {
+		alert("Name must be filled out");
+		return false;
+	}
+	if (confirm_password == "") {
+		alert("Verify password must be filled out");
+		return false;
+	}
+	return true;
+}
+
 //function validator(options) {
 //
 //    var arrRules = {};

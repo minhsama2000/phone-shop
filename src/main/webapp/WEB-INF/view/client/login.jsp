@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/login.css">
+<script src="/js/jquery.min.js"></script>
 <title>login</title>
 </head>
 <body>
@@ -19,12 +20,12 @@
 				<h3 class="heading">Đăng Nhập Tài Khoản</h3>
 				<div class="spacer"></div>
 				<c:if test="${not empty param.login_error}">
-					<div class="alert alert-danger" role="alert" style="color:white">Login attempt
-						was not successful, try again.</div>
+					<div class="alert alert-danger" role="alert" style="color: white">Login
+						attempt was not successful, try again.</div>
 				</c:if>
 				<div class="form-group">
-					<label for="fullname" class="form-label">Tên đầy đủ</label> <input
-						id="fullname" name="username" type="text"
+					<label for="fullname" class="form-label">Username</label> <input
+						id="usernameLogin" name="username" type="text"
 						placeholder="nhập tên đầy đủ" class="form-control" /> <span
 						class="form-message"></span>
 				</div>

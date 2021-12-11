@@ -6,48 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/login.css">
+<script src="/js/jquery.min.js"></script>
 <title>Register</title>
-<script type="text/javascript">
-	function validateFormRegister() {
-		let fullname = document.getElementById("fullname").value;
-		let email = document.forms["registerForm"]["email"].value;
-		let username = document.forms["registerForm"]["username"].value;
-		let name = document.forms["registerForm"]["name"].value;
-		let password = document.forms["registerForm"]["password"].value;
-		let confirm_password = document.forms["registerForm"]["password_confirmation"].value;
-
-		if (fullname == "") {
-			alert("Email must be filled out");
-			return false;
-		}
-		if (email == "") {
-			alert("Email must be filled out");
-			return false;
-		}
-		if (username == "") {
-			alert("username must be filled out");
-			return false;
-		}
-		if (name == "") {
-			alert("Name must be filled out");
-			return false;
-		}
-		if (password == "") {
-			alert("Name must be filled out");
-			return false;
-		}
-		if (confirm_password == "") {
-			alert("Verify password must be filled out");
-			return false;
-		}
-		return true;
-	}
-</script>
 </head>
 <body>
 	<div class="main">
-		<form action="/signup" method="POST" class="form" name="registerForm"
-			onsubmit="return validateFormRegister()">
+		<form action="" class="form" name="registerForm" id="registerForm">
 			<div class="form-img">
 				<img src="/images/iphone-7-32g-1.jpg" alt="">
 			</div>
@@ -70,6 +34,12 @@
 				</div>
 
 				<div class="form-group">
+					<label for="username" class="form-label">Username</label> <input
+						id="username" name="username" type="text" placeholder="username"
+						class="invalid form-control" /> <span class="form-message"></span>
+				</div>
+
+				<div class="form-group">
 					<label for="password" class="form-label">Mật khẩu</label> <input
 						id="password" name="password" type="password"
 						placeholder="Nhập mật khẩu" class="form-control" /> <span
@@ -83,7 +53,7 @@
 						type="password" class="form-control" /> <span
 						class="form-message"></span>
 				</div>
-				<button class="form-submit">Đăng kí</button>
+				<button class="form-submit" id="btn-signup">Đăng kí</button>
 			</div>
 		</form>
 	</div>

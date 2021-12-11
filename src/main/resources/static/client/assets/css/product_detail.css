@@ -92,11 +92,11 @@
     margin: 20px 0;
 }
 .capacity-block ul li {
+    cursor: pointer;
     display: inline-block;
     padding:10px;
     margin-right: 10px;
     border: 1px solid #cccc;
-
 }
 .capacity-block ul li:hover {
     border-color:  #eee;
@@ -213,6 +213,7 @@
     font-size: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    cursor: pointer;
 }
 .buttom-block button p {
     margin-top: 5px;

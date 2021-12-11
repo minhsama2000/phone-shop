@@ -35,6 +35,16 @@ public class UserServiceImpl implements UserService {
 		}
 		return Optional.empty();
 	}
+	
+	@Override
+	public Optional<DhUser> findByEmail(String email) {
+		try {
+			return userRepository.findByEmail(email);
+		} catch (Exception ex) {
+
+		}
+		return Optional.empty();
+	}
 
 	@Override
 	public ResponseEntity<ApiResponse> signup(SignUpModel signUpModel) {
@@ -43,6 +53,11 @@ public class UserServiceImpl implements UserService {
 		try {
 			if (findByUserName(signUpModel.getUsername()).isPresent()) {
 				apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "username already used",
+						signUpModel);
+				return new ResponseEntity<ApiResponse>(HttpStatus.METHOD_FAILURE).ok(apiResponse);
+			}
+			if (findByEmail(signUpModel.getEmail()).isPresent()) {
+				apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "email already used",
 						signUpModel);
 				return new ResponseEntity<ApiResponse>(HttpStatus.METHOD_FAILURE).ok(apiResponse);
 			}

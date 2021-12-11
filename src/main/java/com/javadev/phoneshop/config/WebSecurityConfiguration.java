@@ -32,7 +32,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Primary
 	public UserDetailsService userDetailsServiceBean() {
 		return new UserDetailServiceImpl();
-	}
+	}	
 
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
@@ -41,12 +41,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 						"/summernote/**", "/fonts/**", "/backend")
 				.permitAll()
 
-				.antMatchers("/admin/**").hasAnyAuthority("ADMIN").and().formLogin().loginPage("/login")
+				.antMatchers("/admin/**").hasAnyAuthority("ADMIN","FULLCONTROL")
+//				.antMatchers("/api-security/**").hasAnyAuthority("ADMIN","USER","FULLCONTROl")
+				.and().formLogin().loginPage("/login")
 				.loginProcessingUrl("/perform_login").defaultSuccessUrl("/home", true)
 				.failureUrl("/login?login_error=true").permitAll()
-
 				.and()
-
 				.logout().logoutUrl("/logout").logoutSuccessUrl("/home").invalidateHttpSession(true)
 				.deleteCookies("JSESSIONID").permitAll().and().exceptionHandling().accessDeniedPage("/403");
 	}
