@@ -6,11 +6,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javadev.phoneshop.dto.ApiResponse;
 import com.javadev.phoneshop.model.CartItemModel;
@@ -35,8 +37,14 @@ public class CartController {
 		return cartService.getAllCart(currentUser.getUsername());
 	}
 	
-//	@PutMapping("/cart")
-//	public ResponseEntity<ApiResponse> updateCart(@RequestBody CartItemModel cartItemModel){
-//		
-//	}
+	@PutMapping("/cart")
+	public ResponseEntity<ApiResponse> updateCart(@RequestBody CartItemModel cartItemModel){
+		System.out.println(cartItemModel.toString());
+		return cartService.updateCart(cartItemModel);
+	}
+	
+	@DeleteMapping("/cart")
+	public ResponseEntity<ApiResponse> removeCart(@RequestParam Integer productId,@RequestParam Integer color,@RequestParam Integer storage){
+		return cartService.deleteCart(productId,color,storage);
+	}
 }

@@ -1,160 +1,188 @@
-
 .wrapper-body-checkout {
-    background-color: #f4f4f4;
-    color:rgba(116, 114, 114, 0.6);
-    overflow: hidden;
+	background-color: #f4f4f4;
+	color: rgba(116, 114, 114, 0.6);
+	overflow: hidden;
 }
 
 .check-out-title {
-    width: 100%;
-    background-color: #fff;
-    margin-bottom: 50px;
-
+	width: 100%;
+	background-color: #fff;
+	margin-bottom: 50px;
 }
+
 .check-out-title img {
-    width: 200px;
+	width: 200px;
 }
 
 .block_checkout_left form {
-    background-color: #fff;
-    border: 2px solid rgba(209, 214, 183, 0.974);
+	background-color: #fff;
+	border: 2px solid rgba(209, 214, 183, 0.974);
+}
 
-}
 .block_checkout_left form.form_name_adress {
-    padding:20px;
-    position: relative;
+	padding: 20px;
+	position: relative;
 }
+
 .block_checkout_left form.form_name_adress .form_name_title {
-    color:rgb(12, 12, 12);
-    margin-bottom: 10px;
-    text-transform: uppercase;
+	color: rgb(12, 12, 12);
+	margin-bottom: 10px;
+	text-transform: uppercase;
 }
+
 form.form_name_adress input {
-    display: block;
-    padding:10px;
-    margin: 10px 0px 5px 0px;
-    width: 100%;
-    font-size: 15px;
-    border: 1px solid #ccc;
-    outline: none;
-    border-radius: 3px;
+	display: block;
+	padding: 10px;
+	margin: 10px 0px 5px 0px;
+	width: 100%;
+	font-size: 15px;
+	border: 1px solid #ccc;
+	outline: none;
+	border-radius: 3px;
 }
+
 form.form_name_adress input:focus {
-    box-shadow: 1px 2px 4px #ddd;
+	box-shadow: 1px 2px 4px #ddd;
 }
+
 form.form_name_adress label {
-    color:rgb(12, 12, 12);
-    font-weight: 600;
-    font-size: 15px;
+	color: rgb(12, 12, 12);
+	font-weight: 600;
+	font-size: 15px;
 }
+
 .adress_form_right {
-    margin-bottom: 50px;
+	margin-bottom: 50px;
 }
-   
+
 form.form_name_adress button.form_submit_adress {
-    width: 200px;
-    padding:10px 20px;
-    margin-top: 10px;
-    background-color: rgb(24, 83, 233);
-    transition: all 200ms ease-out;
-    color:#fff;
-    border: 1px solid #aaa;
-    box-shadow: 1px 2px 4px #ddd;
-    font-size: 15px;
-    border-radius: 5px;
-    position: relative;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
+	width: 200px;
+	padding: 10px 20px;
+	margin-top: 10px;
+	background-color: rgb(24, 83, 233);
+	transition: all 200ms ease-out;
+	color: #fff;
+	border: 1px solid #aaa;
+	box-shadow: 1px 2px 4px #ddd;
+	font-size: 15px;
+	border-radius: 5px;
+	position: relative;
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
 }
+
 form.form_name_adress button.form_submit_adress:hover {
-    background-color: rgb(18, 59, 163);
-    box-shadow: 1px 4px 4px #aaa;
-    border-color: rgb(18, 59, 163);
+	background-color: rgb(18, 59, 163);
+	box-shadow: 1px 4px 4px #aaa;
+	border-color: rgb(18, 59, 163);
 }
 
 /* css for block_checkout_right */
-
 .block_checkout_right {
-    position: relative;
-    background-color:#ffff;
-    padding: 25px;
-    color:rgb(12, 12, 12);
-    border: 2px solid rgba(209, 214, 183, 0.974);
+	position: relative;
+	background-color: #ffff;
+	padding: 25px;
+	color: rgb(12, 12, 12);
+	border: 2px solid rgba(209, 214, 183, 0.974);
 }
+
 .heading_checkout {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .product_item_checkout {
-    list-style: none;
-    color: rgb(14, 8, 33);
-    font-size: 15px;
+	list-style: none;
+	color: rgb(14, 8, 33);
+	font-size: 15px;
 }
+
+.tableCheckout {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 183%;
+}
+
+.tableCheckout td, th {
+	text-align: left;
+	padding: 8px;
+}
+
 .product_item_checkout li {
-    padding:5px;
+	position: relative;
+	padding: 5px;
 }
+
+.totalSingleCheckout {
+	position: absolute;
+	right: -90px;
+}
+
 .product_item_checkout li.product_infor p {
-    display: inline-block;
-    margin-left: 10px;
+	display: inline-block;
+	margin-left: 10px;
 }
+
 .product_name {
-    width: 100%;
+	width: 100%;
 }
+
 .product_infor {
-    display: flex;
-    text-transform: capitalize;
+	display: flex;
+	text-transform: capitalize;
 }
+
 .product_infor .product_capacity {
-    display: flex;
-    width: 50%;
+	display: flex;
+	width: 50%;
 }
+
 .product_infor .product_color {
-    display: flex;
-    
+	display: flex;
 }
 
 .checkout_rule {
-    font-weight: 600;
+	font-weight: 600;
 }
+
 .checkout_rule_desc {
-    font-size: 15px;
-    font-weight: 500;
-    font-style: italic;
+	font-size: 15px;
+	font-weight: 500;
+	font-style: italic;
 }
+
 .block_checkout_right button {
-    padding: 8px 15px;
-    background-color: rgb(24, 83, 233);
-    border: 1px solid #ddd;
-    font-size: 15px;
-    color:#fff;
-    box-shadow: 1px 2px 4px #ddd;
-    border-radius: 3px;
-    transition: all 200ms ease-out;
-    position: absolute;
-    bottom: 5px;
-    right: 10px;
+	padding: 8px 15px;
+	background-color: rgb(24, 83, 233);
+	border: 1px solid #ddd;
+	font-size: 15px;
+	color: #fff;
+	box-shadow: 1px 2px 4px #ddd;
+	border-radius: 3px;
+	transition: all 200ms ease-out;
+	position: absolute;
+	bottom: 5px;
+	right: 10px;
 }
+
 .block_checkout_right button:hover {
-    background-color: rgb(18, 59, 163);
-    box-shadow: 1px 4px 4px #aaa;
-    border-color: rgb(18, 59, 163);
+	background-color: rgb(18, 59, 163);
+	box-shadow: 1px 4px 4px #aaa;
+	border-color: rgb(18, 59, 163);
 }
-
-
 
 /* ====================hiển thị lỗi =========== */
 .form-group.invalid .form-control {
-    border-color: #f33a58;
-  }
-  
-  .form-group.invalid .form-message {
-    color: #f33a58;
-  }
-  
-  .form-message {
-    font-size: 0.8rem;
-    line-height: 1rem;
-    margin-bottom: 10px;
-    display: inline-block;
-  }
+	border-color: #f33a58;
+}
+
+.form-group.invalid .form-message {
+	color: #f33a58;
+}
+
+.form-message {
+	font-size: 0.8rem;
+	line-height: 1rem;
+	margin-bottom: 10px;
+	display: inline-block;
+}

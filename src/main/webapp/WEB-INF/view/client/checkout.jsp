@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/client/common/header.jsp"></jsp:include>
 
 
@@ -12,48 +13,86 @@
 	<div class="container">
 		<div class="row">
 			<div class="col l-7 block_checkout_left">
-				<form action="" method="POST" class="form_name_adress form"
+				<form class="form_name_adress form"
 					id="form-1">
 					<h3 class="form_name_title">Thông tin thanh toán</h3>
 					<div class="row">
-						<div class="col l-6">
-							<div class="adress_form_left">
-								<div class="input_name form-group">
-									<label>Họ và tên</label> <input
-										class="input_full_name form-control" type="text"
-										name="fullname" id="fullname"
-										placeholder="vui lòng nhập tên đầy đủ"> <span
-										class="form-message"></span>
-								</div>
-								<div class="input_phone form-group">
-									<label for="fonnumber">Số điện thoại</label> <input type="tel"
-										name="phonenumber" id="phonenumber"
-										class="input_phone_number form-control"
-										placeholder="nhập số điện thoại"> <span
-										class="form-message"></span>
-								</div>
-							</div>
-						</div>
-						<div class="col l-6">
-							<div class="adress_form_right">
-								<div class="input_address form-group">
-									<label>địa chỉ</label> <input
-										class="input_address_detail form-control" type="text"
-										name="adress" id="adress" placeholder="nhập địa chỉ">
-									<span class="form-message"></span>
-								</div>
-								<div class="input_email form-group ">
-									<label for="">email</label> <input type="email" name="email"
-										id="email" class="input_email_custom form-control"
-										placeholder="nhập địa chỉ email"> <span
-										class="form-message"></span>
+						<c:if test="${userInfo != null}">
+							<div class="col l-6">
+								<div class="adress_form_left">
+									<div class="input_name form-group">
+										<label>Họ và tên</label> <input
+											class="input_full_name form-control" value="${userInfo.name}"
+											type="text" name="customerName" id="customerName"
+											placeholder="vui lòng nhập tên đầy đủ"> <span
+											class="form-message"></span>
+									</div>
+									<div class="input_phone form-group">
+										<label for="fonnumber">Số điện thoại</label> <input type="tel"
+											name="customerPhone" value="${userInfo.phone}"
+											id="customerPhone" class="input_phone_number form-control"
+											placeholder="nhập số điện thoại"> <span
+											class="form-message"></span>
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="row adress_form_action">
-						<button class="col l-o-8 form_submit_adress form-submit" action=""
-							type="submit">save</button>
+							<div class="col l-6">
+								<div class="adress_form_right">
+									<div class="input_address form-group">
+										<label>địa chỉ</label> <input
+											class="input_address_detail form-control"
+											id="customerAddress" value="${userInfo.address}" type="text"
+											name="customerAddress" id="adress" placeholder="nhập địa chỉ">
+										<span class="form-message"></span>
+									</div>
+									<div class="input_email form-group ">
+										<label for="">email</label> <input type="email"
+											value="${userInfo.email}" name="customerEmail"
+											id="customerEmail" class="input_email_custom form-control"
+											placeholder="nhập địa chỉ email"> <span
+											class="form-message"></span>
+									</div>
+								</div>
+							</div>
+						</c:if>
+						<c:if test="${userInfo == null}">
+							<div class="col l-6">
+								<div class="adress_form_left">
+									<div class="input_name form-group">
+										<label>Họ và tên</label> <input
+											class="input_full_name form-control" value="" type="text"
+											name="customerName" id="fullname"
+											placeholder="vui lòng nhập tên đầy đủ"> <span
+											class="form-message"></span>
+									</div>
+									<div class="input_phone form-group">
+										<label for="fonnumber">Số điện thoại</label> <input type="tel"
+											name="customerPhone" value="" id="phonenumber"
+											class="input_phone_number form-control"
+											placeholder="nhập số điện thoại"> <span
+											class="form-message"></span>
+									</div>
+								</div>
+							</div>
+							<div class="col l-6">
+								<div class="adress_form_right">
+									<div class="input_address form-group">
+										<label>địa chỉ</label> <input
+											class="input_address_detail form-control" value=""
+											type="text" name="customerAddress" id="adress"
+											placeholder="nhập địa chỉ"> <span
+											class="form-message"></span>
+									</div>
+									<div class="input_email form-group ">
+										<label for="">email</label> <input type="email" value=""
+											name="customerEmail" id="email"
+											class="input_email_custom form-control"
+											placeholder="nhập địa chỉ email"> <span
+											class="form-message"></span>
+									</div>
+								</div>
+							</div>
+						</c:if>
 					</div>
 				</form>
 			</div>
@@ -69,27 +108,14 @@
 							</span>
 						</div>
 						<div class="row mb-20 border-b">
-							<ul class="col l-8 product_item_checkout">
-								<li class="product_name">iPhone 6 512GB 99% like new <strong
-									class="product_quantity">× 2</strong>
-								</li>
-								<li class="product_infor"><span class="product_capacity">
-										dung lượng
-										<p class="product_capacity_value">256G</p>
-
-								</span> <span class="product_color"> màu
-										<p class="product_color_value">đen</p>
-								</span></li>
+							<ul class="col l-8 product_item_checkout" id="orderCheckout">
+							
 							</ul>
-							<span class="col l-4"> 59.200.000đ </span>
-						</div>
-						<div class="row mb-20 border-b">
-							<p class="col l-8">Tạm tính</p>
-							<span class="col l-4">59.200.000đ</span>
+
 						</div>
 						<div class="row mb-20 border-b">
 							<p class="col l-8">Tổng</p>
-							<span class="col l-1 total_check">59.200.000đ</span>
+							<span class="col l-1 total_check" id="totalCheckout">0đ</span>
 						</div>
 					</div>
 
@@ -99,7 +125,8 @@
 					ngay tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng Mã đơn
 					hàng của bạn trong phần Nội dung thanh toán. Đơn hàng sẽ đươc giao
 					sau khi tiền đã chuyển.</p>
-				<button id="checkout" type="submit">đặt hàng</button>
+				<button id="checkout" onclick="checkout();" type="submit">đặt
+					hàng</button>
 			</div>
 		</div>
 	</div>

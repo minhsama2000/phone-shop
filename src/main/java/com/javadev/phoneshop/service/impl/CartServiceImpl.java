@@ -59,18 +59,71 @@ public class CartServiceImpl implements CartService {
 		List<CartItemDto> cartItemDto = null;
 		try {
 			Optional<DhUser> optionalUser = userRepository.findByUsername(userName);
-			if(optionalUser.isPresent()) {
+			if (optionalUser.isPresent()) {
 				cartItemDto = cartRepository.findAllByUserId(optionalUser.get().getId()).stream()
 						.map(val -> MapperUtil.convertDhCartToDto(val)).collect(Collectors.toList());
 				apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", cartItemDto);
 				return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
-			}		
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			
+
 		}
 		apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", cartItemDto);
 		return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
+	}
+
+	@Override
+	public ResponseEntity<ApiResponse> updateCart(CartItemModel cartItemModel) {
+		DhUser dhUser = null;
+		ApiResponse apiResponse = null;
+		DhCart cart = null;
+		userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		try {
+			Optional<DhUser> optionalUser = userRepository.findByUsername(userDetails.getUsername());
+			if (optionalUser.isPresent()) {
+				dhUser = optionalUser.get();
+			}
+			Optional<DhCart> optionalCart = cartRepository.findByUserIdAndProductIdAndStorageAndColor(dhUser.getId(),
+					cartItemModel.getProductId(), cartItemModel.getStorage(), cartItemModel.getColor());
+			if (optionalCart.isPresent()) {
+				cart = optionalCart.get();
+			}
+			cart.setQuantity(cartItemModel.getQuantity());
+			cartRepository.save(cart);
+			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", cart);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+		} catch (Exception e) {
+			// TODO: handle exception
+			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", cart);
+			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
+		}
+	}
+
+	@Override
+	public ResponseEntity<ApiResponse> deleteCart(Integer productId, int color, int storage) {
+		DhUser dhUser = null;
+		ApiResponse apiResponse = null;
+		DhCart cart = null;
+		userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		try {
+			Optional<DhUser> optionalUser = userRepository.findByUsername(userDetails.getUsername());
+			if (optionalUser.isPresent()) {
+				dhUser = optionalUser.get();
+			}
+			Optional<DhCart> optionalCart = cartRepository.findByUserIdAndProductIdAndStorageAndColor(dhUser.getId(),
+					productId, storage, color);
+			if (optionalCart.isPresent()) {
+				cart = optionalCart.get();
+			}
+			cartRepository.delete(cart);
+			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", cart);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+		} catch (Exception e) {
+			// TODO: handle exception
+			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", cart);
+			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
+		}
 	}
 
 	public void saveOne(CartItemModel cartItemModel) {
@@ -78,7 +131,7 @@ public class CartServiceImpl implements CartService {
 		DhProduct dhProduct = null;
 		DhCart cart = null;
 		userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
+
 		Optional<DhUser> optionalUser = userRepository.findByUsername(userDetails.getUsername());
 		if (optionalUser.isPresent()) {
 			dhUser = optionalUser.get();

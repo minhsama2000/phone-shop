@@ -9,4 +9,7 @@ public interface CartService {
 	ResponseEntity<ApiResponse> addCart(CartItemModel cartItemModel);
 
 	ResponseEntity<ApiResponse> getAllCart(String userName);
+	
+	ResponseEntity<ApiResponse> updateCart(CartItemModel cartItemModel);
+	ResponseEntity<ApiResponse> deleteCart(Integer productId,int color,int storage);
 }

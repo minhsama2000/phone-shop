@@ -8,6 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class CartItemModel {
+	private Integer id;
 	private Integer productId;
 	private int quantity;
 	private int color;

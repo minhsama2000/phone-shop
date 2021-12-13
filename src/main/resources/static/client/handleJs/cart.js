@@ -1,6 +1,68 @@
 (function () {
-	loadCart()
+	updateTotal();
+	loadCart();
+	cartTotal();
 })();
+
+function updateCart(productId,quantity,color,storage){
+	var id = parseInt(productId);
+	$.ajax({
+		url : "/api-security/v1/carts/cart",
+		type:"PUT",
+		data : JSON.stringify({
+			productId : id,
+			quantity : quantity,
+			color:color,
+			storage:storage
+		}),
+		dataType: 'json',
+        contentType: 'application/json',
+		success: function(responseData){
+			
+		},
+		error : function(jqXhr, textStatus, errorMessage) { // error
+			// callback
+
+		}
+	});
+}
+
+function updateTotal(){
+	$.ajax({
+		url : "/api-security/v1/carts/carts",
+		type:"GET",
+		dataType: 'json',
+        contentType: 'application/json',
+		success: function(responseData){
+			var html = "";
+			$("#listCartHeader").empty();
+			var data = responseData.data;
+			$("#totalHeaderCart").html(responseData.data.length)
+			for(var i=0;i<data.length;i++){
+				html += '<li class="cart-item">'
+							+'	<div class="row ">'
+							+'		<div class="col col-litle l-2 cart-item-img">'
+							+'			<img src="/upload/product/'+data[i].avatar+'" alt=""'
+							+'				srcset="">'
+							+'		</div>'
+							+'		<div class="col col-litle l-6 cart-item-name">'
+							+'			<a href="/product-details?id='+data[i].productId+'"><span>'+data[i].name+' </span></a>'
+							+'		</div>'
+							+'		<div class="col col-litle l-3 cart-Quantiy">'
+							+'			<span> sl x '+data[i].quantity+'</span>'
+							+'		</div>'
+							+'	</div>'
+
+						+'	</li>';
+			}
+			$("#listCartHeader").html(html);
+		},
+		error : function(jqXhr, textStatus, errorMessage) { // error
+			// callback
+
+		}
+	});
+}
 
 function loadCart(){
 	$("#cart-table").empty();
@@ -13,8 +75,10 @@ function loadCart(){
 			var html = "";
 			var data = responseData.data;
 			for(var i=0;i<data.length;i++){
-				html += '<tr class="cart-table-body">'
-										+'<td class="product-remove"><a href=""'
+				html += '<tr class="cart-table-body"><input type="hidden" value="'+data[i].productId+'" class="cartProductId"/>'
+										+'<input type="hidden" value="'+data[i].color+'" class="cartColor"/>'
+										+'<input type="hidden" value="'+data[i].storage+'" class="cartStorage"/>'
+										+'<td class="product-remove"><a '
 										+'	class="remove_cart_product"> <i class="fas fa-trash-alt"></i>'
 										+'</a></td>'
 
@@ -53,21 +117,34 @@ function loadCart(){
 				+'</tr>';
 			}
 			$("#cart-table").html(html);
+			cartTotal();
 			var index = 0;
 			var proQty = $('.quantity-Block');
 
+			var removeCart = $(".remove_cart_product").on("click",function(){
+				index = removeCart.index(this);
+				var productId = document.getElementsByClassName("cartProductId")[index].value;
+				var color = document.getElementsByClassName("cartColor")[index].value;
+				var storage = document.getElementsByClassName("cartStorage")[index].value;
+				$(".cart-table-body")[index].remove();
+				remove(productId,color,storage);
+				cartTotal();
+			}); 
+			
 			var decrease = $(".input_Capacity-Prev").on("click",function(){
 				index = decrease.index(this);
 				var $qty=$(this).parent().find('input');
 			    var currentVal = parseInt($qty.val());
+			    var color = document.getElementsByClassName("cartColor")[index].value;
+				var storage = document.getElementsByClassName("cartStorage")[index].value;
 			    var newVal = 0;
 			    if (!isNaN(currentVal) && currentVal > 1) {
 			        $qty.val(currentVal - 1);
 			        newVal = $qty.val();
 			       
 			    	document.getElementsByClassName("totalSingle")[index].innerHTML=newVal*parseInt(document.getElementsByClassName("priceSingle")[index].innerHTML);
-//			    	cartTotal()
-//			    	updateCart(document.getElementsByClassName("cartProductId")[index].value,newVal);
+			    	cartTotal()
+			    	updateCart(document.getElementsByClassName("cartProductId")[index].value,newVal,color,storage);
 			    }
 			});
 			
@@ -76,13 +153,15 @@ function loadCart(){
 				index = increase.index(this);
 				var $qty=$(this).parent().find('input');
 			    var currentVal = parseInt($qty.val());
+			    var color = document.getElementsByClassName("cartColor")[index].value;
+				var storage = document.getElementsByClassName("cartStorage")[index].value;
 			    var newVal = 0;
 			    if (!isNaN(currentVal) && currentVal > 0) {
 			        $qty.val(currentVal + 1);
 			        newVal = $qty.val();
 			       	document.getElementsByClassName("totalSingle")[index].innerHTML=newVal*parseInt(document.getElementsByClassName("priceSingle")[index].innerHTML);
-//			       	cartTotal();
-//			       	updateCart(document.getElementsByClassName("cartProductId")[index].value,newVal);
+			       	cartTotal();
+			       	updateCart(document.getElementsByClassName("cartProductId")[index].value,newVal,color,storage);
 			    }
 			});
 		},
@@ -93,13 +172,31 @@ function loadCart(){
 	});
 }
 
+function remove(productId,cartColor,cartStorage){
+	var id = parseInt(productId);
+	console.log(id);
+	$.ajax({
+		url : "/api-security/v1/carts/cart?productId="+id+"&color="+cartColor+"&storage="+cartStorage,
+		type:"DELETE",
+		dataType: 'json',
+        contentType: 'application/json',
+		success: function(responseData){
+			
+		},
+		error : function(jqXhr, textStatus, errorMessage) { // error
+			// callback
+
+		}
+	});
+}
+
 function cartTotal(){
 	var total = 0;
-	var totalProduct = document.getElementsByClassName("totalOneProduct");
+	var totalProduct = document.getElementsByClassName("totalSingle");
 	for(var i=0;i<totalProduct.length;i++){
-		total += parseInt(totalProduct[i].innerHTML);
+		total += parseInt(totalProduct[i].innerHTML.trim());
 	}
-	$("#totalCart").html("$"+total);
+	$("#totalCart").html(total);
 }
 
 

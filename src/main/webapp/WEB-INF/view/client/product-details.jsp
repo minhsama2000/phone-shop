@@ -86,7 +86,7 @@
 										<p>giao tận nơi, lắp đặt miễn phí</p>
 									</button>
 
-									<button name="buyNow" formaction="./check_out.html">
+									<button name="buyNow" formaction="/cart-list">
 										<h4>mua hàng</h4>
 										<p>giao tận nơi, lắp đặt miễn phí</p>
 									</button>

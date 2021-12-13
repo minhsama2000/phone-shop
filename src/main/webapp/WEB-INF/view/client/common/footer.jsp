@@ -87,6 +87,7 @@
 <script src="/js/search.js"></script>
 <script src="/js/view.js"></script>
 <script src="/js/cart.js"></script>
+<script src="/js/checkout.js"></script>
 <script src="/js/jquery.min.js"></script>
 <script src="/owcarosel/owl.carousel.min.js"></script>
 <script>

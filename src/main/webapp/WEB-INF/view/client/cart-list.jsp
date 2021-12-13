@@ -23,7 +23,8 @@
 							<table>
 								<thead>
 									<tr>
-										<th class="product-name" colspan="3">Sản phẩm</th>
+										<th></th>
+										<th class="product-name" colspan="2">Sản phẩm</th>
 										<th class="product-price">Giá</th>
 										<th class="product-quantity">Số lượng</th>
 										<th class="product-subtotal">Tạm tính</th>
@@ -57,16 +58,16 @@
 								<tr class="order-total">
 									<th>Tổng</th>
 									<td data-title="Tổng"><strong> <span
-											class="woocommerce-Price-amount amount"> <bdi>108.800.000 </bdi>
-										<span
-													class="woocommerce-Price-currencySymbol">&#8363;</span>
+											class="woocommerce-Price-amount amount"> <bdi
+													id="totalCart"> </bdi> <span
+												class="woocommerce-Price-currencySymbol">&#8363;</span>
 										</span>
 									</strong></td>
 								</tr>
 							</table>
 
 							<div class="cart-checkout">
-								<a href="./check_out.html"> Tiến hành thanh toán </a>
+								<a href="/checkout"> Tiến hành thanh toán </a>
 							</div>
 
 						</div>

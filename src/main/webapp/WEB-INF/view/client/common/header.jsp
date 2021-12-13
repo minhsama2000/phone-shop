@@ -6,11 +6,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-String username = "";
+	String username = "";
 Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-Boolean authorGuest =SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("USER"));
-Boolean authorAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("ADMIN"));
-Boolean authorFullCT = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("FULL_CONTROL"));
+Boolean authorGuest = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
+		.anyMatch(r -> r.getAuthority().equals("USER"));
+Boolean authorAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
+		.anyMatch(r -> r.getAuthority().equals("ADMIN"));
+Boolean authorFullCT = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
+		.anyMatch(r -> r.getAuthority().equals("FULL_CONTROL"));
 if (principal instanceof UserDetails) {
 	username = ((UserDetails) principal).getUsername();
 }
@@ -241,57 +244,13 @@ if (principal instanceof UserDetails) {
 										<!-- form logout -->
 
 									</div>
-									<div class="col col-litle l-2 header-Cart">
-										<a href="/cart-list"> <i
-											class="fas fa-shopping-cart"></i>
+									<div class="col col-litle l-2 header-Cart">								
+										<a class="link-cart-icon" href="/cart-list"> <i class="fas fa-shopping-cart"></i>
 										</a>
+										<span id="totalHeaderCart">0</span>
 										<div class="header-Cart-list">
-											<ul class="cart-list-item">
-												<li class="cart-item">
-													<div class="row ">
-														<div class="col col-litle l-2 cart-item-img">
-															<img src="./assets/images/iP11-5-510x510-1.jpg" alt=""
-																srcset="">
-														</div>
-														<div class="col col-litle l-6 cart-item-name">
-															<span>iphone-7-32g-1 </span>
-														</div>
-														<div class="col col-litle l-3 cart-Quantiy">
-															<span> sl x 1</span>
-														</div>
-													</div>
-
-												</li>
-												<li class="cart-item">
-													<div class="row ">
-														<div class="col col-litle l-2 cart-item-img">
-															<img src="./assets/images/iP11-5-510x510-1.jpg" alt=""
-																srcset="">
-														</div>
-														<div class="col col-litle l-6 cart-item-name">
-															<span>iphone-7-32g-1</span>
-														</div>
-														<div class="col col-litle l-3 cart-Quantiy">
-															<span> sl x 1</span>
-														</div>
-													</div>
-
-												</li>
-												<li class="cart-item">
-													<div class="row ">
-														<div class="col col-litle l-2 cart-item-img">
-															<img src="./assets/images/iP11-5-510x510-1.jpg" alt=""
-																srcset="">
-														</div>
-														<div class="col col-litle l-6 cart-item-name">
-															<span>iphone-7-32g-1</span>
-														</div>
-														<div class="col col-litle l-3 cart-Quantiy">
-															<span> sl x 1</span>
-														</div>
-													</div>
-
-												</li>
+											<ul class="cart-list-item" id="listCartHeader">
+												
 											</ul>
 
 										</div>

@@ -25,19 +25,15 @@ public abstract class BaseEntity {
 	private Boolean status = Boolean.TRUE;
 
 	@Column(name = "updated_by", nullable = true)
-	@JsonProperty(value = "updated_by")
 	private Integer updatedBy;
 
 	@Column(name = "created_by", nullable = true)
-	@JsonProperty(value = "created_by")
 	private Integer createdBy;
 
 	@Column(name = "updated_date", nullable = true)
-	@JsonProperty(value = "updated_date")
 	private Date updatedDate;
 
 	@Column(name = "created_date", nullable = true)
-	@JsonProperty(value = "created_date")
 	private Date createdDate;
 
 	@Transient

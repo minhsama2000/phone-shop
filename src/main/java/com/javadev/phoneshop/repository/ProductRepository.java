@@ -24,5 +24,8 @@ public interface ProductRepository extends JpaRepository<DhProduct, Integer>,Cus
 	List<DhProduct> findAllById(Integer id,int limit);
 	
 	Page<DhProduct> findAll(Pageable pageable);
+	
+	@Query(value = "SELECT * FROM dh_product where id = ?1",nativeQuery = true)
+	DhProduct findByProductId(Integer id);
 
 }

@@ -42,7 +42,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 				.permitAll()
 
 				.antMatchers("/admin/**").hasAnyAuthority("ADMIN","FULLCONTROL")
-//				.antMatchers("/api-security/**").hasAnyAuthority("ADMIN","USER","FULLCONTROl")
+				.antMatchers("/api-security/**","/checkout/**").hasAnyAuthority("ADMIN","USER","FULLCONTROl")
 				.and().formLogin().loginPage("/login")
 				.loginProcessingUrl("/perform_login").defaultSuccessUrl("/home", true)
 				.failureUrl("/login?login_error=true").permitAll()

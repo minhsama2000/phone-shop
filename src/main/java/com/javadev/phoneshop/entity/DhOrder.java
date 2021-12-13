@@ -19,44 +19,37 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
+@ToString
 @Table(name = "dh_order")
-public class DhOrder extends BaseEntity implements java.io.Serializable{
+public class DhOrder extends BaseEntity implements java.io.Serializable {
 
-	@Column(name = "code_name",nullable = false,length = 50)
-	@JsonProperty(value = "code_name")
+	@Column(name = "code_name", nullable = false, length = 50)
 	private String codeName;
 
-	@Column(name = "customer_name",nullable = false,length = 50)
-	@JsonProperty(value = "customer_name")
+	@Column(name = "customer_name", nullable = false, length = 50)
 	private String customerName;
 
-	@Column(name = "customer_email",nullable = false,length = 50)
-	@JsonProperty(value = "customer_email")
+	@Column(name = "customer_email", nullable = false, length = 50)
 	private String customerEmail;
 
-	@Column(name = "customer_phone",nullable = false,length = 14)
-	@JsonProperty(value = "customer_phone")
+	@Column(name = "customer_phone", nullable = false, length = 14)
 	private String customerPhone;
 
-	@Column(name = "customer_address",nullable = false,length = 200)
-	@JsonProperty(value = "customer_address")
+	@Column(name = "customer_address", nullable = false, length = 200)
 	private String customerAddress;
 
-	@Column(name = "seo",nullable = true,length = 300)
+	@Column(name = "seo", nullable = true, length = 300)
 	private String seo;
 
-	@Column(name = "total",precision = 13,scale = 2)
+	@Column(name = "total", precision = 13, scale = 2)
 	private Long total;
 
-	@Column(name = "is_prepaid", nullable = false, columnDefinition = "tinyint")
-	private Boolean isPrepaid;
-
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id",nullable = true)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = true)
 	@JsonProperty(value = "user")
 	private DhUser dhUser;
 
-	@OneToMany(fetch = FetchType.EAGER,mappedBy = "order")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "order")
 	@JsonProperty(value = "order_products")
 	private List<DhOrderProduct> orderProducts = new ArrayList<>();
 
@@ -72,15 +65,24 @@ public class DhOrder extends BaseEntity implements java.io.Serializable{
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		if (!super.equals(o)) return false;
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		if (!super.equals(o))
+			return false;
 		DhOrder dhOrder = (DhOrder) o;
-		return Objects.equals(codeName, dhOrder.codeName) && Objects.equals(customerName, dhOrder.customerName) && Objects.equals(customerEmail, dhOrder.customerEmail) && Objects.equals(customerPhone, dhOrder.customerPhone) && Objects.equals(customerAddress, dhOrder.customerAddress) && Objects.equals(seo, dhOrder.seo) && Objects.equals(total, dhOrder.total) && Objects.equals(isPrepaid, dhOrder.isPrepaid) && Objects.equals(dhUser, dhOrder.dhUser) && Objects.equals(orderProducts, dhOrder.orderProducts);
+		return Objects.equals(codeName, dhOrder.codeName) && Objects.equals(customerName, dhOrder.customerName)
+				&& Objects.equals(customerEmail, dhOrder.customerEmail)
+				&& Objects.equals(customerPhone, dhOrder.customerPhone)
+				&& Objects.equals(customerAddress, dhOrder.customerAddress) && Objects.equals(seo, dhOrder.seo)
+				&& Objects.equals(total, dhOrder.total) && Objects.equals(dhUser, dhOrder.dhUser)
+				&& Objects.equals(orderProducts, dhOrder.orderProducts);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), codeName, customerName, customerEmail, customerPhone, customerAddress, seo, total, isPrepaid, dhUser, orderProducts);
+		return Objects.hash(super.hashCode(), codeName, customerName, customerEmail, customerPhone, customerAddress,
+				seo, total, dhUser, orderProducts);
 	}
 }

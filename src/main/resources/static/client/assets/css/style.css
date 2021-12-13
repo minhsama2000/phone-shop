@@ -59,7 +59,7 @@
 .header-Form-seach .header-Cart {
     position: relative;
 }
-.header-Form-seach .header-Cart a {
+.header-Form-seach .header-Cart .link-cart-icon {
     position: relative;
     border-radius: 50%;
     padding: 7px 5px;
@@ -68,17 +68,22 @@
     text-decoration: none;
     text-align: center;
 }
-.header-Form-seach .header-Cart a::before {
-    content: "10";
-    position: absolute;
-    background-color: red;
-    color: #fff;
-    top: -11px;
-    right: 2px;
-    font-size: 13px;
-    padding: 2px;
-    border-radius: 2px;
+
+.header-Cart{
+	position: relative;
 }
+
+#totalHeaderCart{
+	background-color:red;
+	border-radius:50px;
+	position: absolute;
+	top:-7px;
+	left:27px;
+	color:white;
+	width: 21px;
+	text-align: center;
+}
+
 .header-Form-seach .header-Cart a::after {
     display: none;
     content: "";
@@ -94,7 +99,7 @@
 .header-Form-seach .header-Cart:hover a::after {
     display: block;
 }
-.header-Form-seach .header-Cart a:hover {
+.header-Form-seach .header-Cart .link-cart-icon:hover {
     background-color:rgb(16, 16, 189) ;
 }
 .header-Form-seach .header-Cart:hover .header-Cart-list {
@@ -142,6 +147,10 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.cart-item-name a{
+	text-decoration: none;
 }
 
 .header-Cart-list .cart-item .cart-Quantiy {
