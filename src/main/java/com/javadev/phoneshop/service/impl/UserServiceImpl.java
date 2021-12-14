@@ -1,30 +1,39 @@
 package com.javadev.phoneshop.service.impl;
 
+import java.io.File;
 import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.javadev.phoneshop.constant.Constant;
 import com.javadev.phoneshop.dto.ApiResponse;
 import com.javadev.phoneshop.entity.DhUser;
 import com.javadev.phoneshop.model.SignUpModel;
+import com.javadev.phoneshop.model.UserModel;
 import com.javadev.phoneshop.repository.RoleRepository;
 import com.javadev.phoneshop.repository.UserRepository;
 import com.javadev.phoneshop.service.UserService;
 import com.javadev.phoneshop.utility.DateUtil;
+import com.javadev.phoneshop.utility.SecurityUtil;
+import com.javadev.phoneshop.utility.StringUtil;
 
 @Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private RoleRepository roleRepository;
-	
+
 	@Autowired
 	private UserRepository userRepository;
+
+	private UserDetails userDetails;
 
 	@Override
 	public Optional<DhUser> findByUserName(String userName) {
@@ -35,7 +44,7 @@ public class UserServiceImpl implements UserService {
 		}
 		return Optional.empty();
 	}
-	
+
 	@Override
 	public Optional<DhUser> findByEmail(String email) {
 		try {
@@ -44,6 +53,38 @@ public class UserServiceImpl implements UserService {
 
 		}
 		return Optional.empty();
+	}
+
+	@Override
+	public ResponseEntity<ApiResponse> update(UserModel userModel) {
+		ApiResponse apiResponse = null;
+		userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		DhUser dhUser = null;
+		try {
+			Optional<DhUser> optionalUser = userRepository.findByUsername(userDetails.getUsername());
+			if (optionalUser.isPresent()) {
+				dhUser = optionalUser.get();
+			}
+			if(StringUtil.isNullOrEmpty(userModel.getPassword())) {
+				dhUser.setAddress(userModel.getAddress());
+				dhUser.setEmail(userModel.getEmail());
+				dhUser.setPhone(userModel.getPhone());
+				dhUser.setName(userModel.getName());
+				if(!userModel.getFile().isEmpty()) {
+					dhUser.setAvatar(userModel.getFile().getOriginalFilename());
+					userModel.getFile().transferTo(new File(Constant.ROOT_UPLOAD_USER + dhUser.getAvatar()));
+				}
+			}else {
+				dhUser.setPassword(new BCryptPasswordEncoder(4).encode(userModel.getPassword()));
+			}	
+			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", dhUser);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+		} catch (Exception e) {
+			// TODO: handle exception
+			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", dhUser);
+			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
+		}
+
 	}
 
 	@Override
@@ -57,8 +98,7 @@ public class UserServiceImpl implements UserService {
 				return new ResponseEntity<ApiResponse>(HttpStatus.METHOD_FAILURE).ok(apiResponse);
 			}
 			if (findByEmail(signUpModel.getEmail()).isPresent()) {
-				apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "email already used",
-						signUpModel);
+				apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "email already used", signUpModel);
 				return new ResponseEntity<ApiResponse>(HttpStatus.METHOD_FAILURE).ok(apiResponse);
 			}
 			if (!signUpModel.getPassword().equals(signUpModel.getPassword_confirmation())) {

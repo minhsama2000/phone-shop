@@ -19,6 +19,7 @@ import lombok.*;
 @Table(name = "dh_user")
 @Setter
 @Getter
+@ToString
 public class DhUser extends BaseEntity implements java.io.Serializable {
 
 	@Column(name = "email", nullable = false, length = 100)

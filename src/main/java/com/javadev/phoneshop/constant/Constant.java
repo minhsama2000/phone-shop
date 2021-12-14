@@ -5,4 +5,6 @@ import java.io.File;
 public class Constant {
 	public static String ROOT_UPLOAD_PRODUCT = System.getProperty("user.dir") + File.separator +
 			"upload" + File.separator + "product" + File.separator;
+	public static String ROOT_UPLOAD_USER = System.getProperty("user.dir") + File.separator +
+			"upload" + File.separator + "user" + File.separator;
 }

@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javadev.phoneshop.dto.ApiResponse;
 import com.javadev.phoneshop.model.SignUpModel;
+import com.javadev.phoneshop.model.UserModel;
 import com.javadev.phoneshop.service.UserService;
 
 @RestController
@@ -24,4 +26,8 @@ public class UserController {
 		return userService.signup(signUpModel);
 	}
 
+	@PutMapping("/user-update")
+	public ResponseEntity<ApiResponse> updateUser(@ModelAttribute UserModel userModel) {
+		return userService.update(userModel);
+	}
 }

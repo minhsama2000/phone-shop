@@ -124,6 +124,16 @@ public class HomeController {
 		return "client/shop-cart";
 	}
 	
+	@GetMapping("/contact")
+	public String contact() {
+		return "client/contact";
+	}
+	
+	@GetMapping("/news")
+	public String news() {
+		return "client/news";
+	}
+	
 	@GetMapping("/checkout")
 	public String checkout(Model model) {
 		UserDetails details = SecurityUtil.getUserDetails();

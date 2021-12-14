@@ -128,8 +128,6 @@ public class ProductServiceImpl implements ProductService {
 		ApiResponse apiResponse = null;
 		try {
 			dhProduct = insertProduct(dhProductModel);
-			System.out.println(Constant.ROOT_UPLOAD_PRODUCT);
-			System.out.println(dhProduct.getAvatar());
 			dhProductModel.getFile().transferTo(new File(Constant.ROOT_UPLOAD_PRODUCT + dhProduct.getAvatar()));
 			productRepository.save(dhProduct);
 			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", dhProduct);
