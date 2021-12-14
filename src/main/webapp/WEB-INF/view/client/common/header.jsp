@@ -40,7 +40,6 @@ if (principal instanceof UserDetails) {
 <link rel="stylesheet" href="/css/contact.css">
 <link rel="stylesheet" href="/css/news.css">
 <link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" href="/css/login.css">
 <style>
 .dropbtn {
 	cursor: pointer;

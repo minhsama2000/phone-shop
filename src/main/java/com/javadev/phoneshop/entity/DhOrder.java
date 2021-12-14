@@ -40,14 +40,15 @@ public class DhOrder extends BaseEntity implements java.io.Serializable {
 
 	@Column(name = "seo", nullable = true, length = 300)
 	private String seo;
+	
+	@Column(name = "order_status", nullable = false, columnDefinition = "1")
+	private Integer orderStatus;
 
 	@Column(name = "total", precision = 13, scale = 2)
 	private Long total;
-
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id", nullable = true)
-	@JsonProperty(value = "user")
-	private DhUser dhUser;
+	
+	@Column(name = "user_id",nullable = true)
+	private Integer userId;
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "order")
 	@JsonProperty(value = "order_products")
@@ -76,13 +77,13 @@ public class DhOrder extends BaseEntity implements java.io.Serializable {
 				&& Objects.equals(customerEmail, dhOrder.customerEmail)
 				&& Objects.equals(customerPhone, dhOrder.customerPhone)
 				&& Objects.equals(customerAddress, dhOrder.customerAddress) && Objects.equals(seo, dhOrder.seo)
-				&& Objects.equals(total, dhOrder.total) && Objects.equals(dhUser, dhOrder.dhUser)
+				&& Objects.equals(total, dhOrder.total)
 				&& Objects.equals(orderProducts, dhOrder.orderProducts);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(super.hashCode(), codeName, customerName, customerEmail, customerPhone, customerAddress,
-				seo, total, dhUser, orderProducts);
+				seo, total, orderProducts);
 	}
 }

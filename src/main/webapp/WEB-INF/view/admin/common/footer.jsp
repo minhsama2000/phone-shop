@@ -61,6 +61,7 @@
 <!-- Demo scripts for this page-->
 <script src="/admin/js/demo/datatables-demo.js"></script>
 <script src="/admin/js/demo/product.js"></script>
+<script src="/admin/js/demo/order.js"></script>
 <script src="/admin/js/demo/chart-area-demo.js"></script>
 <script>
 	$('.summernote').summernote({

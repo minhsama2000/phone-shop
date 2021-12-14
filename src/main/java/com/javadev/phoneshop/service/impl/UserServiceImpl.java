@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 		try {
 			return userRepository.findByEmail(email);
 		} catch (Exception ex) {
-
+			
 		}
 		return Optional.empty();
 	}

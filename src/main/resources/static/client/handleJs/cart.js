@@ -37,25 +37,27 @@ function updateTotal(){
 			var html = "";
 			$("#listCartHeader").empty();
 			var data = responseData.data;
-			$("#totalHeaderCart").html(responseData.data.length)
-			for(var i=0;i<data.length;i++){
-				html += '<li class="cart-item">'
-							+'	<div class="row ">'
-							+'		<div class="col col-litle l-2 cart-item-img">'
-							+'			<img src="/upload/product/'+data[i].avatar+'" alt=""'
-							+'				srcset="">'
-							+'		</div>'
-							+'		<div class="col col-litle l-6 cart-item-name">'
-							+'			<a href="/product-details?id='+data[i].productId+'"><span>'+data[i].name+' </span></a>'
-							+'		</div>'
-							+'		<div class="col col-litle l-3 cart-Quantiy">'
-							+'			<span> sl x '+data[i].quantity+'</span>'
-							+'		</div>'
-							+'	</div>'
+			if(responseData.status == 200){
+				$("#totalHeaderCart").html(responseData.data.length)
+				for(var i=0;i<data.length;i++){
+					html += '<li class="cart-item">'
+								+'	<div class="row ">'
+								+'		<div class="col col-litle l-2 cart-item-img">'
+								+'			<img src="/upload/product/'+data[i].avatar+'" alt=""'
+								+'				srcset="">'
+								+'		</div>'
+								+'		<div class="col col-litle l-6 cart-item-name">'
+								+'			<a href="/product-details?id='+data[i].productId+'"><span>'+data[i].name+' </span></a>'
+								+'		</div>'
+								+'		<div class="col col-litle l-3 cart-Quantiy">'
+								+'			<span> sl x '+data[i].quantity+'</span>'
+								+'		</div>'
+								+'	</div>'
 
-						+'	</li>';
+							+'	</li>';
+				}
+				$("#listCartHeader").html(html);
 			}
-			$("#listCartHeader").html(html);
 		},
 		error : function(jqXhr, textStatus, errorMessage) { // error
 			// callback
@@ -74,47 +76,49 @@ function loadCart(){
 		success:function(responseData){
 			var html = "";
 			var data = responseData.data;
-			for(var i=0;i<data.length;i++){
-				html += '<tr class="cart-table-body"><input type="hidden" value="'+data[i].productId+'" class="cartProductId"/>'
-										+'<input type="hidden" value="'+data[i].color+'" class="cartColor"/>'
-										+'<input type="hidden" value="'+data[i].storage+'" class="cartStorage"/>'
-										+'<td class="product-remove"><a '
-										+'	class="remove_cart_product"> <i class="fas fa-trash-alt"></i>'
-										+'</a></td>'
+			if(responseData.status == 200){
+				for(var i=0;i<data.length;i++){
+					html += '<tr class="cart-table-body"><input type="hidden" value="'+data[i].productId+'" class="cartProductId"/>'
+											+'<input type="hidden" value="'+data[i].color+'" class="cartColor"/>'
+											+'<input type="hidden" value="'+data[i].storage+'" class="cartStorage"/>'
+											+'<td class="product-remove"><a '
+											+'	class="remove_cart_product"> <i class="fas fa-trash-alt"></i>'
+											+'</a></td>'
 
-										+'<td class="product-thumbnail"><a href=""> <img'
-										+'		src="/upload/product/'+ data[i].avatar +'" alt="" />'
-										+'</a></td>'
-										+'<td class="product-name" data-title="Sản phẩm"><a'
-										+'	href="/product-details?id='+data[i].productId+'">'+data[i].name+'</a>'
-										+'	<dl class="variation">'
-										+'		<dt class="variation-capacity-tile">Dung lượng:</dt>'
-										+'		<dd class="variation-capacity-value">'
-										+'			<p>'+getStorage(data[i].storage)+'GB</p>'
-										+'		</dd>'
-										+'		<dt class="variation-color">Màu sắc:</dt>'
-				+'		<dd class="variation-color-value">'
-				+'			<p>'+getColor(data[i].color)+'</p>'
-				+'		</dd>'
-				+'	</dl></td>'
+											+'<td class="product-thumbnail"><a href=""> <img'
+											+'		src="/upload/product/'+ data[i].avatar +'" alt="" />'
+											+'</a></td>'
+											+'<td class="product-name" data-title="Sản phẩm"><a'
+											+'	href="/product-details?id='+data[i].productId+'">'+data[i].name+'</a>'
+											+'	<dl class="variation">'
+											+'		<dt class="variation-capacity-tile">Dung lượng:</dt>'
+											+'		<dd class="variation-capacity-value">'
+											+'			<p>'+getStorage(data[i].storage)+'GB</p>'
+											+'		</dd>'
+											+'		<dt class="variation-color">Màu sắc:</dt>'
+					+'		<dd class="variation-color-value">'
+					+'			<p>'+getColor(data[i].color)+'</p>'
+					+'		</dd>'
+					+'	</dl></td>'
 
-				+'<td class="product-price" data-title="Giá"><span'
-				+'	class="product-Price-amount"> <bdi class="priceSingle">'+data[i].price+''
-				+'			 </bdi>'
-				+'	<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></td>'
+					+'<td class="product-price" data-title="Giá"><span'
+					+'	class="product-Price-amount"> <bdi class="priceSingle">'+data[i].price+''
+					+'			 </bdi>'
+					+'	<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></td>'
 
-				+'	<td class="product-quantity" data-title="Số lượng">'
-				+'	<div class="quantity-Block">'
-				+'		<span style="cursor: pointer" type="button" class="badge badge-light input_Capacity-Prev">-</span>'
-				+'			<input class="currentQuantity" type="text" id="quantity_id" value="'+data[i].quantity+'" />'
-				+'		<span style="cursor: pointer" type="button" class="badge badge-light input_Capacity_next">+</span>'
-				+'	</div>'
-				+'</td>'
+					+'	<td class="product-quantity" data-title="Số lượng">'
+					+'	<div class="quantity-Block">'
+					+'		<span style="cursor: pointer" type="button" class="badge badge-light input_Capacity-Prev">-</span>'
+					+'			<input class="currentQuantity" type="text" id="quantity_id" value="'+data[i].quantity+'" />'
+					+'		<span style="cursor: pointer" type="button" class="badge badge-light input_Capacity_next">+</span>'
+					+'	</div>'
+					+'</td>'
 
-				+'	<td class="product-subtotal" data-title="Tạm tính"><span'
-				+'		class="woocommerce-Price-amount amount"><bdi  class="totalSingle">'+data[i].quantity*data[i].price+''
-				+'				</bdi><span class="woocommerce-Price-currencySymbol">&#8363;</span></span></td>'
-				+'</tr>';
+					+'	<td class="product-subtotal" data-title="Tạm tính"><span'
+					+'		class="woocommerce-Price-amount amount"><bdi  class="totalSingle">'+data[i].quantity*data[i].price+''
+					+'				</bdi><span class="woocommerce-Price-currencySymbol">&#8363;</span></span></td>'
+					+'</tr>';
+				}
 			}
 			$("#cart-table").html(html);
 			cartTotal();

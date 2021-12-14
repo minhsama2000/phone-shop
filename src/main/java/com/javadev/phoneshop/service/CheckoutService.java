@@ -7,4 +7,5 @@ import com.javadev.phoneshop.model.UserInfoModel;
 
 public interface CheckoutService {
 	ResponseEntity<ApiResponse> saveOrder(UserInfoModel userInfoModel);
+	ResponseEntity<ApiResponse> deleteOrder(Integer orderId);
 }

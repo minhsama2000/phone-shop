@@ -9,59 +9,54 @@
 		<!-- Breadcrumbs-->
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-			<li class="breadcrumb-item active">Tables</li>
+			<li class="breadcrumb-item active">Order</li>
 		</ol>
 
-		<button type="button" name="addCate" id="addCate" class="btn btn-info">Add New</button>
 		<!-- DataTables Example -->
 		<div class="card mb-3">
 			<div class="card-header">
-				<i class="fas fa-table"></i> Data Table Category
+				<i class="fas fa-table"></i> Data Table Order
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-bordered" id="dataTableCate" width="100%"
+					<table class="table table-bordered" id="dataTableOrder" width="100%"
 						cellspacing="0">
 						<thead>
 							<tr>
 								<th>id</th>
-								<th>Name</th>
+								<th>Order code</th>
 								<th>Created date</th>
-								<th>Updated date</th>
+								<th>Order status</th>
+								<th>Total</th>
 								<th></th>
 							</tr>
 						</thead>
 					</table>
 				</div>
 			</div>
-			<div class="card-footer small text-muted">Updated yesterday at
-				11:59 PM</div>
 		</div>
 		
-		<button type="button" name="addProduct" id="addProduct" class="btn btn-info">Add New</button>
 		<!-- DataTables Example -->
 		<div class="card mb-3">
 			<div class="card-header">
-				<i class="fas fa-table"></i> Data Table Product
+				<i class="fas fa-table"></i> Data Table Done order
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-bordered" id="dataTableProduct" width="100%"
+					<table class="table table-bordered" id="dataTableDonOder" width="100%"
 						cellspacing="0">
 						<thead>
 							<tr>
 								<th>id</th>
-								<th>Name</th>
+								<th>Order code</th>
 								<th>Created date</th>
-								<th>Updated date</th>
+								<th>Total</th>
 								<th></th>
 							</tr>
 						</thead>
 					</table>
 				</div>
 			</div>
-			<div class="card-footer small text-muted">Updated yesterday at
-				11:59 PM</div>
 		</div>
 
 		<p class="small text-center text-muted my-5">

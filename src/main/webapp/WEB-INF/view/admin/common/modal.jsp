@@ -152,7 +152,8 @@
 	<div class="modal-dialog modal-lg">
 
 		<!-- Modal content-->
-		<form method="POST" enctype="multipart/form-data" id="fileUploadFormProduct">
+		<form method="POST" enctype="multipart/form-data"
+			id="fileUploadFormProduct">
 			<div class="modal-content">
 				<div class="modal-header"></div>
 				<div class="modal-body">
@@ -170,7 +171,8 @@
 										<label class="control-label" for="email">Chọn danh
 											mục:</label>
 										<div class="col-sm-12">
-											<select id="productCategory" name="categoryId" class="form-control">
+											<select id="productCategory" name="categoryId"
+												class="form-control">
 												<option value=""></option>
 												<select />
 										</div>
@@ -186,8 +188,9 @@
 									<div class="form-group">
 										<label for="cc-payment" class="control-label mb-1">Số
 											lượng tồn</label> <input id="productAvailable" name="available"
-											type="text" class="form-control" aria-required="true" value="0"
-											data-val="true" data-val-required="Please enter the name"
+											type="text" class="form-control" aria-required="true"
+											value="0" data-val="true"
+											data-val-required="Please enter the name"
 											aria-invalid="false" placeholder="0">
 									</div>
 									<div class="form-group">
@@ -273,7 +276,8 @@
 	<div class="modal-dialog modal-lg">
 
 		<!-- Modal content-->
-		<form method="POST" enctype="multipart/form-data" id="fileUploadFormProductUpdate">
+		<form method="POST" enctype="multipart/form-data"
+			id="fileUploadFormProductUpdate">
 			<div class="modal-content">
 				<div class="modal-header"></div>
 				<div class="modal-body">
@@ -291,7 +295,8 @@
 										<label class="control-label" for="email">Chọn danh
 											mục:</label>
 										<div class="col-sm-12">
-											<select id="productCategoryUpdate" name="categoryId" class="form-control">
+											<select id="productCategoryUpdate" name="categoryId"
+												class="form-control">
 												<option value=""></option>
 												<select />
 										</div>
@@ -299,16 +304,17 @@
 									<input type="hidden" id="productIdUpdate" name="id" />
 									<div class="form-group">
 										<label for="cc-payment" class="control-label mb-1">Tên
-											sản phẩm</label> <input id="productNameUpdate" name="name" type="text"
-											class="form-control" aria-required="true"
+											sản phẩm</label> <input id="productNameUpdate" name="name"
+											type="text" class="form-control" aria-required="true"
 											data-val-required="Please enter the name"
 											aria-invalid="false" placeholder="name">
 									</div>
 									<div class="form-group">
 										<label for="cc-payment" class="control-label mb-1">Số
 											lượng tồn</label> <input id="productAvailableUpdate" name="available"
-											type="text" class="form-control" aria-required="true" value="0"
-											data-val="true" data-val-required="Please enter the name"
+											type="text" class="form-control" aria-required="true"
+											value="0" data-val="true"
+											data-val-required="Please enter the name"
 											aria-invalid="false" placeholder="0">
 									</div>
 									<div class="form-group">
@@ -334,7 +340,8 @@
 									<div class="form-group">
 										<label for="cc-payment" class="control-label mb-1">Storage</label>
 										<div class="col-sm-12">
-											<select id="storageUpdate" name="storage" class="form-control">
+											<select id="storageUpdate" name="storage"
+												class="form-control">
 
 												<option value="0">Không có</option>
 												<option value="1">32G</option>
@@ -352,8 +359,8 @@
 							<div class="card">
 								<div class="form-group has-success">
 									<label for="cc-name" class="control-label mb-1">Description</label>
-									<textarea id="productDetailDescriptionUpdate" class="summernote"
-										name="detailDescription" type="text"></textarea>
+									<textarea id="productDetailDescriptionUpdate"
+										class="summernote" name="detailDescription" type="text"></textarea>
 									<span class="help-block field-validation-valid"
 										data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
 								</div>
@@ -363,11 +370,11 @@
 									id="outputProductUpdate" class="img-rounded" alt="" width="250"
 									height="200" src="" />
 								<p>
-									<label for="ufileUpdate" style="cursor: pointer">chon file
-										anh</label>
+									<label for="ufileUpdate" style="cursor: pointer">chon
+										file anh</label>
 								</p>
-								<input name="file" id="ufileUpdate" type="file" style="display: none"
-									onchange="loadFileUpdate(event)" />
+								<input name="file" id="ufileUpdate" type="file"
+									style="display: none" onchange="loadFileUpdate(event)" />
 
 							</div>
 						</div>
@@ -400,10 +407,94 @@
 			</div>
 			<div class="modal-footer">
 				<input type="hidden" id="idForDeleteProduct" />
-				<button type="button" onclick="deleteProduct();" class="btn btn-primary">Delete</button>
+				<button type="button" onclick="deleteProduct();"
+					class="btn btn-primary">Delete</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 
 	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="confirmDeleteOrder" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Modal title</h5>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure</p>
+			</div>
+			<div class="modal-footer">
+				<input type="hidden" id="idForDeleteOrder" />
+				<button type="button" id="buttonDeleteOrder" class="btn btn-primary">Delete</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="modal fade" id="detailOrder" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header"></div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-header">Update</div>
+							<div class="card-body">
+								<div class="card-title">
+									<h3 class="text-center title-2">Trạng thái</h3>
+								</div>
+								<hr>
+								<intput type="hidden" id="cateIdUpdate" />
+								<div class="form-group">
+									<label class="control-label" for="email">Chọn trạng thái:</label>
+									<div class="col-sm-12">
+										<div class="rs-select2--trans rs-select2--sm">
+											<select class="js-select2"
+												onchange="updateOrderStatus('+ dataArr[i].id +', '+ dataArr[i].isPrepaid +',this)"
+												name="property">
+												<option selected="selected">' +
+													validateOrderStatus(dataArr[i].orderStatus) + '</option>
+												<option value="3">GETTING_GOODS</option>
+												<option value="4">DELIVERING</option>
+												<option value="5">COMPLETED</option>
+											</select>
+											<div class="dropDownSelect2"></div>
+
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" onclick="updateCate(event);"
+					class="btn btn-info">Cập nhật</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+			</div>
+		</div>
+	</div>
+
 </div>

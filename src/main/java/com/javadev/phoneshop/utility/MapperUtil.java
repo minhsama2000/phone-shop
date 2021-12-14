@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javadev.phoneshop.dto.CartItemDto;
+import com.javadev.phoneshop.dto.OrderDto;
 import com.javadev.phoneshop.entity.DhCart;
 import com.javadev.phoneshop.entity.DhOrder;
 import com.javadev.phoneshop.entity.DhProduct;
@@ -22,6 +23,22 @@ public class MapperUtil {
 			return null;
 		}
 	}
+
+	
+	public static OrderDto convertDhOrderToDto(DhOrder dhOrder) {
+		OrderDto dto = new OrderDto();
+		try {
+			dto.setId(dhOrder.getId());
+			dto.setCodeName(dhOrder.getCodeName());
+			dto.setCreatedDate(dhOrder.getCreatedDate());
+			dto.setTotal(dhOrder.getTotal());
+			dto.setOrderStatus(StringUtil.setOrderStatus(dhOrder.getOrderStatus()));
+			return dto;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return dto;
+		}
+	}
 	
 	public static DhOrder convertModelToEntityOrder(UserInfoModel userInfoModel) {
 		DhOrder dhOrder = new DhOrder();
@@ -32,6 +49,7 @@ public class MapperUtil {
 			dhOrder.setCustomerEmail(userInfoModel.getCustomerEmail());
 			dhOrder.setCodeName(StringUtil.randomOrderCode());	
 			dhOrder.setCreatedDate(new Date());
+			dhOrder.setOrderStatus(1);
 			return dhOrder;
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -3,10 +3,6 @@ function validateOrder(){
 	var email = $("#customerEmail").val();
 	var address = $("#customerAddress").val();
 	var phone = $("#customerPhone").val();
-	console.log(fullname)
-	console.log(email)
-	console.log(address)
-	console.log(phone)
 	if(fullname == ""){
 		alert("tên không được trống!")
 		return false;
@@ -41,11 +37,13 @@ function loadCartCheckout(){
 		success:function(responseData){
 			var html = "";
 			var data = responseData.data;
-			for(var i=0;i<data.length;i++){		
-				html += '<li class="product_name">'+data[i].name+' <strong'
-					+' class="product_quantity">× '+data[i].quantity+'</strong>'
-					+' <span class="totalSingleCheckout">'+data[i].quantity*data[i].price  +'đ</span>	</li>';
-				total += data[i].price*data[i].quantity;
+			if(responseData.status == 200){
+				for(var i=0;i<data.length;i++){		
+					html += '<li class="product_name">'+data[i].name+' <strong'
+						+' class="product_quantity">× '+data[i].quantity+'</strong>'
+						+' <span class="totalSingleCheckout">'+data[i].quantity*data[i].price  +'đ</span>	</li>';
+					total += data[i].price*data[i].quantity;
+				}
 			}
 			$("#totalCheckout").html(total+"đ")
 			$("#orderCheckout").html(html);

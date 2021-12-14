@@ -34,7 +34,6 @@ if (principal instanceof UserDetails) {
 <link rel="stylesheet" href="/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="/assets/owl.theme.default.min.css">
 <link rel="stylesheet" href="/css/product_detail.css">
-<link rel="stylesheet" href="/css/check_out.css">
 <link rel="stylesheet" href="/css/cart_list.css">
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/contact.css">

@@ -11,8 +11,8 @@ $('#dataTableProduct').DataTable({
         "columns": [
           { data: "id"},
           { data: "name" },
-          { data: "created_date" },
-          { data: "updated_date" },
+          { data: "createdDate" },
+          { data: "updatedDate" },
         ],
         "columnDefs": [{
         	"targets":4,

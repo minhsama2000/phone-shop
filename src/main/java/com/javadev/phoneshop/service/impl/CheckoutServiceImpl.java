@@ -1,6 +1,5 @@
 package com.javadev.phoneshop.service.impl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +26,6 @@ import com.javadev.phoneshop.service.CheckoutService;
 import com.javadev.phoneshop.utility.DateUtil;
 import com.javadev.phoneshop.utility.MapperUtil;
 import com.javadev.phoneshop.utility.SecurityUtil;
-import com.javadev.phoneshop.utility.StringUtil;
 
 @Service
 public class CheckoutServiceImpl implements CheckoutService {
@@ -75,32 +73,56 @@ public class CheckoutServiceImpl implements CheckoutService {
 		if (optionalUser.isPresent()) {
 			dhUser = optionalUser.get();
 		}
-
-		try {		
-				dhCart = cartRepository.findAllByUserId(dhUser.getId());
-				DhOrder dhOrder = MapperUtil.convertModelToEntityOrder(userInfoModel);			
-				dhOrder.setDhUser(dhUser);
-				DhOrderProduct dhOrderProduct = new DhOrderProduct();
-				long total = 0;
-				for (DhCart cart : dhCart) {
-					dhProduct = productRepository.findByProductId(cart.getProductId());
-					dhOrderProduct.setDhProduct(dhProduct);
-					dhOrderProduct.setQuantity(cart.getQuantity());
-					total += cart.getQuantity() * cart.getPrice();
-				}
-				dhOrder.setTotal(total);
-				dhOrder.addOrderProduct(dhOrderProduct);
-				dhOrderProduct.setOrder(orderRepository.save(dhOrder));
+		try {
+			dhCart = cartRepository.findAllByUserId(dhUser.getId());
+			DhOrder dhOrder = MapperUtil.convertModelToEntityOrder(userInfoModel);
+			dhOrder.setUserId(dhUser.getId());
+			DhOrderProduct dhOrderProduct = null;
+			long total = 0;
+			for (DhCart cart : dhCart) {
+				total += cart.getQuantity() * cart.getPrice();
+			}
+			dhOrder.setTotal(total);
+			DhOrder newOrder = orderRepository.save(dhOrder);
+			for (DhCart cart : dhCart) {
+				dhOrderProduct = new DhOrderProduct();
+				dhProduct = productRepository.findByProductId(cart.getProductId());
+				dhOrderProduct.setDhProduct(dhProduct);
+				dhOrderProduct.setQuantity(cart.getQuantity());
 				orderProductRepository.save(dhOrderProduct);
-				cartRepository.deleteAllCartByUserId(dhUser.getId());
-				apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", null);
-				return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+				dhOrderProduct.setOrder(newOrder);
+			}
+			cartRepository.deleteAllCartByUserId(dhUser.getId());
+			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", null);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
 		} catch (Exception e) {
 			// TODO: handle exception
 			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", null);
 			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
 		}
 
+	}
+
+	@Override
+	public ResponseEntity<ApiResponse> deleteOrder(Integer orderId) {
+		ApiResponse apiResponse = null;
+		DhOrder dhOrder = null;
+		try {
+			Optional<DhOrder> tempOrder = orderRepository.findById(orderId);
+			if (tempOrder.isPresent()) {
+				dhOrder = tempOrder.get();
+				if (dhOrder.getOrderStatus() < 2) {
+					orderProductRepository.deleteByOrderId(orderId);
+					orderRepository.deleteById(orderId);
+				}
+			}
+			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", null);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+		} catch (Exception e) {
+			// TODO: handle exception
+			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", null);
+			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
+		}
 	}
 
 }

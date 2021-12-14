@@ -30,14 +30,14 @@
         "columns": [
           { data: "id"},
           { data: "name" },
-          { data: "created_date" },
-          { data: "updated_date" },
+          { data: "createdDate" },
+          { data: "updatedDate" },
         ],
         "columnDefs": [{
         	"targets":4,
         	"center":true,
         	"render": function(data,type,full,meta){
-        		var del = '<button onclick="editCategory()" class="btn btn-primary  update">Edit</button> <button class="btn btn-danger delete">Delele</button>';
+        		var del = '<button class="btn btn-primary  update">Edit</button> <button class="btn btn-danger delete">Delele</button>';
         		return del;
         	}
         	

@@ -46,7 +46,7 @@ public class CheckoutController {
 		if (optionalUser.isPresent()) {
 			dhUser = optionalUser.get();
 		}
-		if (cartRepository.findByUserId(dhUser.getId()).isPresent()) {
+		if (cartRepository.findAllByUserId(dhUser.getId()) != null) {
 			return checkoutService.saveOrder(userInfoModel);
 		} else {
 			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST)

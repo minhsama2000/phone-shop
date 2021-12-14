@@ -41,8 +41,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 						"/summernote/**", "/fonts/**", "/backend")
 				.permitAll()
 
-				.antMatchers("/admin/**").hasAnyAuthority("ADMIN","FULLCONTROL")
-				.antMatchers("/api-security/**","/checkout/**").hasAnyAuthority("ADMIN","USER","FULLCONTROl")
+//				.antMatchers("/admin/**").hasAnyAuthority("ADMIN","FULLCONTROL")
+//				.antMatchers("/api-security/**","/checkout/**").hasAnyAuthority("ADMIN","USER","FULLCONTROl")
 				.and().formLogin().loginPage("/login")
 				.loginProcessingUrl("/perform_login").defaultSuccessUrl("/home", true)
 				.failureUrl("/login?login_error=true").permitAll()

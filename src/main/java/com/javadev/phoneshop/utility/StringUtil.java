@@ -26,4 +26,19 @@ public class StringUtil {
 				.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
 
 	}
+
+	public static String setOrderStatus(Integer status) {
+		if(status == 1) {
+			return "Chờ xác nhận";
+		}if(status == 2) {
+			return "Đã xác nhận";
+		}
+		if(status == 3) {
+			return "Đang giao";
+		}
+		if(status == 4) {
+			return "Đã hoàn thành";
+		}
+		return "Lỗi trạng thái";
+	}
 }

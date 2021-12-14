@@ -18,4 +18,14 @@ public class AdminHomeController {
 	public String table() {
 		return "admin/table";
 	}
+	
+	@GetMapping("/order")
+	public String order() {
+		return "admin/order";
+	}
+	
+	@GetMapping("/user")
+	public String user() {
+		return "admin/user";
+	}
 }
