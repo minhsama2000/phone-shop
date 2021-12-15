@@ -1,7 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+.reviewOrder {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
 
+.reviewOrder td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+</style>
 <div class="modal" id="modalDialog" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -465,24 +477,37 @@
 								<hr>
 								<intput type="hidden" id="cateIdUpdate" />
 								<div class="form-group">
-									<label class="control-label" for="email">Chọn trạng thái:</label>
+									<label class="control-label" for="email">Chọn trạng
+										thái:</label>
 									<div class="col-sm-12">
-										<div class="rs-select2--trans rs-select2--sm">
-											<select class="js-select2"
-												onchange="updateOrderStatus('+ dataArr[i].id +', '+ dataArr[i].isPrepaid +',this)"
-												name="property">
-												<option selected="selected">' +
-													validateOrderStatus(dataArr[i].orderStatus) + '</option>
-												<option value="3">GETTING_GOODS</option>
-												<option value="4">DELIVERING</option>
-												<option value="5">COMPLETED</option>
-											</select>
-											<div class="dropDownSelect2"></div>
-
-										</div>
+										<div class="rs-select2--trans rs-select2--sm"
+											id="selectStatus"></div>
 
 									</div>
+
 								</div>
+								<div class="form-group" id="reviewUserOrder">
+									
+								</div>
+								<table class="reviewOrder">
+									<thead>
+										<tr>
+											<th>Product id</th>
+											<th>Product name</th>
+											<th>Quantity</th>
+											<th>Price</th>
+											<th>Total</th>
+										</tr>
+									</thead>
+									<tbody id="bodyReviewOrder">
+										<tr>
+											<td>Alfreds Futterkiste</td>
+											<td>Maria Anders</td>
+											<td>Germany</td>
+										</tr>
+									</tbody>
+
+								</table>
 
 							</div>
 						</div>
@@ -490,8 +515,55 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" onclick="updateCate(event);"
-					class="btn btn-info">Cập nhật</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="modal fade" id="detailUser" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header"></div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-header">User</div>
+							<div class="card-body">
+								<div class="card-title">
+									<h3 class="text-center title-2">Detail & Update role</h3>
+								</div>
+								<hr>
+								<intput type="hidden" id="cateIdUpdate" />
+								<div class="form-group">
+									<label class="control-label" for="email">Chọn quyền:</label>
+									<div class="col-sm-12">
+										<div class="rs-select2--trans rs-select2--sm"
+											id="selectUserRole"></div>
+
+									</div>
+
+								</div>
+								<div class="form-group">
+									<label class="control-label" for="email">Username: </label>
+									<div class="col-sm-12">
+										<h4 id="usernameDetail"></h4>
+									</div>
+
+								</div>
+								<label for="cc-name" class="control-label mb-1"></label> <img
+									id="outputUserRole" class="img-rounded" alt="" width="250"
+									height="200" src="" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 			</div>
 		</div>

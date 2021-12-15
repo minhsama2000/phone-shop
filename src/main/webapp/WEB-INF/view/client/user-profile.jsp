@@ -473,13 +473,16 @@ if (principal instanceof UserDetails) {
 				<div class="tab-pane" id="order">
 
 					<h2></h2>
-					<table id="orderUserTable">
+					<table class="table table-bordered" id="dataTableUser" width="100%"
+						cellspacing="0">
 						<thead>
 							<tr>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>4</td>
+								<th>id</th>
+								<th>Order code</th>
+								<th>Created date</th>
+								<th>Order status</th>
+								<th>Total</th>
+								<th></th>
 							</tr>
 						</thead>
 					</table>

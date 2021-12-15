@@ -11,6 +11,7 @@ import lombok.Setter;
 @ToString
 public class UserModel {
 	private String name;
+	private String username;
 	private String address;
 	private String email;
 	private String phone;

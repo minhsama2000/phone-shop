@@ -13,6 +13,7 @@ import lombok.*;
 @Getter
 @Setter
 @Table(name = "dh_product")
+@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties({ "category", "orderProducts" })
 public class DhProduct extends BaseEntity implements java.io.Serializable {
@@ -45,22 +46,6 @@ public class DhProduct extends BaseEntity implements java.io.Serializable {
 	@JoinColumn(name = "category_id")
 	private DhCategory category;
 
-	@OneToMany(mappedBy = "dhProduct", cascade = CascadeType.ALL)
-	private List<DhOrderProduct> orderProducts = new ArrayList<>();
-
-	@OneToMany(mappedBy = "dhProduct", cascade = CascadeType.ALL)
-	private List<Promotion> promotions = new ArrayList<Promotion>();
-
-	public void addOrderProduct(DhOrderProduct orderProduct) {
-		this.orderProducts.add(orderProduct);
-		orderProduct.setDhProduct(this);
-	}
-
-	public void removeOrderProduct(DhOrderProduct orderProduct) {
-		this.orderProducts.remove(orderProduct);
-		orderProduct.setDhProduct(null);
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -72,19 +57,18 @@ public class DhProduct extends BaseEntity implements java.io.Serializable {
 		DhProduct dhProduct = (DhProduct) o;
 		return Objects.equals(name, dhProduct.name) && Objects.equals(detailDescription, dhProduct.detailDescription)
 				&& Objects.equals(price, dhProduct.price) && Objects.equals(seo, dhProduct.seo)
-				&& Objects.equals(category, dhProduct.category)
-				&& Objects.equals(orderProducts, dhProduct.orderProducts);
+				&& Objects.equals(category, dhProduct.category);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), name, detailDescription, price, seo, category, orderProducts);
+		return Objects.hash(super.hashCode(), name, detailDescription, price, seo, category);
 	}
 
 	@Override
 	public String toString() {
 		return "DhProduct [name=" + name + ", detailDescription=" + detailDescription + ", price=" + price + ", seo="
-				+ seo + ", category=" + category + ", orderProducts=" + orderProducts + ", getId()=" + getId() + "]";
+				+ seo + ", category=" + category  + ", getId()=" + getId() + "]";
 	}
 
 }

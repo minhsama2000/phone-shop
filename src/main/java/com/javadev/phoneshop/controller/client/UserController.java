@@ -2,6 +2,8 @@ package com.javadev.phoneshop.controller.client;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -28,6 +30,12 @@ public class UserController {
 
 	@PutMapping("/user-update")
 	public ResponseEntity<ApiResponse> updateUser(@ModelAttribute UserModel userModel) {
+		String username = "";
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+			username = ((UserDetails) principal).getUsername();
+		}
+		userModel.setUsername(username);
 		return userService.update(userModel);
 	}
 }

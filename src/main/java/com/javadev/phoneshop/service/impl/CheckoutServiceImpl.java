@@ -87,7 +87,10 @@ public class CheckoutServiceImpl implements CheckoutService {
 			for (DhCart cart : dhCart) {
 				dhOrderProduct = new DhOrderProduct();
 				dhProduct = productRepository.findByProductId(cart.getProductId());
-				dhOrderProduct.setDhProduct(dhProduct);
+				dhOrderProduct.setProductId(cart.getProductId());
+				dhOrderProduct.setProductId(cart.getProductId());
+				dhOrderProduct.setName(dhProduct.getName());
+				dhOrderProduct.setPrice(dhProduct.getPrice());
 				dhOrderProduct.setQuantity(cart.getQuantity());
 				orderProductRepository.save(dhOrderProduct);
 				dhOrderProduct.setOrder(newOrder);

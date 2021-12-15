@@ -2,7 +2,9 @@ package com.javadev.phoneshop.service.impl;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import com.javadev.phoneshop.constant.Constant;
 import com.javadev.phoneshop.dto.ApiResponse;
+import com.javadev.phoneshop.dto.UserAndRoleDto;
+import com.javadev.phoneshop.dto.UserDto;
 import com.javadev.phoneshop.entity.DhUser;
 import com.javadev.phoneshop.model.SignUpModel;
 import com.javadev.phoneshop.model.UserModel;
@@ -21,7 +25,7 @@ import com.javadev.phoneshop.repository.RoleRepository;
 import com.javadev.phoneshop.repository.UserRepository;
 import com.javadev.phoneshop.service.UserService;
 import com.javadev.phoneshop.utility.DateUtil;
-import com.javadev.phoneshop.utility.SecurityUtil;
+import com.javadev.phoneshop.utility.MapperUtil;
 import com.javadev.phoneshop.utility.StringUtil;
 
 @Service
@@ -58,10 +62,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public ResponseEntity<ApiResponse> update(UserModel userModel) {
 		ApiResponse apiResponse = null;
-		userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		DhUser dhUser = null;
 		try {
-			Optional<DhUser> optionalUser = userRepository.findByUsername(userDetails.getUsername());
+			Optional<DhUser> optionalUser = userRepository.findByUsername(userModel.getUsername());
 			if (optionalUser.isPresent()) {
 				dhUser = optionalUser.get();
 			}
@@ -82,6 +85,73 @@ public class UserServiceImpl implements UserService {
 		} catch (Exception e) {
 			// TODO: handle exception
 			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", dhUser);
+			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
+		}
+
+	}
+	
+	@Override
+	public ResponseEntity<ApiResponse> updateRole(Integer userId, String role) {
+		ApiResponse apiResponse = null;
+		DhUser dhUser = null;
+		try {
+			Optional<DhUser> optionalUser = userRepository.findById(userId);
+			if (optionalUser.isPresent()) {
+				dhUser = optionalUser.get();
+			}
+			if(!role.equals("FULLCONTROL")) {
+				dhUser.getDhRoles().add(roleRepository.findByName(role).get());
+				dhUser.setUpdatedDate(new Date());
+				userRepository.save(dhUser);
+			}else {
+				apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "cannot change role", role);
+				return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
+			}
+			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", role);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+		} catch (Exception e) {
+			// TODO: handle exception
+			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", role);
+			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
+		}
+
+	}
+	
+	@Override
+	public ResponseEntity<ApiResponse> getAll() {
+		ApiResponse apiResponse = null;
+		List<DhUser> dhUsers = null;
+		List<UserAndRoleDto> userAndRoleDtos = null;
+		try {
+			dhUsers = userRepository.findAll();
+			userAndRoleDtos = dhUsers.stream()
+                    .map(val -> MapperUtil.getDtoFromUserAndRole(val)).collect(Collectors.toList());
+			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", userAndRoleDtos);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+		} catch (Exception e) {
+			// TODO: handle exception
+			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", userAndRoleDtos);
+			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
+		}
+
+	}
+	
+	@Override
+	public ResponseEntity<ApiResponse> getOne(Integer id) {
+		ApiResponse apiResponse = null;
+		UserAndRoleDto dhUserDto = null;
+		DhUser dhUser = null;
+		try {
+			Optional<DhUser> optionalUser = userRepository.findById(id);
+			if(optionalUser.isPresent()) {
+				dhUser = optionalUser.get();
+				dhUserDto = MapperUtil.getDtoFromUserAndRole(dhUser);
+			}		
+			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", dhUserDto);
+			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+		} catch (Exception e) {
+			// TODO: handle exception
+			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", dhUserDto);
 			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
 		}
 

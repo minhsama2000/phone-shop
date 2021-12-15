@@ -50,6 +50,7 @@
 								<th>id</th>
 								<th>Order code</th>
 								<th>Created date</th>
+								<th>Order status</th>
 								<th>Total</th>
 								<th></th>
 							</tr>

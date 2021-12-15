@@ -1,5 +1,7 @@
 package com.javadev.phoneshop.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,4 +17,7 @@ public interface OrderProductRepository extends JpaRepository<DhOrderProduct, In
 	@Transactional
 	@Modifying
 	void deleteByOrderId(@Param("orderId") Integer orderId);
+	
+	@Query(value = "from DhOrderProduct where order.id = :orderId")
+    List<DhOrderProduct> findByOrderId(@Param("orderId") Integer orderId);
 }

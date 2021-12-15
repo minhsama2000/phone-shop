@@ -62,10 +62,11 @@
 <script src="/admin/js/demo/datatables-demo.js"></script>
 <script src="/admin/js/demo/product.js"></script>
 <script src="/admin/js/demo/order.js"></script>
+<script src="/admin/js/demo/user.js"></script>
 <script src="/admin/js/demo/chart-area-demo.js"></script>
 <script>
 	$('.summernote').summernote({
-		placeholder : 'Hello Bootstrap 4',
+		placeholder : 'hello world',
 		tabsize : 2,
 		height : 100
 	});

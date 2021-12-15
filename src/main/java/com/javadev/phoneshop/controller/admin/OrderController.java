@@ -5,7 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javadev.phoneshop.dto.ApiResponse;
@@ -25,9 +27,19 @@ public class OrderController {
 		return orderService.getAll();
 	}
 	
+	@GetMapping("/orders-status")
+	public ResponseEntity<ApiResponse> getAllByOrderStatus(@RequestParam int status) {
+		return orderService.getAllByOrderStatus(status);
+	}
+	
 	@GetMapping("/order/{id}")
 	public ResponseEntity<ApiResponse> getOne(@PathVariable Integer id){
-		
+		return orderService.getOne(id);
+	}
+	
+	@PutMapping("/order")
+	public ResponseEntity<ApiResponse> update(@RequestParam Integer orderId,@RequestParam int orderStatus){
+		return orderService.update(orderId, orderStatus);
 	}
 	
 	@DeleteMapping("/order/{id}")

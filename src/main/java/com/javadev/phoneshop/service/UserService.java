@@ -17,4 +17,10 @@ public interface UserService {
 	Optional<DhUser> findByEmail(String email);
 
 	ResponseEntity<ApiResponse> update(UserModel userModel);
+
+	ResponseEntity<ApiResponse> getAll();
+
+	ResponseEntity<ApiResponse> getOne(Integer id);
+
+	ResponseEntity<ApiResponse> updateRole(Integer userId, String role);
 }
