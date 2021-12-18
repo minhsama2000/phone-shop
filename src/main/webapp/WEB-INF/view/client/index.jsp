@@ -51,7 +51,7 @@
 
 						<c:forEach var="blog" items="${topBlog}">
 							<div class="side-bar-item">
-								<a class="row" href="">
+								<a class="row" href="/detail-blog?id=${blog.id}">
 									<div class="col c side-bar-img ">
 										<img src="/upload/blog/${blog.avatar}" alt="">
 									</div>
@@ -123,7 +123,7 @@
 					<ul class="row no-gutters nav-bar-list">
 						<c:forEach var="laptop" items="${laptops}">
 							<li class="nav-bar-item"><a
-								onclick="toolProduct(${laptop.id})"> ${laptop.name} </a></li>
+								onclick="laptopProduct(${laptop.id})"> ${laptop.name} </a></li>
 						</c:forEach>
 					</ul>
 				</div>

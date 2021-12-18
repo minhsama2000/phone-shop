@@ -15,7 +15,7 @@ $('#dataTableOrder').DataTable({
         	"targets":4,
         	"center":true,
         	"render": function(data,type,full,meta){
-        		var del = '<button class="btn btn-primary  update">Edit</button> <button class="btn btn-danger delete">Delele</button>';
+        		var del = '<button class="btn btn-primary update">Cập nhật</button> <button class="btn btn-danger delete">Xóa</button>';
         		return del;
         	}
         	
@@ -39,7 +39,7 @@ $('#dataTableDonOder').DataTable({
       	"targets":4,
       	"center":true,
       	"render": function(data,type,full,meta){
-      		var del = '<button class="btn btn-primary  update">Edit</button> <button class="btn btn-danger delete">Delele</button>';
+      		var del = '<button class="btn btn-primary update">Chi tiết</button>';
       		return del;
       	}
       	
@@ -187,6 +187,9 @@ $(document).ready(function(){
 						success : function(data){
 								$('#dataTableOrder').DataTable().ajax.reload();
 								$("#confirmDeleteOrder").modal("hide");	
+								if(data.status == 415){
+									alert(data.message)
+								}
 						},
 						error : function(jqXHR,testStatus,errorThrown){	
 							$('#dataTableOrder').DataTable().ajax.reload();

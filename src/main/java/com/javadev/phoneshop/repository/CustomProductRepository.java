@@ -18,4 +18,6 @@ public interface CustomProductRepository {
 	List<DhProduct> findBySearchText(String searchText);
 
 	List<DhProduct> findTopAsc(int limitTop);
+
+	List<DhProduct> findByRandom(int limitTop);
 }

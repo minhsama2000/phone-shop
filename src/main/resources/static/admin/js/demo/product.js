@@ -18,7 +18,7 @@ $('#dataTableProduct').DataTable({
         	"targets":4,
         	"center":true,
         	"render": function(data,type,full,meta){
-        		var del = '<button onclick="editCategory()" class="btn btn-primary  update">Edit</button> <button class="btn btn-danger delete">Delele</button>';
+        		var del = '<button onclick="editCategory()" class="btn btn-primary  update">Cập nhật</button> <button class="btn btn-danger delete">Xóa</button>';
         		return del;
         	}
         	
@@ -107,6 +107,7 @@ $("#dataTableProduct").on('click', '.delete', function() {
 
 function deleteProduct(){
 	var idProduct = document.getElementById("idForDeleteProduct").value;
+	console.log(idProduct)
 	$.ajax({
 		url : "/admin/api/v1/product/product?id="+idProduct,
 		method : "DELETE",

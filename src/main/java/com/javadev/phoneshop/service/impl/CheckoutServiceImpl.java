@@ -27,7 +27,7 @@ import com.javadev.phoneshop.utility.DateUtil;
 import com.javadev.phoneshop.utility.MapperUtil;
 import com.javadev.phoneshop.utility.SecurityUtil;
 
-@Service
+@Service("checkoutService")
 public class CheckoutServiceImpl implements CheckoutService {
 
 	private UserRepository userRepository;
@@ -93,7 +93,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 				dhOrderProduct.setPrice(dhProduct.getPrice());
 				dhOrderProduct.setQuantity(cart.getQuantity());
 				orderProductRepository.save(dhOrderProduct);
-				dhOrderProduct.setOrder(newOrder);
+				dhOrderProduct.setOrderId(newOrder.getId());;
 			}
 			cartRepository.deleteAllCartByUserId(dhUser.getId());
 			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", null);
@@ -117,10 +117,12 @@ public class CheckoutServiceImpl implements CheckoutService {
 				if (dhOrder.getOrderStatus() < 2) {
 					orderProductRepository.deleteByOrderId(orderId);
 					orderRepository.deleteById(orderId);
+					apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", null);
+					return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
 				}
 			}
-			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", null);
-			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
+			apiResponse = new ApiResponse(415, DateUtil.toStrDate(new Date()), "cannot delete", null);
+			return new ResponseEntity<ApiResponse>(HttpStatus.CONFLICT).ok(apiResponse);
 		} catch (Exception e) {
 			// TODO: handle exception
 			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", null);

@@ -19,25 +19,20 @@
 							</div>
 						</div>
 						<div class="col-litle l-7 product-main-infor">
-							<h4 class="product-title-infor">${product.name}
-							</h4>
+							<h4 class="product-title-infor">${product.name}</h4>
 							<p class="product-price-infor">
 								giá: <span> ${product.price}₫ </span>
 							</p>
 							<ul class="product-promotion-infor">
 								<span>khuyến mại</span>
 								<li><i class="fas fa-check"></i>
-									<p>Lorem ipsum dolor sit, amet consectetur adipisicing
-										elit. Veritatis, rerum.</p></li>
+									<p>Giảm từ 100K đến 500K cho khách mua lần 2, khách cũ giới thiệu khách mới. </p></li>
 								<li><i class="fas fa-check"></i>
-									<p>Lorem ipsum dolor sit, amet consectetur adipisicing
-										elit. Veritatis, rerum.</p></li>
+									<p>Có chương trình hỗ trợ trả góp linh hoạt hấp dẫn. </p></li>
 								<li><i class="fas fa-check"></i>
-									<p>Lorem ipsum dolor sit, amet consectetur adipisicing
-										elit. Veritatis, rerum.</p></li>
+									<p>Có hỗ trợ Free Ship. </p></li>
 								<li><i class="fas fa-check"></i>
-									<p>Lorem ipsum dolor sit, amet consectetur adipisicing
-										elit. Veritatis, rerum.</p></li>
+									<p>Bảo hành miễn phí cả cháy nổ IC (các nơi khác từ chối bảo hành). </p></li>
 
 							</ul>
 							<form name="form-buy" action="">
@@ -81,7 +76,8 @@
 										class="quantity-number"> <span class="quantity-add">+</span>
 								</div>
 								<div class="buttom-block">
-									<button name="addtocart" type="button" onClick="addToCart(${product.id},1)">
+									<button name="addtocart" type="button"
+										onClick="addToCart(${product.id},1)">
 										<h4>thêm vào giỏ hàng</h4>
 										<p>giao tận nơi, lắp đặt miễn phí</p>
 									</button>
@@ -146,8 +142,7 @@
 					</div>
 					<div class="product-desc mb-20">
 						<div class="product-desc-feature">
-							${product.detailDescription}
-						</div>
+							${product.detailDescription}</div>
 
 					</div>
 					<div class="product-same">
@@ -157,112 +152,38 @@
 							</div>
 						</div>
 						<div class="row mb-20">
-							<div class="col l-3 ">
-								<div class="product-item">
-									<a href="">
-										<div class="product-item-img">
-											<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
-										</div>
-										<div class="product-item-desc">
-											<h3 class="product-item-title">iphone 7</h3>
-											<span class="product-item-price"> 18.600.0000đ </span>
-										</div>
-									</a>
+							<c:forEach var="product" items="${ascProducts}">
+								<div class="col l-3 ">
+									<div class="product-item">
+										<a href="/product-details?id=${product.id}">
+											<div class="product-item-img">
+												<img src="/upload/product/${product.avatar}" alt="" srcset="">
+											</div>
+											<div class="product-item-desc">
+												<h3 class="product-item-title">${product.name}</h3>
+												<span class="product-item-price"> ${product.price}đ </span>
+											</div>
+										</a>
+									</div>
 								</div>
-							</div>
-							<div class="col l-3 ">
-								<div class="product-item">
-									<a href="">
-										<div class="product-item-img">
-											<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
-										</div>
-										<div class="product-item-desc">
-											<h3 class="product-item-title">iphone 7</h3>
-											<span class="product-item-price"> 18.600.0000đ </span>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col l-3 ">
-								<div class="product-item">
-									<a href="">
-										<div class="product-item-img">
-											<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
-										</div>
-										<div class="product-item-desc">
-											<h3 class="product-item-title">iphone 7</h3>
-											<span class="product-item-price"> 18.600.0000đ </span>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col l-3 ">
-								<div class="product-item">
-									<a href="">
-										<div class="product-item-img">
-											<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
-										</div>
-										<div class="product-item-desc">
-											<h3 class="product-item-title">iphone 7</h3>
-											<span class="product-item-price"> 18.600.0000đ </span>
-										</div>
-									</a>
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 						<div class="row">
-							<div class="col l-3 ">
-								<div class="product-item">
-									<a href="">
-										<div class="product-item-img">
-											<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
-										</div>
-										<div class="product-item-desc">
-											<h3 class="product-item-title">iphone 7</h3>
-											<span class="product-item-price"> 18.600.0000đ </span>
-										</div>
-									</a>
+							<c:forEach var="product" items="${ascProducts1}">
+								<div class="col l-3 ">
+									<div class="product-item">
+										<a href="/product-details?id=${product.id}">
+											<div class="product-item-img">
+												<img src="/upload/product/${product.avatar}" alt="" srcset="">
+											</div>
+											<div class="product-item-desc">
+												<h3 class="product-item-title">${product.name}</h3>
+												<span class="product-item-price"> ${product.price}đ </span>
+											</div>
+										</a>
+									</div>
 								</div>
-							</div>
-							<div class="col l-3 ">
-								<div class="product-item">
-									<a href="">
-										<div class="product-item-img">
-											<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
-										</div>
-										<div class="product-item-desc">
-											<h3 class="product-item-title">iphone 7</h3>
-											<span class="product-item-price"> 18.600.0000đ </span>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col l-3 ">
-								<div class="product-item">
-									<a href="">
-										<div class="product-item-img">
-											<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
-										</div>
-										<div class="product-item-desc">
-											<h3 class="product-item-title">iphone 7</h3>
-											<span class="product-item-price"> 18.600.0000đ </span>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class="col l-3 ">
-								<div class="product-item">
-									<a href="">
-										<div class="product-item-img">
-											<img src="/images/iP11-6-510x510-1.jpg" alt="" srcset="">
-										</div>
-										<div class="product-item-desc">
-											<h3 class="product-item-title">iphone 7</h3>
-											<span class="product-item-price"> 18.600.0000đ </span>
-										</div>
-									</a>
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -274,33 +195,16 @@
 							</div>
 						</div>
 						<div class="side-bar-content">
+							<c:forEach var="blog" items="${topBlog}">
 							<div class="side-bar-item">
-								<a class="row" href="">
+								<a class="row" href="/detail-blog?id=${blog.id}">
 									<div class="col c side-bar-img ">
-										<img src="/images/sider-bar.jpg" alt="">
+										<img src="/upload/blog/${blog.avatar}" alt="">
 									</div>
-									<p class="col col-litle">Lorem ipsum dolor sit amet
-										consectetur adipisicing elit. Cum mollitia asperiores</p>
+									<p class="col col-litle">${blog.thumbnail}</p>
 								</a>
 							</div>
-							<div class="side-bar-item">
-								<a class="row" href="">
-									<div class="col c side-bar-img ">
-										<img src="/images/sider-bar1.jpg" alt="">
-									</div>
-									<p class="col col-litle">Lorem ipsum dolor sit amet
-										consectetur adipisicing elit. Cum mollitia asperiores</p>
-								</a>
-							</div>
-							<div class="side-bar-item">
-								<a class="row" href="">
-									<div class="col c side-bar-img ">
-										<img src="/images/sider-bar2.jpg" alt="">
-									</div>
-									<p class="col col-litle">Lorem ipsum dolor sit amet
-										consectetur adipisicing elit. Cum mollitia asperiores</p>
-								</a>
-							</div>
+						</c:forEach>
 						</div>
 						<div class="side-bar-banner">
 							<img src="/images/sider-bar-banner.jpg" alt="" srcset="">

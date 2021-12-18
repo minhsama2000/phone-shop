@@ -100,6 +100,7 @@ public class UserServiceImpl implements UserService {
 				dhUser = optionalUser.get();
 			}
 			if(!role.equals("FULLCONTROL")) {
+				dhUser.getDhRoles().clear();
 				dhUser.getDhRoles().add(roleRepository.findByName(role).get());
 				dhUser.setUpdatedDate(new Date());
 				userRepository.save(dhUser);

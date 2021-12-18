@@ -16,26 +16,26 @@
 				<h4 class="contact-title">CÔNG TY TNHH CÔNG NGHỆ TRUYỀN THÔNG</h4>
 				<ul class="contact-list">
 					<li class="contact-item"><i class="fas fa-map-marker-alt"></i>
-						<span> <strong>Trụ sở chính:</strong> Lorem ipsum dolor,
-							sit amet consectetur adipisicing elit.
+						<span> <strong>Trụ sở chính:</strong> 196 Hoàng Diệu- Đà
+							Nẵng
 					</span></li>
 					<li class="contact-item"><i class="fas fa-map-marker-alt"></i>
-						<span> <strong>chi nhánh Hà Nội:</strong> Lorem ipsum
-							dolor, sit amet consectetur adipisicing elit.
+						<span> <strong>chi nhánh Hà Nội:</strong> 244 Lê Thanh
+							Nghị, Hai Bà Trưng, Hà Nội.
 					</span></li>
 					<li class="contact-item"><i class="fas fa-map-marker-alt"></i>
-						<span> <strong>chi nhánh Đà Nẵng:</strong> Lorem ipsum
-							dolor, sit amet consectetur adipisicing elit.
+						<span> <strong>chi nhánh Đà Nẵng:</strong> Nguyễn Đình Tứ,
+							Hoà Minh, Liên Chiểu, Đà Nẵng 550000, Việt Nam
 					</span></li>
 					<li class="contact-item"><i class="fas fa-map-marker-alt"></i>
-						<span> <strong>chi nhánh Lâm Đồng:</strong> Lorem ipsum
-							dolor, sit amet consectetur adipisicing elit.
+						<span> <strong>chi nhánh Lâm Đồng:</strong> 57 Nguyễn Đình
+							Chiểu, Lộc Phát, Bảo Lộc, Lâm Đồng, Việt Nam
 					</span></li>
 					<li class="contact-item"><i class="fas fa-phone"></i> <span>
 							<strong>Điện thoại:</strong> 097899999
 					</span></li>
 					<li class="contact-item"><i class="fas fa-envelope"></i> <span>
-							<strong>Email:</strong> abc@gmail.com
+							<strong>Email:</strong> phoneshop@gmail.com
 					</span></li>
 				</ul>
 
@@ -46,8 +46,8 @@
 						<div class="form-group">
 							<label for="fullname" class="form-label">Tên đầy đủ</label> <input
 								id="contact_name" name="fullname" type="text"
-								placeholder="nhập tên đầy đủ" class="form-control" />
-							<span class="form-message"></span>
+								placeholder="nhập tên đầy đủ" class="form-control" /> <span
+								class="form-message"></span>
 						</div>
 
 						<div class="form-group">
@@ -67,7 +67,8 @@
 							<textarea name="messeage" id="contact_message" cols="30" rows="5"
 								placeholder="Tin nhắn"></textarea>
 						</div>
-						<button type="button" onclick="sendContact()" class="form-submit">Gửi đi</button>
+						<button type="button" onclick="sendContact()" class="form-submit">Gửi
+							đi</button>
 					</div>
 				</form>
 

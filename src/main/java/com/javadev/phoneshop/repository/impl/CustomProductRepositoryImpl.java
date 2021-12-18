@@ -33,6 +33,15 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
 	}
 	
 	@Override
+	public List<DhProduct> findByRandom(int limitTop){
+		String sql = "SELECT * FROM dh_product ORDER BY RAND()";
+		List<DhProduct> dhProducts = null;
+		Query query = entityManager.createNativeQuery(sql, DhProduct.class);
+		dhProducts = query.setMaxResults(limitTop).getResultList();
+		return dhProducts;
+	}
+	
+	@Override
 	public List<DhProduct> findByCategoryIdWithPage(int page, int size, Integer categoryId) {
 		String sql = "select r.* from ( select r.*, ROW_NUMBER() over(PARTITION BY r.category_id) " + 
 				"rn from dh_product r ) r where r.category_id in (:inIdList)";

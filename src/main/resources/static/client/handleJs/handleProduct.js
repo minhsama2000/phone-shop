@@ -34,11 +34,16 @@ function addToCart(productId,quantity){
 		success:function(responseData){
 			if(responseData.status == 200){
 				alert("success");
-			}		
+			}else{
+				window.location.href = "/login"
+			}
 		},
 		error : function(jqXhr, textStatus, errorMessage) { // error
-			// callback			
-				window.location.href="/login"			
+			// callback		
+//			 if (jqXhr.status == 404 && contentType.toLowerCase().indexOf("text/html") >= 0) {
+//			        // assume that our login has expired - reload our current page
+//			        window.location.href = "/login";
+//			    }
 		} 
 	});	
 }

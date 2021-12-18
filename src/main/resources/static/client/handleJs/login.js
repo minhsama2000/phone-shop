@@ -43,27 +43,31 @@ function validateFormRegister() {
 	let confirm_password = document.forms["registerForm"]["password_confirmation"].value;
 
 	if (fullname == "") {
-		alert("Email must be filled out");
+		alert("Tên không được trống");
 		return false;
 	}
 	if (email == "") {
-		alert("Email must be filled out");
+		alert("Email không được trống");
 		return false;
 	}
 	if (username == "") {
-		alert("username must be filled out");
+		alert("username không được trống");
 		return false;
 	}
 	if (name == "") {
-		alert("Name must be filled out");
+		alert("Tên không được trống");
 		return false;
 	}
 	if (password == "") {
-		alert("Name must be filled out");
+		alert("password không được trống");
 		return false;
 	}
 	if (confirm_password == "") {
-		alert("Verify password must be filled out");
+		alert("Tên không được trống");
+		return false;
+	}
+	if(!(password === confirm_password)){
+		alert("Password không giống nhau");
 		return false;
 	}
 	return true;

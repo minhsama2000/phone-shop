@@ -12,8 +12,7 @@
 			<li class="breadcrumb-item active">Blog</li>
 		</ol>
 
-		<button type="button" name="addBlog" id="addBlog" class="btn btn-info">Add
-			New</button>
+		<button type="button" name="addBlog" id="addBlog" class="btn btn-info">Thêm blog</button>
 		<!-- DataTables Example -->
 		<div class="card mb-3">
 			<div class="card-header">

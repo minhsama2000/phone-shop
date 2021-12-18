@@ -44,10 +44,10 @@ public class HomeController {
 
 	@RequestMapping(value = { "/index", "/home", "/" })
 	public String index(Model model) {
-		model.addAttribute("phones", categoryRepository.getChildById(14));
-		model.addAttribute("tablets", categoryRepository.getChildById(15));
-		model.addAttribute("tools", categoryRepository.getChildById(16));
-		model.addAttribute("laptops", categoryRepository.getChildById(17));
+		model.addAttribute("phones", categoryRepository.getChildById(1));
+		model.addAttribute("tablets", categoryRepository.getChildById(2));
+		model.addAttribute("tools", categoryRepository.getChildById(3));
+		model.addAttribute("laptops", categoryRepository.getChildById(4));
 		model.addAttribute("topBlog",blogRepository.findTopAsc(3));
 		return "client/index";
 	}
@@ -65,6 +65,9 @@ public class HomeController {
 	@GetMapping("/product-details")
 	public String productDetails(Model model, @RequestParam Integer id) {
 		model.addAttribute("product", productRepository.findById(id).get());
+		model.addAttribute("topBlog",blogRepository.findTopAsc(3));
+		model.addAttribute("ascProducts",productRepository.findByRandom(4));
+		model.addAttribute("ascProducts1",productRepository.findByRandom(4));
 		return "client/product-details";
 	}
 

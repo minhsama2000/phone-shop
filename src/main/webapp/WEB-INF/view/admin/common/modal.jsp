@@ -28,7 +28,7 @@
 				<p>Modal body text goes here.</p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
 			</div>
 		</div>
 	</div>
@@ -144,8 +144,8 @@
 			</div>
 			<div class="modal-footer">
 				<input type="hidden" id="idForDeleteCate" />
-				<button type="button" id="buttonDeleteCate" class="btn btn-primary">Delete</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" id="buttonDeleteCate" class="btn btn-primary">Xóa</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 			</div>
 		</div>
 
@@ -451,8 +451,8 @@
 			</div>
 			<div class="modal-footer">
 				<input type="hidden" id="idForDeleteOrder" />
-				<button type="button" id="buttonDeleteOrder" class="btn btn-primary">Delete</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" id="buttonDeleteOrder" class="btn btn-primary">Xóa</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 			</div>
 		</div>
 
@@ -535,7 +535,7 @@
 							<div class="card-header">User</div>
 							<div class="card-body">
 								<div class="card-title">
-									<h3 class="text-center title-2">Detail & Update role</h3>
+									<h3 class="text-center title-2">Chi tiết & Cập nhật quyền</h3>
 								</div>
 								<hr>
 								<intput type="hidden" id="cateIdUpdate" />
@@ -589,7 +589,7 @@
 									<hr>
 
 									<div class="form-group">
-										<label for="cc-payment" class="control-label mb-1">Thumbnail</label>
+										<label for="cc-payment" class="control-label mb-1">Tiêu đề</label>
 										<input id="blogThumbnail" name="thumbnail" type="text"
 											class="form-control" aria-required="true" data-val="true"
 											data-val-required="Please enter the name"
@@ -597,8 +597,7 @@
 											placeholder="6 ways to prepare breakfast for 30">
 									</div>
 									<div class="form-group has-success">
-										<label for="cc-name" class="control-label mb-1">Short
-											description</label>
+										<label for="cc-name" class="control-label mb-1">Mô tả ngắn</label>
 										<textarea class="form-control" id="shortDescription"
 											name="shortDescription"></textarea>
 										<span class="help-block field-validation-valid"
@@ -628,8 +627,7 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="form-group has-success">
-								<label for="cc-name" class="control-label mb-1">Detail
-									description</label>
+								<label for="cc-name" class="control-label mb-1">Mô tả chi tiết:</label>
 								<textarea class="summernote" id="detailsBlog" name="details"
 									type="text"></textarea>
 								<span class="help-block field-validation-valid"
@@ -641,11 +639,11 @@
 						<div>
 							<button onclick="addNewBlog(event);" type="submit"
 								class="btn btn-lg btn-info btn-block">
-								<span id="payment-button-amount">Submit</span> <span
+								<span id="payment-button-amount">Thêm</span> <span
 									id="payment-button-sending" style="display: none;">Sending</span>
 							</button>
 						</div>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 					</div>
 				</div>
 			</div>
@@ -663,7 +661,7 @@
 					<div class="row">
 						<div class="col-lg-8">
 							<div class="card">
-								<div class="card-header">Detail</div>
+								<div class="card-header">Chi tiết</div>
 								<div class="card-body">
 									<div class="card-title">
 										<h3 class="text-center title-2">Blog</h3>
@@ -671,7 +669,7 @@
 									<hr>
 									<input type="hidden" id="updateBlogId" name="id" />
 									<div class="form-group">
-										<label for="cc-payment" class="control-label mb-1">Thumbnail</label>
+										<label for="cc-payment" class="control-label mb-1">Tiêu đề</label>
 										<input id="detailBlogThumbnail" name="thumbnail" type="text"
 											class="form-control" aria-required="true" data-val="true"
 											data-val-required="Please enter the name"
@@ -679,8 +677,7 @@
 											placeholder="6 ways to prepare breakfast for 30">
 									</div>
 									<div class="form-group has-success">
-										<label for="cc-name" class="control-label mb-1">Short
-											description</label>
+										<label for="cc-name" class="control-label mb-1">Mô tả ngắn</label>
 										<textarea class="form-control" id="detailShortDescription"
 											name="shortDescription"></textarea>
 										<span class="help-block field-validation-valid"
@@ -711,8 +708,7 @@
 						<div class="col-lg-12">
 							<input type="hidden" id="currentPageBlog" name="currentPageBlog" />
 							<div class="form-group has-success">
-								<label for="cc-name" class="control-label mb-1">Detail
-									description</label>
+								<label for="cc-name" class="control-label mb-1">Mô tả chi tiết:</label>
 								<textarea class="summernote" id="updateDetailsBlog"
 									name="details" type="text"></textarea>
 								<span class="help-block field-validation-valid"
@@ -724,11 +720,11 @@
 						<div>
 							<button onclick="updateBlog(event);" type="submit"
 								class="btn btn-lg btn-info btn-block">
-								<span id="payment-button-amount">Submit</span> <span
+								<span id="payment-button-amount">Cập nhật</span> <span
 									id="payment-button-sending" style="display: none;">Sending</span>
 							</button>
 						</div>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 					</div>
 				</div>
 			</div>

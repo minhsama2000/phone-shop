@@ -13,7 +13,7 @@ Boolean authorGuest = SecurityContextHolder.getContext().getAuthentication().get
 Boolean authorAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
 		.anyMatch(r -> r.getAuthority().equals("ADMIN"));
 Boolean authorFullCT = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
-		.anyMatch(r -> r.getAuthority().equals("FULL_CONTROL"));
+		.anyMatch(r -> r.getAuthority().equals("FULLCONTROL"));
 if (principal instanceof UserDetails) {
 	username = ((UserDetails) principal).getUsername();
 }
@@ -168,7 +168,7 @@ if (principal instanceof UserDetails) {
 												<li class="col l-4 menu-top-item"><a href="">
 														khuyến mại </a></li>
 												<li class="col l-4 menu-top-item"><a
-													href="./contact.html">liên hệ</a></li>
+													href="/contact">liên hệ</a></li>
 											</ul>
 											<ul class="row menu-top-socical">
 												<a href="https://www.facebook.com/ngocquy.bui.1042"
@@ -287,28 +287,28 @@ if (principal instanceof UserDetails) {
 									class="fas fa-home"></i> trang chủ
 							</a></li>
 							<li class="nav-bar-item"><a
-								href="/search?categoryId=14&select=parent"> <i
+								href="/search?categoryId=1&select=parent"> <i
 									class="fas fa-mobile-alt"></i> điện thoại
 							</a>
 								<ul class="sub-menu" id="phone-menu">
 
 								</ul></li>
 							<li class="nav-bar-item"><a
-								href="/search?categoryId=15&select=parent"> <i
-									class="fas fa-tablet-alt"></i> ipad
+								href="/search?categoryId=2&select=parent"> <i
+									class="fas fa-tablet-alt"></i> tablet
 							</a>
 								<ul class="sub-menu" id="ipad-menu">
 
 								</ul></li>
 							<li class="nav-bar-item"><a
-								href="/search?categoryId=16&select=parent"> phụ kiện <i
+								href="/search?categoryId=3&select=parent"> phụ kiện <i
 									class="fas fa-headphones-alt"></i>
 							</a>
 								<ul class="sub-menu" id="tool-menu">
 
 								</ul></li>
 							<li class="nav-bar-item"><a
-								href="/search?categoryId=17&select=parent"> laptop <i
+								href="/search?categoryId=4&select=parent"> laptop <i
 									class="fas fa-laptop"></i>
 							</a>
 								<ul class="sub-menu" id="laptop-menu">

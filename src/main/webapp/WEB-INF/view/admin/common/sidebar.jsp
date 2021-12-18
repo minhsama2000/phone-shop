@@ -13,16 +13,16 @@
       <li class="nav-item">
         <a class="nav-link" href="/admin/table">
           <i class="fas fa-fw fa-table"></i>
-          <span>Category & Product</span></a>
+          <span>Danh mục & Sản phẩm</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
-          <span>User & Order</span>
+          <span>User & Đơn hàng</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="/admin/user">User</a>
-          <a class="dropdown-item" href="/admin/order">Order</a>
+          <a class="dropdown-item" href="/admin/order">Đơn hàng</a>
         </div>
       </li>
       <li class="nav-item">

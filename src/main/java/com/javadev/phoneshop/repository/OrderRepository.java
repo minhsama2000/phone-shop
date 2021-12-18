@@ -16,4 +16,6 @@ public interface OrderRepository extends JpaRepository<DhOrder, Integer>{
     @Query(value = "select * from dh_order where user_id = :userId", nativeQuery = true)
     List<DhOrder> findByUserId(@Param("userId") Integer userId);
 	
+    @Query(value = "SELECT SUM(total) FROM dh_order where order_status = :status", nativeQuery = true)
+    Long totalEarn(@Param("status") int status);
 }	

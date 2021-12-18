@@ -39,7 +39,6 @@ public class CartController {
 	
 	@PutMapping("/cart")
 	public ResponseEntity<ApiResponse> updateCart(@RequestBody CartItemModel cartItemModel){
-		System.out.println(cartItemModel.toString());
 		return cartService.updateCart(cartItemModel);
 	}
 	

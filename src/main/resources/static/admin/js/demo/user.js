@@ -15,7 +15,7 @@ $('#dataTableUser').DataTable({
         	"targets":5,
         	"center":true,
         	"render": function(data,type,full,meta){
-        		var del = '<button class="btn btn-primary  update">Edit</button>';
+        		var del = '<button class="btn btn-primary  update">Cập nhật</button>';
         		return del;
         	}
         	

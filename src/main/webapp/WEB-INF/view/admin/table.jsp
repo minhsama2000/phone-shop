@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <jsp:include page="/WEB-INF/view/admin/common/navbar.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/admin/common/sidebar.jsp"></jsp:include>
 
@@ -12,7 +13,7 @@
 			<li class="breadcrumb-item active">Tables</li>
 		</ol>
 
-		<button type="button" name="addCate" id="addCate" class="btn btn-info">Add New</button>
+		<button type="button" name="addCate" id="addCate" class="btn btn-info">Thêm danh mục</button>
 		<!-- DataTables Example -->
 		<div class="card mb-3">
 			<div class="card-header">
@@ -38,7 +39,7 @@
 				11:59 PM</div>
 		</div>
 		
-		<button type="button" name="addProduct" id="addProduct" class="btn btn-info">Add New</button>
+		<button type="button" name="addProduct" id="addProduct" class="btn btn-info">Thêm sản phẩm</button>
 		<!-- DataTables Example -->
 		<div class="card mb-3">
 			<div class="card-header">

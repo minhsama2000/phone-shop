@@ -13,11 +13,11 @@ import com.javadev.phoneshop.entity.DhOrderProduct;
 
 public interface OrderProductRepository extends JpaRepository<DhOrderProduct, Integer> {
 
-	@Query(value = "delete from DhOrderProduct where order.id = :orderId")
+	@Query(value = "delete from dh_order_product where order_id = :orderId",nativeQuery = true)
 	@Transactional
 	@Modifying
 	void deleteByOrderId(@Param("orderId") Integer orderId);
 	
-	@Query(value = "from DhOrderProduct where order.id = :orderId")
+	@Query(value = "select * from dh_order_product where order_id = :orderId",nativeQuery = true)
     List<DhOrderProduct> findByOrderId(@Param("orderId") Integer orderId);
 }

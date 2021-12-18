@@ -1,14 +1,14 @@
 (function (){
 	load();
 	setNewProduct();
-	phoneProduct(18);
-	tabletProduct(22);
-	toolProduct();
-	laptopProduct(24);
+	phoneProduct(5);
+	tabletProduct(8);
+	toolProduct(10);
+	laptopProduct(11);
 })();
 function load(){
 	$.ajax({
-		url : "/api/v1/category/category?id="+14,
+		url : "/api/v1/category/category?id="+1,
 		type:"GET",
 		success:function(responseData){
 			var html = "";
@@ -24,7 +24,7 @@ function load(){
 		} 
 	});	
 	$.ajax({
-		url : "/api/v1/category/category?id="+15,
+		url : "/api/v1/category/category?id="+2,
 		type:"GET",
 		success:function(responseData){
 			var html = "";
@@ -40,7 +40,7 @@ function load(){
 		} 
 	});	
 	$.ajax({
-		url : "/api/v1/category/category?id="+16,
+		url : "/api/v1/category/category?id="+3,
 		type:"GET",
 		success:function(responseData){
 			var html = "";
@@ -56,7 +56,7 @@ function load(){
 		} 
 	});	
 	$.ajax({
-		url : "/api/v1/category/category?id="+17,
+		url : "/api/v1/category/category?id="+4,
 		type:"GET",
 		success:function(responseData){
 			var html = "";

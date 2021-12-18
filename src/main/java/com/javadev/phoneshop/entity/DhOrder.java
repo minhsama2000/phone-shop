@@ -50,20 +50,6 @@ public class DhOrder extends BaseEntity implements java.io.Serializable {
 	@Column(name = "user_id",nullable = true)
 	private Integer userId;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "order")
-	@JsonProperty(value = "order_products")
-	private List<DhOrderProduct> orderProducts = new ArrayList<>();
-
-	public void addOrderProduct(DhOrderProduct orderProduct) {
-		this.orderProducts.add(orderProduct);
-		orderProduct.setOrder(this);
-	}
-
-	public void removeOrderProduct(DhOrderProduct orderProduct) {
-		this.orderProducts.remove(orderProduct);
-		orderProduct.setOrder(null);
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -77,13 +63,12 @@ public class DhOrder extends BaseEntity implements java.io.Serializable {
 				&& Objects.equals(customerEmail, dhOrder.customerEmail)
 				&& Objects.equals(customerPhone, dhOrder.customerPhone)
 				&& Objects.equals(customerAddress, dhOrder.customerAddress) && Objects.equals(seo, dhOrder.seo)
-				&& Objects.equals(total, dhOrder.total)
-				&& Objects.equals(orderProducts, dhOrder.orderProducts);
+				&& Objects.equals(total, dhOrder.total);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(super.hashCode(), codeName, customerName, customerEmail, customerPhone, customerAddress,
-				seo, total, orderProducts);
+				seo, total);
 	}
 }

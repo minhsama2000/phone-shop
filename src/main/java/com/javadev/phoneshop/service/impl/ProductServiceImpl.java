@@ -113,7 +113,9 @@ public class ProductServiceImpl implements ProductService {
 		DhProduct dhProduct = null;
 		ApiResponse apiResponse = null;
 		try {
+			System.out.println(id);
 			productRepository.deleteById(id);
+			System.out.println("here");
 			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", null);
 			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
 		} catch (Exception e) {

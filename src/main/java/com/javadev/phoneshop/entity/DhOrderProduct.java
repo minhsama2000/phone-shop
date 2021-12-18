@@ -32,9 +32,8 @@ public class DhOrderProduct extends BaseEntity implements java.io.Serializable {
 	@Column(name = "price")
 	private Long price;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "order_id")
-	private DhOrder order;
+	@Column(name = "order_id")
+	private Integer orderId;
 
 	@Override
 	public boolean equals(Object o) {
@@ -45,11 +44,11 @@ public class DhOrderProduct extends BaseEntity implements java.io.Serializable {
 		if (!super.equals(o))
 			return false;
 		DhOrderProduct that = (DhOrderProduct) o;
-		return quantity == that.quantity && Objects.equals(order, that.order);
+		return quantity == that.quantity;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), quantity, order);
+		return Objects.hash(super.hashCode(), quantity);
 	}
 }

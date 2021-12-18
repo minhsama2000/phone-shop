@@ -40,9 +40,9 @@
 					</div>
 					<div class="side-bar-content">
 
-						<c:forEach var="product" items="${topProducts }">
+						<c:forEach var="product" items="${topProducts}">
 							<div class="side-bar-item">
-								<a class="row" href="/product-detail?productId=">
+								<a class="row" href="/product-detail?id=${product.id}">
 									<div class="col c side-bar-img ">
 										<img src="/upload/product/${product.avatar}" alt="">
 									</div>
@@ -69,7 +69,7 @@
 						
 						<c:forEach var="blog" items="${topBlog}">
 						<div class="side-bar-item">
-							<a class="row" href="">
+							<a class="row" href="/detail-blog?id=${blog.id}">
 								<div class="col c side-bar-img ">
 									<img src="/upload/blog/${blog.avatar}" alt="">
 								</div>

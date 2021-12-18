@@ -10,12 +10,12 @@
 			<div class="product-show-nav">
 				<div class="nav-bar">
 					<span class="title-product"> danh sách sản phẩm tìm kiếm :
-						iphone 7 </span>
+						 </span>
 				</div>
 			</div>
 
 			<div class="row no-gutters products-show-list">
-				<div class="col l-12 navbar-filter">
+				<!-- <div class="col l-12 navbar-filter">
 					<ul class="row list-filter">
 						<li class="filter-item">
 							<div class="filter-price">
@@ -73,7 +73,7 @@
 							</a>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<c:forEach var="product" items="${products}">
 					<div class="col l-3 ">
 						<div class="product-item">
