@@ -15,6 +15,7 @@ import java.util.Objects;
 @Table(name = "dh_contact")
 @Setter
 @Getter
+@ToString
 public class DhContact extends BaseEntity implements java.io.Serializable {
 
 	@JsonProperty(value = "contact_email")
@@ -26,6 +27,9 @@ public class DhContact extends BaseEntity implements java.io.Serializable {
 	@JsonAlias(value = "name")
 	@Column(name = "name", nullable = false)
 	private String name;
+
+	@Column(name = "phone", nullable = false)
+	private String phone;
 
 	@JsonProperty(value = "contact_message")
 	@JsonAlias(value = "message")

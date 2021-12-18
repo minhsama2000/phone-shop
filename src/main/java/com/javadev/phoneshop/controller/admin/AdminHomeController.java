@@ -28,4 +28,9 @@ public class AdminHomeController {
 	public String user() {
 		return "admin/user";
 	}
+	
+	@GetMapping("/blog")
+	public String blog() {
+		return "admin/blog";
+	}
 }

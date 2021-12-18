@@ -27,7 +27,7 @@ public class DhProduct extends BaseEntity implements java.io.Serializable {
 	@Column(name = "price", nullable = false)
 	private Long price;
 	
-	@Column(name = "available", nullable = false)
+	@Column(name = "available", nullable = true)
 	private Long available;
 	
 	@Column(name = "color", nullable = true)

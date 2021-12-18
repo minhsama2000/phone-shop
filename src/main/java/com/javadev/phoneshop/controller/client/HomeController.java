@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.javadev.phoneshop.dto.CartItemDto;
 import com.javadev.phoneshop.entity.DhProduct;
 import com.javadev.phoneshop.entity.DhUser;
+import com.javadev.phoneshop.repository.BlogRepository;
 import com.javadev.phoneshop.repository.CategoryRepository;
 import com.javadev.phoneshop.repository.ProductRepository;
 import com.javadev.phoneshop.repository.UserRepository;
@@ -37,6 +38,9 @@ public class HomeController {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private BlogRepository blogRepository;
 
 	@RequestMapping(value = { "/index", "/home", "/" })
 	public String index(Model model) {
@@ -44,12 +48,18 @@ public class HomeController {
 		model.addAttribute("tablets", categoryRepository.getChildById(15));
 		model.addAttribute("tools", categoryRepository.getChildById(16));
 		model.addAttribute("laptops", categoryRepository.getChildById(17));
+		model.addAttribute("topBlog",blogRepository.findTopAsc(3));
 		return "client/index";
 	}
 	
 	@GetMapping("/cart-list")
 	public String cartList(Model model) {
 		return "client/cart-list";
+	}
+	
+	@GetMapping("/purchase")
+	public String purchase(Model model) {
+		return "dialog/purchase";
 	}
 	
 	@GetMapping("/product-details")
@@ -127,11 +137,6 @@ public class HomeController {
 	@GetMapping("/contact")
 	public String contact() {
 		return "client/contact";
-	}
-	
-	@GetMapping("/news")
-	public String news() {
-		return "client/news";
 	}
 	
 	@GetMapping("/checkout")

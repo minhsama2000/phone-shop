@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/client/common/header.jsp"></jsp:include>
+<link rel="stylesheet" href="/css/login.css">
 
 
 
@@ -44,29 +45,29 @@
 					<div class="form-contain">
 						<div class="form-group">
 							<label for="fullname" class="form-label">Tên đầy đủ</label> <input
-								id="fullname" name="fullname" type="text"
+								id="contact_name" name="fullname" type="text"
 								placeholder="nhập tên đầy đủ" class="form-control" />
 							<span class="form-message"></span>
 						</div>
 
 						<div class="form-group">
 							<label for="phonenumber" class="form-label">Số điện thoại</label>
-							<input id="phonenumber" name="phonenumber" type="text"
+							<input id="contact_phone" name="phonenumber" type="text"
 								placeholder="nhập số điện thoại" class="invalid form-control" />
 							<span class="form-message"></span>
 						</div>
 						<div class="form-group">
 							<label for="email" class="form-label">Email</label> <input
-								id="email" name="email" type="text"
+								id="contact_email" name="email" type="text"
 								placeholder="VD: email@domain.com" class="invalid form-control" />
 							<span class="form-message"></span>
 						</div>
 						<div class="form-group">
 							<label for="messeage" class="form-label">Ghi chú</label>
-							<textarea name="messeage" id="messeage" cols="30" rows="5"
+							<textarea name="messeage" id="contact_message" cols="30" rows="5"
 								placeholder="Tin nhắn"></textarea>
 						</div>
-						<button class="form-submit">Gửi đi</button>
+						<button type="button" onclick="sendContact()" class="form-submit">Gửi đi</button>
 					</div>
 				</form>
 

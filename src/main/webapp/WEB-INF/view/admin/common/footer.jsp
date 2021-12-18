@@ -63,6 +63,7 @@
 <script src="/admin/js/demo/product.js"></script>
 <script src="/admin/js/demo/order.js"></script>
 <script src="/admin/js/demo/user.js"></script>
+<script src="/admin/js/demo/blog.js"></script>
 <script src="/admin/js/demo/chart-area-demo.js"></script>
 <script>
 	$('.summernote').summernote({

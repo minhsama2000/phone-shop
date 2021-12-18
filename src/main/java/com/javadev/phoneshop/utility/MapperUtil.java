@@ -11,12 +11,16 @@ import com.javadev.phoneshop.dto.OrderDto;
 import com.javadev.phoneshop.dto.OrderProductDto;
 import com.javadev.phoneshop.dto.UserAndRoleDto;
 import com.javadev.phoneshop.dto.UserDto;
+import com.javadev.phoneshop.entity.DhBlog;
 import com.javadev.phoneshop.entity.DhCart;
+import com.javadev.phoneshop.entity.DhContact;
 import com.javadev.phoneshop.entity.DhOrder;
 import com.javadev.phoneshop.entity.DhOrderProduct;
 import com.javadev.phoneshop.entity.DhProduct;
 import com.javadev.phoneshop.entity.DhRole;
 import com.javadev.phoneshop.entity.DhUser;
+import com.javadev.phoneshop.model.BlogModel;
+import com.javadev.phoneshop.model.ContactModel;
 import com.javadev.phoneshop.model.DhProductModel;
 import com.javadev.phoneshop.model.UserInfoModel;
 
@@ -31,6 +35,38 @@ public class MapperUtil {
 			// TODO: handle exception
 			return null;
 		}
+	}
+	
+	public static DhContact convertModelToContact(ContactModel contactModel) {
+		DhContact contact = new DhContact();
+		try {
+			contact.setCreatedDate(new Date());
+			contact.setEmail(contactModel.getEmail());
+			contact.setName(contactModel.getName());
+			contact.setPhone(contactModel.getPhone());
+			contact.setMessage(contactModel.getMessage());
+			return contact;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return contact;
+		}
+	}
+	
+	public static DhBlog convertModelToBlog(BlogModel blogModel) {
+		DhBlog blog = new DhBlog();
+		try {
+			if (!FileUtil.isEmptyUploadFile(blogModel.getFile())) {
+				blog.setAvatar(blogModel.getFile().getOriginalFilename());
+			}
+			blog.setCreatedDate(new Date());
+			blog.setDetails(blogModel.getDetails());
+			blog.setThumbnail(blogModel.getThumbnail());
+			blog.setShortDescription(blogModel.getShortDescription());
+			return blog;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return blog;
+		} 
 	}
 
 	public static OrderDto convertDhOrderToDto(DhOrder dhOrder) {

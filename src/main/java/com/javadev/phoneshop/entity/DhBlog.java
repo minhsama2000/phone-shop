@@ -8,11 +8,13 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "dh_blog")
 @Getter
 @Setter
+@ToString
 public class DhBlog extends BaseEntity implements Serializable{
 	
 	@Column(name ="thumbnail",nullable = false,length = 200)

@@ -13,7 +13,7 @@
       <li class="nav-item">
         <a class="nav-link" href="/admin/table">
           <i class="fas fa-fw fa-table"></i>
-          <span>Quản lý</span></a>
+          <span>Category & Product</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -24,6 +24,11 @@
           <a class="dropdown-item" href="/admin/user">User</a>
           <a class="dropdown-item" href="/admin/order">Order</a>
         </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/blog">
+          <i class="fa fa-newspaper"></i>
+          <span>Blogs</span></a>
       </li>
     </ul>
 

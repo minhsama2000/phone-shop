@@ -48,33 +48,17 @@
 						</div>
 					</div>
 					<div class="side-bar-content">
-						<div class="side-bar-item">
-							<a class="row" href="">
-								<div class="col c side-bar-img ">
-									<img src="/images/sider-bar.jpg" alt="">
-								</div>
-								<p class="col col-litle">Lorem ipsum dolor sit amet
-									consectetur adipisicing elit. Cum mollitia asperiores</p>
-							</a>
-						</div>
-						<div class="side-bar-item">
-							<a class="row" href="">
-								<div class="col c side-bar-img ">
-									<img src="/images/sider-bar1.jpg" alt="">
-								</div>
-								<p class="col col-litle">Lorem ipsum dolor sit amet
-									consectetur adipisicing elit. Cum mollitia asperiores</p>
-							</a>
-						</div>
-						<div class="side-bar-item">
-							<a class="row" href="">
-								<div class="col c side-bar-img ">
-									<img src="/images/sider-bar2.jpg" alt="">
-								</div>
-								<p class="col col-litle">Lorem ipsum dolor sit amet
-									consectetur adipisicing elit. Cum mollitia asperiores</p>
-							</a>
-						</div>
+
+						<c:forEach var="blog" items="${topBlog}">
+							<div class="side-bar-item">
+								<a class="row" href="">
+									<div class="col c side-bar-img ">
+										<img src="/upload/blog/${blog.avatar}" alt="">
+									</div>
+									<p class="col col-litle">${blog.thumbnail}</p>
+								</a>
+							</div>
+						</c:forEach>
 					</div>
 					<div class="side-bar-banner">
 						<img src="/images/sider-bar-banner.jpg" alt="" srcset="">
@@ -106,7 +90,8 @@
 					<span class="title-product"> Tablet </span>
 					<ul class="row no-gutters nav-bar-list">
 						<c:forEach var="tablet" items="${tablets}">
-							<li class="nav-bar-item"><a onclick="tabletProduct(${tablet.id})"> ${tablet.name} </a></li>
+							<li class="nav-bar-item"><a
+								onclick="tabletProduct(${tablet.id})"> ${tablet.name} </a></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -121,14 +106,13 @@
 					<span class="title-product"> Phụ kiện </span>
 					<ul class="row no-gutters nav-bar-list">
 						<c:forEach var="tool" items="${tools}">
-							<li class="nav-bar-item"><a onclick="toolProduct(${tool.id})"> ${tool.name} </a></li>
+							<li class="nav-bar-item"><a
+								onclick="toolProduct(${tool.id})"> ${tool.name} </a></li>
 						</c:forEach>
 					</ul>
 				</div>
 			</div>
-			<div class="row products-show-list" id="toolProduct">
-
-			</div>
+			<div class="row products-show-list" id="toolProduct"></div>
 		</div>
 	</div>
 	<div class="container">
@@ -138,14 +122,13 @@
 					<span class="title-product"> Laptop </span>
 					<ul class="row no-gutters nav-bar-list">
 						<c:forEach var="laptop" items="${laptops}">
-							<li class="nav-bar-item"><a onclick="toolProduct(${laptop.id})"> ${laptop.name} </a></li>
+							<li class="nav-bar-item"><a
+								onclick="toolProduct(${laptop.id})"> ${laptop.name} </a></li>
 						</c:forEach>
 					</ul>
 				</div>
 			</div>
-			<div class="row products-show-list" id="laptopProduct">
-
-			</div>
+			<div class="row products-show-list" id="laptopProduct"></div>
 		</div>
 	</div>
 </div>

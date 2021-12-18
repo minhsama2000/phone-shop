@@ -60,18 +60,22 @@
 			</div>
 		</div>
 	</div>
-</div><jsp:include page="/WEB-INF/view/client/common/modal.jsp"></jsp:include>
+</div>
+
 <div class="coppy-right">
 	<div class="container">
 		<p>coppyright by</p>
 	</div>
 </div>
 </div>
+<jsp:include page="/WEB-INF/view/client/common/modal.jsp"></jsp:include>
+
 <script src="/js/main.js"></script>
 <script src="/js/handleProduct.js"></script>
 <script src="/js/search.js"></script>
 <script src="/js/view.js"></script>
 <script src="/js/cart.js"></script>
+<script src="/js/contact.js"></script>
 <script src="/js/checkout.js"></script>
 
 <script src="/owcarosel/owl.carousel.min.js"></script>

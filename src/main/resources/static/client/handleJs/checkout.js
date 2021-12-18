@@ -75,11 +75,10 @@ function checkout(){
 			success: function(responseData){
 				if(responseData.status == 200){
 					alert("success");
-					window.location.href = "/home";
+					window.location.href = "/purchase";
 				}
 				if(responseData.status == 415){
 					alert("have no cart");
-					window.location.href = "/home";
 				}
 			},
 			error : function(jqXhr, textStatus, errorMessage) { // error

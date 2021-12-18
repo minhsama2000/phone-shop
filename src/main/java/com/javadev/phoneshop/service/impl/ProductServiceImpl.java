@@ -20,6 +20,7 @@ import com.javadev.phoneshop.repository.CategoryRepository;
 import com.javadev.phoneshop.repository.ProductRepository;
 import com.javadev.phoneshop.service.ProductService;
 import com.javadev.phoneshop.utility.DateUtil;
+import com.javadev.phoneshop.utility.FileUtil;
 import com.javadev.phoneshop.utility.MapperUtil;
 import com.javadev.phoneshop.utility.StringUtil;
 
@@ -142,10 +143,9 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ResponseEntity<ApiResponse> update(DhProductModel dhProductModel) {
 		DhProduct dhProduct = dhProduct = updateProduct(dhProductModel);
-		System.out.println(dhProduct.toString());
 		ApiResponse apiResponse = null;
 		try {
-			if (!isEmptyUploadFile(dhProductModel.getFile())) {
+			if (!FileUtil.isEmptyUploadFile(dhProductModel.getFile())) {
 				if (!dhProduct.getAvatar().equals(dhProductModel.getFile().getOriginalFilename())) {
 					dhProduct.setAvatar(dhProductModel.getFile().getOriginalFilename());
 					dhProductModel.getFile().transferTo(
@@ -160,10 +160,6 @@ public class ProductServiceImpl implements ProductService {
 			apiResponse = new ApiResponse(400, DateUtil.toStrDate(new Date()), "failure", dhProduct);
 			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
 		}
-	}
-
-	private boolean isEmptyUploadFile(MultipartFile image) {
-		return image == null || image.getOriginalFilename().isEmpty();
 	}
 
 	public DhProduct insertProduct(DhProductModel dhProductModel) {

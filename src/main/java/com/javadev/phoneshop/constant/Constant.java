@@ -7,4 +7,6 @@ public class Constant {
 			"upload" + File.separator + "product" + File.separator;
 	public static String ROOT_UPLOAD_USER = System.getProperty("user.dir") + File.separator +
 			"upload" + File.separator + "user" + File.separator;
+	public static String ROOT_UPLOAD_BLOG = System.getProperty("user.dir") + File.separator +
+			"upload" + File.separator + "blog" + File.separator;
 }
