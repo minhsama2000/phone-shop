@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,12 +19,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javadev.phoneshop.dto.CartItemDto;
+import com.javadev.phoneshop.dto.CrawProduct;
 import com.javadev.phoneshop.entity.DhProduct;
 import com.javadev.phoneshop.entity.DhUser;
 import com.javadev.phoneshop.repository.BlogRepository;
 import com.javadev.phoneshop.repository.CategoryRepository;
 import com.javadev.phoneshop.repository.ProductRepository;
 import com.javadev.phoneshop.repository.UserRepository;
+import com.javadev.phoneshop.service.CrawService;
+import com.javadev.phoneshop.service.impl.CrawServiceImpl;
 import com.javadev.phoneshop.utility.SecurityUtil;
 import com.javadev.phoneshop.utility.StringUtil;
 
@@ -35,10 +39,10 @@ public class HomeController {
 
 	@Autowired
 	private ProductRepository productRepository;
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private BlogRepository blogRepository;
 
@@ -48,26 +52,43 @@ public class HomeController {
 		model.addAttribute("tablets", categoryRepository.getChildById(2));
 		model.addAttribute("tools", categoryRepository.getChildById(3));
 		model.addAttribute("laptops", categoryRepository.getChildById(4));
-		model.addAttribute("topBlog",blogRepository.findTopAsc(3));
+		model.addAttribute("topBlog", blogRepository.findTopAsc(3));
 		return "client/index";
 	}
-	
+
 	@GetMapping("/cart-list")
 	public String cartList(Model model) {
 		return "client/cart-list";
 	}
-	
+
 	@GetMapping("/purchase")
 	public String purchase(Model model) {
 		return "dialog/purchase";
 	}
-	
+
+	@GetMapping("/compareProduct")
+	public String compareProduct(Model model, @RequestParam String productName) {
+		CrawServiceImpl crawServiceImpl = new CrawServiceImpl();
+		List<CrawProduct> crawProducts = new ArrayList<CrawProduct>();
+		if(crawServiceImpl.crawProductCELLPHONE(productName).isPresent()) {
+			crawProducts.add(crawServiceImpl.crawProductCELLPHONE(productName).get());
+		}
+		if(crawServiceImpl.crawProductTGDD(productName).isPresent()) {
+			crawProducts.add(crawServiceImpl.crawProductTGDD(productName).get());
+		}
+		if(crawServiceImpl.crawProductHH(productName).isPresent()) {
+			crawProducts.add(crawServiceImpl.crawProductHH(productName).get());
+		}
+		model.addAttribute("listCraw", crawProducts);
+		return "client/compare";
+	}
+
 	@GetMapping("/product-details")
 	public String productDetails(Model model, @RequestParam Integer id) {
 		model.addAttribute("product", productRepository.findById(id).get());
-		model.addAttribute("topBlog",blogRepository.findTopAsc(3));
-		model.addAttribute("ascProducts",productRepository.findByRandom(4));
-		model.addAttribute("ascProducts1",productRepository.findByRandom(4));
+		model.addAttribute("topBlog", blogRepository.findTopAsc(3));
+		model.addAttribute("ascProducts", productRepository.findByRandom(4));
+		model.addAttribute("ascProducts1", productRepository.findByRandom(4));
 		return "client/product-details";
 	}
 
@@ -131,26 +152,26 @@ public class HomeController {
 		model.addAttribute("searchText", searchText);
 		return "client/search";
 	}
-	
+
 	@GetMapping("/shop-cart")
 	public String shopCart() {
 		return "client/shop-cart";
 	}
-	
+
 	@GetMapping("/contact")
 	public String contact() {
 		return "client/contact";
 	}
-	
+
 	@GetMapping("/checkout")
 	public String checkout(Model model) {
 		UserDetails details = SecurityUtil.getUserDetails();
 		DhUser user = null;
 		Optional<DhUser> optionalUser = userRepository.findByUsername(details.getUsername());
-		if(optionalUser.isPresent()) {
+		if (optionalUser.isPresent()) {
 			user = optionalUser.get();
 		}
-		model.addAttribute("userInfo",user);
+		model.addAttribute("userInfo", user);
 		return "client/checkout";
 	}
 }

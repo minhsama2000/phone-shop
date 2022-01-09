@@ -13,8 +13,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col l-7 block_checkout_left">
-				<form class="form_name_adress form"
-					id="form-1">
+				<form class="form_name_adress form" id="form-1">
 					<h3 class="form_name_title">Thông tin thanh toán</h3>
 					<div class="row">
 						<c:if test="${userInfo != null}">
@@ -109,10 +108,11 @@
 						</div>
 						<div class="row mb-20 border-b">
 							<ul class="col l-8 product_item_checkout" id="orderCheckout">
-							
+
 							</ul>
 
 						</div>
+
 						<div class="row mb-20 border-b">
 							<p class="col l-8">Tổng</p>
 							<span class="col l-1 total_check" id="totalCheckout">0đ</span>
@@ -120,7 +120,12 @@
 					</div>
 
 				</div>
-				<p class="checkout_rule mb-10">Chuyển khoản ngân hàng</p>
+				<select name="paymentMethod" id="paymentMethod" class="form-select"
+					aria-label="Default select example">
+					<option selected value="1">Cod</option>
+					<option value="2">MOMO</option>
+				</select>
+				<p class="checkout_rule mb-10">Thanh toán online qua MOMO</p>
 				<p class="checkout_rule_desc mb-20 ">Thực hiện thanh toán vào
 					ngay tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng Mã đơn
 					hàng của bạn trong phần Nội dung thanh toán. Đơn hàng sẽ đươc giao

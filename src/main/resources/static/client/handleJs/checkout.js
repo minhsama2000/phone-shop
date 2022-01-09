@@ -60,6 +60,7 @@ function checkout(){
 	var email = $("#customerEmail").val();
 	var address = $("#customerAddress").val();
 	var phone = $("#customerPhone").val();
+	var paymentMethod = $("#paymentMethod").val();
 	if(validateOrder()){
 		$.ajax({
 			url : "/api/v1/checkout/order",
@@ -68,7 +69,8 @@ function checkout(){
 				customerName : fullname,
 				customerEmail : email,
 				customerAddress : address,
-				customerPhone : phone
+				customerPhone : phone,
+				paymentMethod : paymentMethod
 			}),
 			dataType: 'json',
 	        contentType: 'application/json',

@@ -71,6 +71,7 @@
 
 									</ul>
 								</div>
+								<a href="/compareProduct?productName=${product.name}"><span style="font-size:25px">So sánh sản phẩm</span></a>
 								<div class="boxCountHide quantity-block">
 									<span class="quantity-prev">-</span> <input value="1" min="1"
 										class="quantity-number"> <span class="quantity-add">+</span>

@@ -41,6 +41,9 @@ public class DhOrder extends BaseEntity implements java.io.Serializable {
 	@Column(name = "seo", nullable = true, length = 300)
 	private String seo;
 	
+	@Column(name = "payment_method", nullable = false)
+    private Integer paymentMethod;
+	
 	@Column(name = "order_status", nullable = false, columnDefinition = "1")
 	private Integer orderStatus;
 
