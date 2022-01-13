@@ -137,17 +137,11 @@ body {
 						<c:forEach items="${listCraw}" var="craw">
 							<td>
 								<div class="comparison-item">
-									<span class="remove-item"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor"
-											stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round" class="feather feather-x">
 										<line x1="18" y1="6" x2="6" y2="18"></line>
 										<line x1="6" y1="6" x2="18" y2="18"></line></svg></span> <a
 										class="comparison-item-thumb" href="shop-single.html"><img
 										src="${craw.avatar}" alt="Apple iPhone Xs Max"></a><a
-										class="comparison-item-title" href="shop-single.html">Apple
-										iPhone Xs Max</a> <a
+										class="comparison-item-title" href="shop-single.html">${craw.name}</a> <a
 										class="btn btn-pill btn-outline-primary btn-sm"
 										href="${craw.url}" type="button" data-toggle="toast"
 										data-target="#cart-toast">Xem chi tiết</a>

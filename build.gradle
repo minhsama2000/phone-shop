@@ -35,6 +35,10 @@ dependencies {
 	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
 	// jsoup HTML parser library @ https://jsoup.org/
 	implementation 'org.jsoup:jsoup:1.14.3'
+	    // https://github.com/momo-wallet/java
+    implementation (group: 'io.github.momo-wallet', name: 'momopayment', version: '1.0') {
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-slf4j-impl'
+    }
     
 }
 

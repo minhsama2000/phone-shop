@@ -2,20 +2,25 @@ package com.javadev.phoneshop.service.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.javadev.phoneshop.constant.Constant;
 import com.javadev.phoneshop.dto.ApiResponse;
 import com.javadev.phoneshop.entity.DhCart;
 import com.javadev.phoneshop.entity.DhOrder;
 import com.javadev.phoneshop.entity.DhOrderProduct;
 import com.javadev.phoneshop.entity.DhProduct;
 import com.javadev.phoneshop.entity.DhUser;
+import com.javadev.phoneshop.helper.MomoHelper;
 import com.javadev.phoneshop.model.UserInfoModel;
 import com.javadev.phoneshop.repository.CartRepository;
 import com.javadev.phoneshop.repository.OrderProductRepository;
@@ -26,6 +31,9 @@ import com.javadev.phoneshop.service.CheckoutService;
 import com.javadev.phoneshop.utility.DateUtil;
 import com.javadev.phoneshop.utility.MapperUtil;
 import com.javadev.phoneshop.utility.SecurityUtil;
+import com.mservice.allinone.models.CaptureMoMoResponse;
+import com.mservice.allinone.processor.allinone.CaptureMoMo;
+import com.mservice.shared.sharedmodels.Environment;
 
 @Service("checkoutService")
 public class CheckoutServiceImpl implements CheckoutService {
@@ -73,6 +81,8 @@ public class CheckoutServiceImpl implements CheckoutService {
 		if (optionalUser.isPresent()) {
 			dhUser = optionalUser.get();
 		}
+		Constant.PaymentMethod paymentMethod = Constant.PaymentMethod.getFromEnum(userInfoModel.getPaymentMethod());
+
 		try {
 			dhCart = cartRepository.findAllByUserId(dhUser.getId());
 			DhOrder dhOrder = MapperUtil.convertModelToEntityOrder(userInfoModel);
@@ -83,6 +93,25 @@ public class CheckoutServiceImpl implements CheckoutService {
 				total += cart.getQuantity() * cart.getPrice();
 			}
 			dhOrder.setTotal(total);
+			if (Objects.nonNull(paymentMethod) && paymentMethod.equals(Constant.PaymentMethod.MOMO)) {
+				try {
+					String transactionId = UUID.randomUUID().toString();
+					String requestId = UUID.randomUUID().toString();
+					String orderInfo = (new Date()).toString();
+					Long totalOrderAmount = total;
+					userInfoModel.setTransactionId(transactionId);
+					userInfoModel.setRequestId(requestId);
+					Environment momoEnvironment = MomoHelper.getMomoEnvironment();
+					CaptureMoMoResponse captureMoMoResponse = CaptureMoMo.process(momoEnvironment, transactionId,
+							requestId, totalOrderAmount.toString(), orderInfo, "http://localhost:8080/purchase", "",
+							StringUtils.EMPTY);
+					if (Objects.nonNull(captureMoMoResponse)) {
+						userInfoModel.setPayUrl(captureMoMoResponse.getPayUrl());
+					}
+				} catch (Exception ex) {
+
+				}
+			}
 			DhOrder newOrder = orderRepository.save(dhOrder);
 			for (DhCart cart : dhCart) {
 				dhOrderProduct = new DhOrderProduct();
@@ -93,7 +122,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 				dhOrderProduct.setPrice(dhProduct.getPrice());
 				dhOrderProduct.setQuantity(cart.getQuantity());
 				orderProductRepository.save(dhOrderProduct);
-				dhOrderProduct.setOrderId(newOrder.getId());;
+				dhOrderProduct.setOrderId(newOrder.getId());
 			}
 			cartRepository.deleteAllCartByUserId(dhUser.getId());
 			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", null);
