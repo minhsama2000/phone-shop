@@ -83,6 +83,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 				total += cart.getQuantity() * cart.getPrice();
 			}
 			dhOrder.setTotal(total);
+			dhOrder.setPaymentMethod(userInfoModel.getPaymentMethod());
 			DhOrder newOrder = orderRepository.save(dhOrder);
 			for (DhCart cart : dhCart) {
 				dhOrderProduct = new DhOrderProduct();
