@@ -1,0 +1,12 @@
+phoneshop112021@gmail.com
+Phoneshop@123
+
+phoneshop2021
+PhoneShop@123
+
+momo_partner_code=MOMOFI0D20211216
+momo_access_key=xoBsZPJrArYUxvjY
+momo_secret_key=CUaixIC7rjpqp1zrCU5IOHv1HgpOE3fz
+momo_endpoint=https://test-payment.momo.vn/gw_payment/transactionProcessor
+momo_return_url=https://d49f-58-186-58-152.ngrok.io/v1/api/transactions/momo_transaction
+momo_notify_url=https://d49f-58-186-58-152.ngrok.io/v1/api/transactions/momo_transaction
