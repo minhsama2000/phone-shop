@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.javadev.phoneshop.constant.Constant;
 import com.javadev.phoneshop.dto.ApiResponse;
+import com.javadev.phoneshop.dto.CheckoutResponse;
 import com.javadev.phoneshop.entity.DhCart;
 import com.javadev.phoneshop.entity.DhOrder;
 import com.javadev.phoneshop.entity.DhOrderProduct;
@@ -94,6 +95,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 			}
 			dhOrder.setTotal(total);
 			dhOrder.setPaymentMethod(userInfoModel.getPaymentMethod());
+			CheckoutResponse checkoutResponse = null;
 			if (Objects.nonNull(paymentMethod) && paymentMethod.equals(Constant.PaymentMethod.MOMO)) {
 				try {
 					String transactionId = UUID.randomUUID().toString();
@@ -104,17 +106,18 @@ public class CheckoutServiceImpl implements CheckoutService {
 					userInfoModel.setRequestId(requestId);
 					Environment momoEnvironment = MomoHelper.getMomoEnvironment();
 					CaptureMoMoResponse captureMoMoResponse = CaptureMoMo.process(momoEnvironment, transactionId,
-							requestId, totalOrderAmount.toString(), orderInfo, "http://localhost:8080/purchase", "",
-							StringUtils.EMPTY);
+							requestId, totalOrderAmount.toString(), orderInfo, "http://localhost:8080/purchase",
+							"http://localhost:8080/purchase", StringUtils.EMPTY);
 					if (Objects.nonNull(captureMoMoResponse)) {
 						userInfoModel.setPayUrl(captureMoMoResponse.getPayUrl());
 					}
-					com.javadev.phoneshop.dto.CheckoutResponse checkoutResponse = findCheckoutResponse(paymentMethod, userInfoModel.getPayUrl());
+					 checkoutResponse = findCheckoutResponse(paymentMethod,
+							userInfoModel.getPayUrl());
 				} catch (Exception ex) {
 
 				}
 			}
-			
+
 			DhOrder newOrder = orderRepository.save(dhOrder);
 			for (DhCart cart : dhCart) {
 				dhOrderProduct = new DhOrderProduct();
@@ -128,7 +131,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 				dhOrderProduct.setOrderId(newOrder.getId());
 			}
 			cartRepository.deleteAllCartByUserId(dhUser.getId());
-			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", null);
+			apiResponse = new ApiResponse(200, DateUtil.toStrDate(new Date()), "success", checkoutResponse);
 			return new ResponseEntity<ApiResponse>(HttpStatus.ACCEPTED).ok(apiResponse);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -161,14 +164,15 @@ public class CheckoutServiceImpl implements CheckoutService {
 			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
 		}
 	}
-	
-	private com.javadev.phoneshop.dto.CheckoutResponse findCheckoutResponse(Constant.PaymentMethod paymentMethod, String payUrl) {
-        switch (paymentMethod) {
-            case MOMO:
-                return com.javadev.phoneshop.dto.CheckoutResponse.getSuccessMomoResponseWithPayUrl(payUrl);
-            default:
-                return com.javadev.phoneshop.dto.CheckoutResponse.getSuccessCodResponse();
-        }
-    }
+
+	private com.javadev.phoneshop.dto.CheckoutResponse findCheckoutResponse(Constant.PaymentMethod paymentMethod,
+			String payUrl) {
+		switch (paymentMethod) {
+		case MOMO:
+			return com.javadev.phoneshop.dto.CheckoutResponse.getSuccessMomoResponseWithPayUrl(payUrl);
+		default:
+			return com.javadev.phoneshop.dto.CheckoutResponse.getSuccessCodResponse();
+		}
+	}
 
 }

@@ -77,7 +77,9 @@ function checkout(){
 			success: function(responseData){
 				if(responseData.status == 200){
 					alert("success");
-					console.log(responseData);
+					if(responseData.data.type == 2){
+						window.location.href = responseData.data.payUrl;
+					}
 				}
 				if(responseData.status == 415){
 					alert("have no cart");
