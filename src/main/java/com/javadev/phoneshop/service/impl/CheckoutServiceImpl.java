@@ -93,6 +93,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 				total += cart.getQuantity() * cart.getPrice();
 			}
 			dhOrder.setTotal(total);
+			dhOrder.setPaymentMethod(userInfoModel.getPaymentMethod());
 			if (Objects.nonNull(paymentMethod) && paymentMethod.equals(Constant.PaymentMethod.MOMO)) {
 				try {
 					String transactionId = UUID.randomUUID().toString();
@@ -108,10 +109,12 @@ public class CheckoutServiceImpl implements CheckoutService {
 					if (Objects.nonNull(captureMoMoResponse)) {
 						userInfoModel.setPayUrl(captureMoMoResponse.getPayUrl());
 					}
+					com.javadev.phoneshop.dto.CheckoutResponse checkoutResponse = findCheckoutResponse(paymentMethod, userInfoModel.getPayUrl());
 				} catch (Exception ex) {
 
 				}
 			}
+			
 			DhOrder newOrder = orderRepository.save(dhOrder);
 			for (DhCart cart : dhCart) {
 				dhOrderProduct = new DhOrderProduct();
@@ -158,5 +161,14 @@ public class CheckoutServiceImpl implements CheckoutService {
 			return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST).ok(apiResponse);
 		}
 	}
+	
+	private com.javadev.phoneshop.dto.CheckoutResponse findCheckoutResponse(Constant.PaymentMethod paymentMethod, String payUrl) {
+        switch (paymentMethod) {
+            case MOMO:
+                return com.javadev.phoneshop.dto.CheckoutResponse.getSuccessMomoResponseWithPayUrl(payUrl);
+            default:
+                return com.javadev.phoneshop.dto.CheckoutResponse.getSuccessCodResponse();
+        }
+    }
 
 }

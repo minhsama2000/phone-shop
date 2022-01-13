@@ -4,12 +4,14 @@ import com.mservice.shared.sharedmodels.Environment;
 import com.mservice.shared.sharedmodels.PartnerInfo;
 
 public class MomoHelper {
-	  private MomoHelper() {
-	    }
+	private MomoHelper() {
+	}
 
-	    // test env only
-	    public static Environment getMomoEnvironment() {
-	        PartnerInfo partnerInfo = new PartnerInfo("MOMOFI0D20211216", "xoBsZPJrArYUxvjY", "CUaixIC7rjpqp1zrCU5IOHv1HgpOE3fz");
-	        return new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", partnerInfo, Environment.EnvTarget.DEV);
-	    }
+	// test env only
+	public static Environment getMomoEnvironment() {
+		PartnerInfo partnerInfo = new PartnerInfo("MOMO8PAQ20211227", "H9RTMWPb5GxqwDRQ",
+				"USucVNLp8X8Z6aMiLU2CoSVp0wzmsPFX");
+		return new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", partnerInfo,
+				Environment.EnvTarget.DEV);
+	}
 }
