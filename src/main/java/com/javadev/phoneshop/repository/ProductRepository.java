@@ -27,5 +27,11 @@ public interface ProductRepository extends JpaRepository<DhProduct, Integer>,Cus
 	
 	@Query(value = "SELECT * FROM dh_product where id = ?1",nativeQuery = true)
 	DhProduct findByProductId(Integer id);
+	
+	@Query(value = "SELECT * FROM dh_product p where p.price BETWEEN ?1 AND ?2", nativeQuery = true)
+	List<DhProduct> findByPrice(Long start, Long end);
+	
+	@Query(value = "SELECT * FROM dh_product p where p.storage = storage", nativeQuery = true)
+	List<DhProduct> findByStorage(int storage);
 
 }

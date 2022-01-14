@@ -24,13 +24,17 @@
 								<li class="price-item"><i class="fas fa-check"></i> <a
 									href="/filter?choise=1&start=0&end=2000000">Dưới 2 triệu</a></li>
 								<li class="price-item"><i class="fas fa-check"></i> <a
-									href="/filter?choise=1&start=2000000&end=4000000"> Từ 2 - 4 triệu</a></li>
+									href="/filter?choise=1&start=2000000&end=4000000"> Từ 2 - 4
+										triệu</a></li>
 								<li class="price-item"><i class="fas fa-check"></i> <a
-									href="/filter?choise=1&start=4000000&end=7000000"> Từ 4 - 7 triệu</a></li>
+									href="/filter?choise=1&start=4000000&end=7000000"> Từ 4 - 7
+										triệu</a></li>
 								<li class="price-item"><i class="fas fa-check"></i><a
-									href="/filter?choise=1&start=7000000&end=13000000"> Từ 7 - 13 triệu</a></li>
+									href="/filter?choise=1&start=7000000&end=13000000"> Từ 7 -
+										13 triệu</a></li>
 								<li class="price-item"><i class="fas fa-check"></i> <a
-									href="/filter?choise=1&start=13000000&end=20000000"> Từ 13 - 20 triệu</a></li>
+									href="/filter?choise=1&start=13000000&end=20000000"> Từ 13
+										- 20 triệu</a></li>
 							</ul>
 						</li>
 						<li class="filter-item">
@@ -84,31 +88,31 @@
 
 	</div>
 	<div class="pagination">
-		<c:if test="${choise == 3}">
-			<c:forEach var="i" begin="1" end="${totalSize}">
-
-				<a href="/search?page=${i-1}">${i-1}</a>
-
-			</c:forEach>
-		</c:if>
 		<c:if test="${choise == 1}">
 			<c:forEach var="i" begin="1" end="${totalSize}">
 
-				<a href="/search?page=${i-1}&categoryId=${categoryId}&select=parent">${i-1}</a>
+				<a href="/filter?page=${i-1}&start=${start}&end=${end}&choise=1">${i-1}</a>
 
 			</c:forEach>
 		</c:if>
 		<c:if test="${choise == 2}">
 			<c:forEach var="i" begin="1" end="${totalSize}">
 
-				<a href="/search?page=${i-1}&categoryId=${categoryId}">${i-1}</a>
+				<a href="/filter?page=${i-1}&storage=${storage}&choise=2">${i-1}</a>
 
 			</c:forEach>
 		</c:if>
-		<c:if test="${choise == 0}">
+		<c:if test="${choise == 3}">
 			<c:forEach var="i" begin="1" end="${totalSize}">
 
-				<a href="/search?page=${i-1}&searchText=${searchText}">${i-1}</a>
+				<a href="/filter?page=${i-1}&choise=3">${i-1}</a>
+
+			</c:forEach>
+		</c:if>
+		<c:if test="${choise == 4}">
+			<c:forEach var="i" begin="1" end="${totalSize}">
+
+				<a href="/filter?page=${i-1}&choise=4">${i-1}</a>
 
 			</c:forEach>
 		</c:if>

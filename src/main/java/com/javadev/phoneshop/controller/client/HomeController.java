@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
@@ -70,13 +72,13 @@ public class HomeController {
 	public String compareProduct(Model model, @RequestParam String productName) {
 		CrawServiceImpl crawServiceImpl = new CrawServiceImpl();
 		List<CrawProduct> crawProducts = new ArrayList<CrawProduct>();
-		if(crawServiceImpl.crawProductCELLPHONE(productName).isPresent()) {
+		if (crawServiceImpl.crawProductCELLPHONE(productName).isPresent()) {
 			crawProducts.add(crawServiceImpl.crawProductCELLPHONE(productName).get());
 		}
-		if(crawServiceImpl.crawProductTGDD(productName).isPresent()) {
+		if (crawServiceImpl.crawProductTGDD(productName).isPresent()) {
 			crawProducts.add(crawServiceImpl.crawProductTGDD(productName).get());
 		}
-		if(crawServiceImpl.crawProductHH(productName).isPresent()) {
+		if (crawServiceImpl.crawProductHH(productName).isPresent()) {
 			crawProducts.add(crawServiceImpl.crawProductHH(productName).get());
 		}
 		model.addAttribute("listCraw", crawProducts);
@@ -151,6 +153,46 @@ public class HomeController {
 						: productRepository.findBySearchText(searchText).size() / size + 1);
 		model.addAttribute("searchText", searchText);
 		return "client/search";
+	}
+
+	@GetMapping("/filter")
+	public String filter(Model model, @RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "8") int size, @RequestParam String choise, HttpServletRequest request) {
+		if (choise.equals("1")) {
+			Long start = Long.parseLong(request.getParameter("start"));
+			Long end = Long.parseLong(request.getParameter("end"));
+			model.addAttribute("products", productRepository.findByPriceSpace(page, size, start, end));
+			model.addAttribute("totalSize",
+					productRepository.findByPrice(start, end).size() % size == 0
+							? productRepository.findByPrice(start, end).size() / size
+							: productRepository.findByPrice(start, end).size() / size + 1);
+			model.addAttribute("start", start);
+			model.addAttribute("end", end);
+		}
+		if (choise.equals("2")) {
+			int storage = Integer.parseInt(request.getParameter("storage"));
+			model.addAttribute("products", productRepository.findByStorage(page, size, storage));
+			model.addAttribute("totalSize",
+					productRepository.findByStorage(storage).size() % size == 0
+							? productRepository.findByStorage(storage).size() / size
+							: productRepository.findByStorage(storage).size() / size + 1);
+			model.addAttribute("storage", storage);
+		}
+		if (choise.equals("3")) {
+			model.addAttribute("products", productRepository.findPriceAsc(page, size));
+			model.addAttribute("totalSize",
+					productRepository.findAll().size() % size == 0 ? productRepository.findAll().size() / size
+							: productRepository.findAll().size() / size + 1);
+		}
+		if (choise.equals("4")) {
+			model.addAttribute("products", productRepository.findPriceDesc(page, size));
+			model.addAttribute("totalSize",
+					productRepository.findAll().size() % size == 0 ? productRepository.findAll().size() / size
+							: productRepository.findAll().size() / size + 1);
+		}
+
+		model.addAttribute("choise", choise);
+		return "client/filter";
 	}
 
 	@GetMapping("/shop-cart")

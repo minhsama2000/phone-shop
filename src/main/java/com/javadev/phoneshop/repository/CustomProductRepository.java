@@ -20,4 +20,12 @@ public interface CustomProductRepository {
 	List<DhProduct> findTopAsc(int limitTop);
 
 	List<DhProduct> findByRandom(int limitTop);
+
+	List<DhProduct> findByPriceSpace(int page, int size, Long start, Long end);
+
+	List<DhProduct> findByStorage(int page, int size, int storage);
+
+	List<DhProduct> findPriceDesc(int page, int size);
+
+	List<DhProduct> findPriceAsc(int page, int size);
 }

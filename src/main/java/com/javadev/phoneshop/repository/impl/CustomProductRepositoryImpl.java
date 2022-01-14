@@ -74,6 +74,45 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
 	}
 	
 	@Override
+	public List<DhProduct> findByPriceSpace(int page, int size, Long start, Long end){
+		String jpql = "select * from dh_product p where p.price BETWEEN :start AND :end";
+		List<DhProduct> dhProducts = null;
+		Query query = entityManager.createNativeQuery(jpql, DhProduct.class);
+		query.setParameter("start", start);
+		query.setParameter("end", end);
+		dhProducts = query.setFirstResult(page).setMaxResults(size).getResultList();
+		return dhProducts;
+	}
+	
+	@Override
+	public List<DhProduct> findByStorage(int page, int size, int storage){
+		String jpql = "select * from dh_product p where p.storage = :storage";
+		List<DhProduct> dhProducts = null;
+		Query query = entityManager.createNativeQuery(jpql, DhProduct.class);
+		query.setParameter("storage", storage);
+		dhProducts = query.setFirstResult(page).setMaxResults(size).getResultList();
+		return dhProducts;
+	}
+	
+	@Override
+	public List<DhProduct> findPriceDesc(int page, int size){
+		String jpql = "select * from dh_product p ORDER BY p.price DESC";
+		List<DhProduct> dhProducts = null;
+		Query query = entityManager.createNativeQuery(jpql, DhProduct.class);
+		dhProducts = query.setFirstResult(page).setMaxResults(size).getResultList();
+		return dhProducts;
+	}
+	
+	@Override
+	public List<DhProduct> findPriceAsc(int page, int size){
+		String jpql = "select * from dh_product p ORDER BY p.price ASC";
+		List<DhProduct> dhProducts = null;
+		Query query = entityManager.createNativeQuery(jpql, DhProduct.class);
+		dhProducts = query.setFirstResult(page).setMaxResults(size).getResultList();
+		return dhProducts;
+	}
+	
+	@Override
 	public List<DhProduct> findBySearchText(String searchText) {
 		String jpql = "select p from DhProduct p where p.name like :name";
 		List<DhProduct> dhProducts = null;
